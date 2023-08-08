@@ -17,11 +17,17 @@
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
+  /* color: rgb(var(--foreground-rgb));
   background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
+}
+
+@layer components {
+  .button-green-rounded {
+    @apply text-white font-semibold bg-green-500 hover:bg-green-700 border-green-700 border-b hover:border-green-900 transition-all px-6 py-2 rounded-full;
+  }
 }
