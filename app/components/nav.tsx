@@ -13,10 +13,10 @@ export default function MainNav() {
   }
 
   return (
-    <nav className="class bg-gray-800 text-slate-50">
-      <div className="class max-w-7xl mx-auto py-4 px-2 sm:px-6 lg:px-8 border-b">
+    <nav className="bg-gray-800 text-slate-50">
+      <div className="max-w-7xl mx-auto py-4 px-2 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          <div>Lionel Morrison</div>
+          <div>Portfolio</div>
           <div className="hidden md:flex items-center space-x-5 text-sm">
             <Link
               href=""
