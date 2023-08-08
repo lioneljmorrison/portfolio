@@ -1,9 +1,9 @@
-import MainNav from './components/nav'
+import MainNav from './components/nav';
 
 export default function Home() {
   return (
     <>
-      <MainNav></MainNav>      
+      <MainNav></MainNav>
     </>
-  )
+  );
 }
