@@ -8,6 +8,14 @@ export default function MiniResume({ jobs }: { jobs: Job[] }) {
   const activeClass = 'border-l-2';
   const inactiveClass = 'border-l-2 border-transparent';
 
+  function formatDate(date: string | undefined): string {
+    if (date) {
+      return format(new Date(date), 'LLL yyyy');
+    }
+
+    return 'Present';
+  }
+
   return (
     <div className="bg-gray-700 text-slate-400">
       <div className="max-w-7xl mx-auto py-4 ">
@@ -26,8 +34,7 @@ export default function MiniResume({ jobs }: { jobs: Job[] }) {
           <div className="w-2/3 pl-5 pt-2">
             <div className="text-lg text-slate-300">{jobs[active].title}</div>
             <div className="text-xs">
-              {format(new Date(jobs[active].dates.start), 'LLL yyyy')} -
-              {jobs[active].dates?.end ? format(new Date(jobs[active].dates.end), 'LLL yyyy') : 'Present'}
+              {format(new Date(jobs[active].dates.start), 'LLL yyyy')} - {formatDate(jobs[active].dates?.end)}
             </div>
             <div className=""></div>
             <div className="pt-3 text-slate-300">{jobs[active]?.tldr}</div>
