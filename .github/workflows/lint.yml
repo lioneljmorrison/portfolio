@@ -2,7 +2,7 @@ name: ci
 on:
   pull_request:
     paths:
-      - 'scripts/**'
+      - 'app/**'
 jobs:
   build:
     runs-on: ubuntu-latest
