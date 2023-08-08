@@ -13,10 +13,10 @@ export default function MainNav() {
   }
 
   return (
-    <nav className="class bg-gray-800 text-slate-50">
-      <div className="class max-w-7xl mx-auto py-4 px-2 sm:px-6 lg:px-8 border-b">
+    <nav className="bg-gray-800 text-slate-50">
+      <div className="max-w-7xl mx-auto py-4 px-2 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          <div>Lionel Morrison</div>
+          <div>Portfolio</div>
           <div className="hidden md:flex items-center space-x-5 text-sm">
             <Link
               href=""
@@ -56,13 +56,13 @@ export default function MainNav() {
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke-width={1.5}
+                strokeWidth={1.5}
                 stroke="currentColor"
                 className="w-6 h-6"
               >
                 <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                   d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
                 />
               </svg>
