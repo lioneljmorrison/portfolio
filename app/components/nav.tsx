@@ -18,17 +18,14 @@ export default function MainNav() {
         <div className="flex items-center justify-between">
           <div>Portfolio</div>
           <div className="hidden md:flex items-center space-x-5 text-sm">
-            <Link
-              href=""
-              className="py-1 px-2 hover:bg-gray-700 transition transition-duration-300 rounded"
-            >
+            <Link href="" className="py-1 px-2 hover:bg-gray-700 transition transition-duration-300 rounded">
               About Me
             </Link>
-            <Link
+            {/* <Link
               href=""
               className="py-1 px-2 hover:bg-gray-700 transition transition-duration-300 rounded"
             >
-              Somethings I've Built
+              Things I've Built
             </Link>
             <Link
               href=""
@@ -41,9 +38,10 @@ export default function MainNav() {
               className="py-1 px-2 hover:bg-gray-700 transition transition-duration-300 rounded"
             >
               Contact
-            </Link>
+            </Link> */}
             <Link
-              href=""
+              href="/assets/Lionel Morrison - Resume.pdf"
+              target="_blank"
               className="bg-blue-400 hover:bg-blue-300 text-blue-800 hover:text-blue-700 rounded shadow py-1 px-2 transition transition-duration-300"
             >
               Resume
@@ -60,11 +58,7 @@ export default function MainNav() {
                 stroke="currentColor"
                 className="w-6 h-6"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
               </svg>
             </button>
           </div>
@@ -73,16 +67,17 @@ export default function MainNav() {
 
       <div className={`${displayCss} px-4 transition transition-duration-300`}>
         <Link
-          href=""
-          className="block py-3 px-3 text-sm hover:bg-gray-700 text-right"
-        >
-          Somethings I've Built
-        </Link>
-        <Link
-          href=""
+          href="/assets/Lionel Morrison - Resume.pdf"
+          target="_blank"
           className="block py-3 px-3 text-sm hover:bg-gray-700 text-right"
         >
           About Me
+        </Link>
+        {/* <Link
+          href=""
+          className="block py-3 px-3 text-sm hover:bg-gray-700 text-right"
+        >
+          Things I've Built
         </Link>
         <Link
           href=""
@@ -101,7 +96,7 @@ export default function MainNav() {
           className="block py-3 px-3 text-sm hover:bg-gray-700 text-right"
         >
           Resume
-        </Link>
+        </Link> */}
       </div>
     </nav>
   );
