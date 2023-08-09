@@ -1,4 +1,4 @@
-import { AboutMe, Job, NavLinks } from './interfaces';
+import { AboutMe, Job, NavLinks, Things } from './interfaces';
 
 export const jobsData: Job[] = [
   {
@@ -96,4 +96,12 @@ export const navData: NavLinks = {
     cssClass:
       'bg-blue-400 hover:bg-blue-300 text-blue-800 hover:text-blue-700 rounded shadow py-1 px-2 transition transition-duration-300',
   },
+};
+
+export const thingsData: Things = {
+  stardust: { name: 'Stardust', tldr: 'Bla bla bla', techLabels: ['LESS', 'Nest.js'] },
+  clacks: { name: 'Clacks', tldr: 'Bla bla bla', techLabels: ['LESS', 'Nest.js'] },
+  soil: { name: 'Feed My Dirt', tldr: 'Bla bla bla', techLabels: ['Angular', 'Firebase', 'Firestore'] },
+  books: { name: 'Redux', tldr: 'Bla bla bla', techLabels: ['Angular', 'Firebase', 'Firestore'] },
+  cidery: { name: 'Cidery Datalogger', tldr: 'Bla bla bla', techLabels: ['Angular', 'Firebase', 'Firestore'] },
 };
