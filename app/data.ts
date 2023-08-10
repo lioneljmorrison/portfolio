@@ -6,7 +6,6 @@ export const jobsData: Job[] = [
     company: 'Under Armour',
     title: 'Sr. Software Engineer',
     dates: { start: '2022-09-12', end: '2023-06-16' },
-    tldr: 'Summary goes here',
     highlights: [
       'Lead global deployment rollouts and hotfixes working alongside developers and QA engineers to identify non-production-ready items',
       'Instrumental in new search engine implementation: $30M sales lift, 50% faster search, and improved accuracy',
