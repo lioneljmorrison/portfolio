@@ -51,11 +51,12 @@ export default function Projects({ anchor, data }: { anchor: string; data: Proje
             <div className="grid grid-cols-10 pb-12">
               <div className="row-span-full col-start-1 col-span-6 self-center">
                 <Image
-                  src={project.images ? project.images['placeholder'].link : './assets/image-placeholder.png'}
+                  src={project.images ? project.images['default'].link : './assets/image-placeholder.png'}
                   width={500}
                   height={250}
                   alt="Alt Text"
                   loading="lazy"
+                  className="border-2 rounded-lg"
                 ></Image>
               </div>
               <div className="row-span-full col-span-6 col-end-11 self-center p-4">
@@ -77,11 +78,12 @@ export default function Projects({ anchor, data }: { anchor: string; data: Proje
               </div>
               <div className="row-span-full col-span-6 col-end-11 self-center">
                 <Image
-                  src={project.images ? project.images['placeholder'].link : './assets/image-placeholder.png'}
+                  src={project.images ? project.images['default'].link : './assets/image-placeholder.png'}
                   width={500}
                   height={250}
                   alt="Alt Text"
                   loading="lazy"
+                  className="border-2 rounded-lg"
                 ></Image>
               </div>
             </div>
