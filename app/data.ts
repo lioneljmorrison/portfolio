@@ -1,4 +1,4 @@
-import { AboutMe, Job, NavLinks } from './interfaces';
+import { AboutMe, Job, NavLinks, Projects } from './interfaces';
 
 export const jobsData: Job[] = [
   {
@@ -82,9 +82,8 @@ export const navData: NavLinks = {
   Experience: {
     href: './#experience',
   },
-  'Other Note Worthy Projects': {
+  Projects: {
     href: './#projects',
-    disabled: true,
   },
   Contact: {
     href: './#contact',
@@ -95,5 +94,37 @@ export const navData: NavLinks = {
     target: '_blank',
     cssClass:
       'bg-blue-400 hover:bg-blue-300 text-blue-800 hover:text-blue-700 rounded shadow py-1 px-2 transition transition-duration-300',
+  },
+};
+
+export const projectData: Projects = {
+  portfolio: {
+    name: 'Portfolio v1',
+    tldr: 'Created as a way to learn Tailwind CSS. Its is a living project as it fundementally serves as my resume.',
+    techLabels: ['Tailwind CSS', 'GitHub Actions', 'Nest.js', 'React'],
+    links: {
+      github: { link: 'https://github.com/lioneljmorrison/portfolio' },
+    },
+    images: { default: { link: './assets/portfolio-v1.png' } },
+  },
+  stardust: {
+    name: 'Stardust',
+    tldr: 'Bla bla bla',
+    techLabels: ['LESS', 'Nest.js'],
+    disabled: true,
+  },
+  clacks: {
+    name: 'Clacks',
+    tldr: 'Bla bla bla',
+    techLabels: ['LESS', 'Nest.js'],
+    disabled: true,
+  },
+  soil: { name: 'Feed My Dirt', tldr: 'Bla bla bla', techLabels: ['Angular', 'Firebase', 'Firestore'], disabled: true },
+  books: { name: 'Redux', tldr: 'Bla bla bla', techLabels: ['Angular', 'Firebase', 'Firestore'], disabled: true },
+  cidery: {
+    name: 'Cidery Datalogger',
+    tldr: 'Bla bla bla',
+    techLabels: ['Angular', 'Firebase', 'Firestore'],
+    disabled: true,
   },
 };
