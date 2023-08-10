@@ -1,8 +1,8 @@
 import { AboutMe } from '../interfaces';
 
-export default function AboutMe({ data }: { data: AboutMe }) {
+export default function AboutMe({ anchor, data }: { anchor: string; data: AboutMe }) {
   return (
-    <div className="max-w-prose mx-auto py-4 text-slate-400 ">
+    <div id={anchor} className="max-w-prose mx-auto py-4 text-slate-400">
       <div className="text-3xl mx-auto py-1 text-slate-400">{data.intro}</div>
       <div className="text-5xl mx-auto py-2 text-sky-500">{data.name}</div>
       <div className="mx-auto py-2 text-md">

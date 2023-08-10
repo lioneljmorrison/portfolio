@@ -15,6 +15,13 @@ export default function MainNav({ data }: { data: NavLinks }) {
     setDisplayCss(display ? 'hidden' : 'md:hidden');
   }
 
+  function scrollTo(id: string) {
+    var element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
   return (
     <nav className="sticky top-0 bg-gray-800 text-slate-50">
       <div className="max-w-7xl mx-auto py-4 px-2 sm:px-6 lg:px-8">
@@ -24,10 +31,12 @@ export default function MainNav({ data }: { data: NavLinks }) {
             {navItemsArray.map((item, idx) => {
               if (item) {
                 const [title, meta] = [...item];
+
                 return (
                   <Link
                     key={`nav-${idx}`}
                     href={meta.href}
+                    onClick={() => scrollTo(meta.href.substring(1))}
                     className={
                       meta.cssClass || 'py-1 px-2 hover:bg-gray-700 transition transition-duration-300 rounded'
                     }
@@ -63,6 +72,7 @@ export default function MainNav({ data }: { data: NavLinks }) {
             return (
               <Link
                 key={`nav-${idx}`}
+                onClick={() => scrollTo(meta.href.substring(1))}
                 href={meta.href}
                 className="block py-3 px-3 text-sm hover:bg-gray-700 text-right"
               >

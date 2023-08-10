@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Job } from '../interfaces';
 import SectionHeader from './section-header';
 
-export default function Experince({ jobs }: { jobs: Job[] }) {
+export default function Experience({ anchor, jobs }: { anchor: string; jobs: Job[] }) {
   const [active, setActive] = useState(0);
   const activeClass = 'text-sm border-l-2';
   const inactiveClass = 'text-sm border-l-2 border-transparent';
@@ -18,7 +18,7 @@ export default function Experince({ jobs }: { jobs: Job[] }) {
   }
 
   return (
-    <div className="max-w-prose mx-auto py-4 text-slate-400">
+    <div id={anchor} className="max-w-prose mx-auto py-4 text-slate-400">
       <SectionHeader title="Experience"></SectionHeader>
       <div className="flex">
         <div className="w-1/3">
