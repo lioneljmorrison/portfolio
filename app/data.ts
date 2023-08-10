@@ -1,4 +1,4 @@
-import { AboutMe, Job } from './interfaces';
+import { AboutMe, Job, NavLinks } from './interfaces';
 
 export const jobsData: Job[] = [
   {
@@ -72,5 +72,28 @@ export const aboutMe: AboutMe = {
   quote: {
     author: 'Arthur C. Clarke',
     text: 'Any sufficiently advanced technology is indistinguishable from magic',
+  },
+};
+
+export const navData: NavLinks = {
+  'About Me': {
+    href: '#about',
+  },
+  Experince: {
+    href: '#experince',
+  },
+  'Other Note Worthy Projects': {
+    href: '#projects',
+    disabled: true,
+  },
+  Contact: {
+    href: '#contact',
+    disabled: true,
+  },
+  Resume: {
+    href: '#resume',
+    target: '_blank',
+    cssClass:
+      'bg-blue-400 hover:bg-blue-300 text-blue-800 hover:text-blue-700 rounded shadow py-1 px-2 transition transition-duration-300',
   },
 };
