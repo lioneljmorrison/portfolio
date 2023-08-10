@@ -102,7 +102,7 @@ export const projectData: Projects = {
     tldr: 'Created as a way to learn Tailwind CSS. Its is a living project as it fundementally serves as my resume.',
     techLabels: ['Tailwind CSS', 'GitHub Actions', 'Nest.js', 'React'],
     links: {
-      github: { link: 'https://github.com/lioneljmorrison/portfolio' },
+      GitHub: { link: 'https://github.com/lioneljmorrison/portfolio' },
     },
     images: { default: { link: './assets/portfolio-v1.png' } },
   },
@@ -112,18 +112,31 @@ export const projectData: Projects = {
     techLabels: ['LESS', 'Nest.js'],
     disabled: true,
   },
+  'clacks-tdd': {
+    name: 'Clacks TTD',
+    tldr: 'Initial technical design document for a chat client based on Google Chat',
+    techLabels: ['Confluence'],
+    links: {
+      PDF: { link: './assets/_55705897e246aa08af40f88319cb10b63f4f07-Project Clacks-100823-215008.pdf' },
+    },
+    images: { default: { link: './assets/clacks-tdd.png' } },
+  },
   clacks: {
-    name: 'Clacks',
-    tldr: 'Bla bla bla',
-    techLabels: ['LESS', 'Nest.js'],
-    disabled: true,
+    name: 'Clacks (Mock)',
+    tldr: 'Mock design of Clacks Technical Design Documnet based on Google Chat. Code using Angular and SCSS via StackBlitz with flexable layout options. This is non-functional mock ',
+    techLabels: ['SCSS', 'Angular', 'StackBlitz'],
+    links: {
+      'StackBlitz Code': { link: 'https://stackblitz.com/edit/stackblitz-starters-cpngaw?file=src%2Fmain.ts' },
+      'StackBlitz Mock': { link: 'https://stackblitz-starters-cpngaw.stackblitz.io' },
+    },
+    images: { default: { link: './assets/clacks-mock.png' } },
   },
   soil: { name: 'Feed My Dirt', tldr: 'Bla bla bla', techLabels: ['Angular', 'Firebase', 'Firestore'], disabled: true },
   books: { name: 'Redux', tldr: 'Bla bla bla', techLabels: ['Angular', 'Firebase', 'Firestore'], disabled: true },
   cidery: {
     name: 'Cidery Datalogger',
     tldr: 'Bla bla bla',
-    techLabels: ['Angular', 'Firebase', 'Firestore'],
+    techLabels: ['Angular', 'Firebase', 'Firestore', 'StackBlitz'],
     disabled: true,
   },
 };
