@@ -37,6 +37,7 @@ export default function MainNav({ data }: { data: NavLinks }) {
                     key={`nav-${idx}`}
                     href={meta.href}
                     onClick={() => scrollTo(meta.href.substring(1))}
+                    target={meta?.target}
                     className={
                       meta.cssClass || 'py-1 px-2 hover:bg-gray-700 transition transition-duration-300 rounded'
                     }
@@ -74,6 +75,7 @@ export default function MainNav({ data }: { data: NavLinks }) {
                 key={`nav-${idx}`}
                 onClick={() => scrollTo(meta.href.substring(1))}
                 href={meta.href}
+                target={meta?.target}
                 className="block py-3 px-3 text-sm hover:bg-gray-700 text-right"
               >
                 {title}
