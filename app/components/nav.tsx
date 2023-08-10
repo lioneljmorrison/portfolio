@@ -1,15 +1,18 @@
 'use client';
 import Link from 'next/link';
 import { useState } from 'react';
+import { NavLinks } from '../interfaces';
 
-export default function MainNav() {
+export default function MainNav({ data }: { data: NavLinks }) {
   const [display, setDisplay] = useState(false);
   const [displayCss, setDisplayCss] = useState('hidden');
+  const navItemsArray = Object.entries(data)
+    .map((item) => (item[1]?.disabled !== true ? item : undefined))
+    .filter((item) => item !== undefined);
 
   function mobileMenuIconClick() {
     setDisplay((prevDisplay) => !prevDisplay);
     setDisplayCss(display ? 'hidden' : 'md:hidden');
-    console.log(displayCss);
   }
 
   return (
@@ -18,34 +21,22 @@ export default function MainNav() {
         <div className="flex items-center justify-between">
           <div>Portfolio</div>
           <div className="hidden md:flex items-center space-x-5 text-sm">
-            <Link href="" className="py-1 px-2 hover:bg-gray-700 transition transition-duration-300 rounded">
-              About Me
-            </Link>
-            {/* <Link
-              href=""
-              className="py-1 px-2 hover:bg-gray-700 transition transition-duration-300 rounded"
-            >
-              Things I've Built
-            </Link>
-            <Link
-              href=""
-              className="py-1 px-2 hover:bg-gray-700 transition transition-duration-300 rounded"
-            >
-              Other Note Worthy Projects
-            </Link>
-            <Link
-              href=""
-              className="py-1 px-2 hover:bg-gray-700 transition transition-duration-300 rounded"
-            >
-              Contact
-            </Link> */}
-            <Link
-              href="/assets/Lionel Morrison - Resume.pdf"
-              target="_blank"
-              className="bg-blue-400 hover:bg-blue-300 text-blue-800 hover:text-blue-700 rounded shadow py-1 px-2 transition transition-duration-300"
-            >
-              Resume
-            </Link>
+            {navItemsArray.map((item, idx) => {
+              if (item) {
+                const [title, meta] = [...item];
+                return (
+                  <Link
+                    key={`nav-${idx}`}
+                    href={meta.href}
+                    className={
+                      meta.cssClass || 'py-1 px-2 hover:bg-gray-700 transition transition-duration-300 rounded'
+                    }
+                  >
+                    {title}
+                  </Link>
+                );
+              }
+            })}
           </div>
 
           <div className="md:hidden flex items-center">
@@ -66,37 +57,20 @@ export default function MainNav() {
       </div>
 
       <div className={`${displayCss} px-4 transition transition-duration-300`}>
-        <Link
-          href="/assets/Lionel Morrison - Resume.pdf"
-          target="_blank"
-          className="block py-3 px-3 text-sm hover:bg-gray-700 text-right"
-        >
-          About Me
-        </Link>
-        {/* <Link
-          href=""
-          className="block py-3 px-3 text-sm hover:bg-gray-700 text-right"
-        >
-          Things I've Built
-        </Link>
-        <Link
-          href=""
-          className="block py-3 px-3 text-sm hover:bg-gray-700 text-right"
-        >
-          Other Note Worthy Projects
-        </Link>
-        <Link
-          href=""
-          className="block py-3 px-3 text-sm hover:bg-gray-700 text-right"
-        >
-          Contact
-        </Link>
-        <Link
-          href=""
-          className="block py-3 px-3 text-sm hover:bg-gray-700 text-right"
-        >
-          Resume
-        </Link> */}
+        {navItemsArray.map((item, idx) => {
+          if (item) {
+            const [title, meta] = [...item];
+            return (
+              <Link
+                key={`nav-${idx}`}
+                href={meta.href}
+                className="block py-3 px-3 text-sm hover:bg-gray-700 text-right"
+              >
+                {title}
+              </Link>
+            );
+          }
+        })}
       </div>
     </nav>
   );
