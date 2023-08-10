@@ -1,4 +1,4 @@
-import { AboutMe, Job, NavLinks, Things } from './interfaces';
+import { AboutMe, Job, NavLinks, Projects } from './interfaces';
 
 export const jobsData: Job[] = [
   {
@@ -82,9 +82,8 @@ export const navData: NavLinks = {
   Experience: {
     href: './#experience',
   },
-  'Other Note Worthy Projects': {
+  Projects: {
     href: './#projects',
-    disabled: true,
   },
   Contact: {
     href: './#contact',
@@ -98,10 +97,34 @@ export const navData: NavLinks = {
   },
 };
 
-export const thingsData: Things = {
-  stardust: { name: 'Stardust', tldr: 'Bla bla bla', techLabels: ['LESS', 'Nest.js'] },
-  clacks: { name: 'Clacks', tldr: 'Bla bla bla', techLabels: ['LESS', 'Nest.js'] },
-  soil: { name: 'Feed My Dirt', tldr: 'Bla bla bla', techLabels: ['Angular', 'Firebase', 'Firestore'] },
-  books: { name: 'Redux', tldr: 'Bla bla bla', techLabels: ['Angular', 'Firebase', 'Firestore'] },
-  cidery: { name: 'Cidery Datalogger', tldr: 'Bla bla bla', techLabels: ['Angular', 'Firebase', 'Firestore'] },
+export const projectData: Projects = {
+  portfolio: {
+    name: 'Portfolio v1',
+    tldr: 'Created this as a way to learn Tailwind CSS.',
+    techLabels: ['Tailwind CSS', 'GitHub Actions', 'Nest.js', 'React'],
+    links: {
+      github: { link: 'https://github.com/lioneljmorrison/portfolio' },
+    },
+    images: { placeholder: { link: './assets/image-placeholder.png' } },
+  },
+  stardust: {
+    name: 'Stardust',
+    tldr: 'Bla bla bla',
+    techLabels: ['LESS', 'Nest.js'],
+    images: { placeholder: { link: './assets/image-placeholder.png' } },
+  },
+  clacks: {
+    name: 'Clacks',
+    tldr: 'Bla bla bla',
+    techLabels: ['LESS', 'Nest.js'],
+    images: { placeholder: { link: './assets/image-placeholder.png' } },
+  },
+  soil: { name: 'Feed My Dirt', tldr: 'Bla bla bla', techLabels: ['Angular', 'Firebase', 'Firestore'], disabled: true },
+  books: { name: 'Redux', tldr: 'Bla bla bla', techLabels: ['Angular', 'Firebase', 'Firestore'], disabled: true },
+  cidery: {
+    name: 'Cidery Datalogger',
+    tldr: 'Bla bla bla',
+    techLabels: ['Angular', 'Firebase', 'Firestore'],
+    disabled: true,
+  },
 };

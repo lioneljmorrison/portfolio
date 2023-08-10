@@ -1,4 +1,4 @@
-type TechLables =
+export type TechLables =
   | 'LESS'
   | 'SCSS'
   | 'Tailwind CSS'
@@ -50,13 +50,23 @@ export interface NavLink {
   cssClass?: string;
 }
 
-export interface Things {
-  [thing: string]: {
+export interface ProjectLinks {
+  [name: string]: ProjectLinkData;
+}
+
+export interface ProjectLinkData {
+  link: string;
+  icon?: string;
+}
+
+export interface Projects {
+  [project: string]: {
     name: string;
     tldr?: string;
     description?: string;
     techLabels?: TechLables[];
     images?: { [name: string]: { link: string; alt?: string; default?: boolean } };
-    links?: { [name: string]: { link: string; icon?: string } };
+    links?: ProjectLinks;
+    disabled?: boolean;
   };
 }
