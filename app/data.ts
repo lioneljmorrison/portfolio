@@ -100,7 +100,7 @@ export const navData: NavLinks = {
 export const projectData: Projects = {
   portfolio: {
     name: 'Portfolio v1',
-    tldr: 'Created this as a way to learn Tailwind CSS.',
+    tldr: 'Created as a way to learn Tailwind CSS. Its is a living project as it fundementally serves as my resume.',
     techLabels: ['Tailwind CSS', 'GitHub Actions', 'Nest.js', 'React'],
     links: {
       github: { link: 'https://github.com/lioneljmorrison/portfolio' },
