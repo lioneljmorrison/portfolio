@@ -19,7 +19,7 @@ export default function Experince({ jobs }: { jobs: Job[] }) {
 
   return (
     <div className="max-w-prose mx-auto py-4 text-slate-400">
-      <SectionHeader title="Experince"></SectionHeader>
+      <SectionHeader title="Experience"></SectionHeader>
       <div className="flex">
         <div className="w-1/3">
           {jobs.map((job: Job, idx: number) => (

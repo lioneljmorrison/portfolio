@@ -79,8 +79,8 @@ export const navData: NavLinks = {
   'About Me': {
     href: '#about',
   },
-  Experince: {
-    href: '#experince',
+  Experience: {
+    href: '#experience',
   },
   'Other Note Worthy Projects': {
     href: '#projects',
