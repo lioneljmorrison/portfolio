@@ -1,4 +1,4 @@
-import { Job } from './interfaces';
+import { AboutMe, Job } from './interfaces';
 
 export const jobsData: Job[] = [
   {
@@ -61,3 +61,16 @@ export const jobsData: Job[] = [
     ],
   },
 ];
+
+export const aboutMe: AboutMe = {
+  // eslint-disable-next-line quotes
+  intro: "Hi, I'm",
+  name: 'Lionel Morrison',
+  tldr: 'Experienced Full Stack Developer focused on Continuous Integration, Continuous Development, developing APIs, and adding a sprinkle of Magic to web applications.',
+  skillsTitle: 'Recent Technology Stack',
+  skills: ['SFCC SFRA', 'TypeScript', 'Tailwind CSS', 'Nest.js', 'Next.js', 'React'],
+  quote: {
+    author: 'Arthur C. Clarke',
+    text: 'Any sufficiently advanced technology is indistinguishable from magic',
+  },
+};
