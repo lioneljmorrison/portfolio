@@ -105,19 +105,16 @@ export const projectData: Projects = {
     links: {
       github: { link: 'https://github.com/lioneljmorrison/portfolio' },
     },
-    images: { placeholder: { link: './assets/image-placeholder.png' } },
   },
   stardust: {
     name: 'Stardust',
     tldr: 'Bla bla bla',
     techLabels: ['LESS', 'Nest.js'],
-    images: { placeholder: { link: './assets/image-placeholder.png' } },
   },
   clacks: {
     name: 'Clacks',
     tldr: 'Bla bla bla',
     techLabels: ['LESS', 'Nest.js'],
-    images: { placeholder: { link: './assets/image-placeholder.png' } },
   },
   soil: { name: 'Feed My Dirt', tldr: 'Bla bla bla', techLabels: ['Angular', 'Firebase', 'Firestore'], disabled: true },
   books: { name: 'Redux', tldr: 'Bla bla bla', techLabels: ['Angular', 'Firebase', 'Firestore'], disabled: true },
