@@ -6,7 +6,7 @@ import SectionHeader from './section-header';
 export default function Projects({ anchor, data }: { anchor: string; data: Projects }) {
   function renderLinks(links: ProjectLinks, cssClass?: string, reverse?: boolean) {
     return links ? (
-      <div className={`flex ${reverse ? 'flex-row-reverse ' : ''}py-3`}>
+      <div className="flex justify-end space-x-1">
         {Object.entries(links).map((item, idx: number) => {
           const [name, meta] = [...item];
           return (
@@ -23,7 +23,7 @@ export default function Projects({ anchor, data }: { anchor: string; data: Proje
 
   function renderLabels(labels: TechLables[], cssClass?: string, reverse?: boolean) {
     return labels ? (
-      <div className={`flex ${reverse ? 'flex-row-reverse ' : ''}py-3`}>
+      <div className="grid gap-1 grid-cols-3 sm:grid-cols-4 sm:flex sm:justify-end sm:space-1">
         {labels.map((item: string, idx: number) => (
           <div className={cssClass} key={`tl-${idx}`}>
             {item}
@@ -44,47 +44,37 @@ export default function Projects({ anchor, data }: { anchor: string; data: Proje
       <SectionHeader title="Projects"></SectionHeader>
       {projects.map((data: any, idx: number) => {
         const [item, project] = [...data];
-        const odd = !!((idx + 1) % 2);
 
-        return odd ? (
+        return (
           <>
-            <div className="grid grid-cols-10 pb-12">
-              <div className="row-span-full col-start-1 col-span-6 self-center">
-                <Image
-                  src={project.images ? project.images['default'].link : './assets/image-placeholder.png'}
-                  width={500}
-                  height={250}
-                  alt="Alt Text"
-                  loading="lazy"
-                  className="border-2 rounded-lg"
-                ></Image>
+            <div className="grid grid-cols-10 gap-4 sm:pb-12 pb-12">
+              <div className="col-span-full sm:z-10 sm:order-2 sm:row-span-full sm:col-span-6 sm:col-end-11 sm:self-start sm:text-right sm:p-3 sm:text-xl text-slate-300">
+                {project.name}
               </div>
-              <div className="row-span-full col-span-6 col-end-11 self-center p-4">
-                <div className="p-3 pr-0 text-right text-lg text-slate-300">{project.name}</div>
-                <div className="p-4 text-xs bg-gray-800 rounded-lg">{project.tldr}</div>
-                {renderLabels(project.techLabels, 'text-xs py-1 px-2 m-1 bg-gray-800 border-gray-900 rounded', true)}
-                {renderLinks(project.links, 'text-xs py-1 px-2 m-1 hover:underline', true)}
+              <Image
+                src={project.images ? project.images['default'].link : './assets/image-placeholder.png'}
+                width={500}
+                height={250}
+                alt="Alt Text"
+                loading="lazy"
+                className="sm:order-1 sm:row-span-full sm:col-start-1 col-span-full sm:col-span-6 border-2 rounded-lg bd-pink-500"
+              ></Image>
+              <div className="sm:z-10 sm:row-span-full col-start-1 col-span-full sm:col-start-5 sm:col-span-6 sm:self-center p-4 text-xs bg-gray-800 rounded-lg">
+                {project.tldr}
               </div>
-            </div>
-          </>
-        ) : (
-          <>
-            <div className="grid grid-cols-10 pb-12">
-              <div className="z-10 row-span-full col-start-1 col-span-6 self-center p-4">
-                <div className="p-3 pr-0 text-lg text-slate-300">{project.name}</div>
-                <div className="p-4 text-xs bg-gray-800 rounded-lg">{project.tldr}</div>
-                {renderLabels(project.techLabels, 'text-xs py-1 px-2 m-1 bg-gray-800 border-gray-900 rounded')}
-                {renderLinks(project.links, 'text-xs py-1 px-2 m-1 hover:underline')}
+              <div className="sm:z-10 sm:row-span-full col-start-1 col-span-full sm:col-start-2 md:col-start-5 sm:col-span-full sm:self-end sm:mb-10 md:mb-10">
+                {renderLabels(
+                  project.techLabels,
+                  'text-center text-xs py-1 px-2 bg-gray-800 border-gray-900 rounded',
+                  true
+                )}
               </div>
-              <div className="row-span-full col-span-6 col-end-11 self-center">
-                <Image
-                  src={project.images ? project.images['default'].link : './assets/image-placeholder.png'}
-                  width={500}
-                  height={250}
-                  alt="Alt Text"
-                  loading="lazy"
-                  className="border-2 rounded-lg"
-                ></Image>
+              <div className="sm:z-10 sm:row-span-full col-start-1 col-span-full sm:col-start-5 sm:col-span-6 sm:self-end">
+                {renderLinks(
+                  project.links,
+                  'text-center text-xs py-1 px-2 border-gray-800 border-2 rounded hover:underline',
+                  true
+                )}
               </div>
             </div>
           </>
