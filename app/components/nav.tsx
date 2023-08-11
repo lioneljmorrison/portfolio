@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 import { NavLinks } from '../interfaces';
 
-export default function MainNav({ data }: { data: NavLinks }) {
+export default function MainNav({ data, name }: { data: NavLinks; name: string }) {
   const [display, setDisplay] = useState(false);
   const [displayCss, setDisplayCss] = useState('hidden');
   const navItemsArray = Object.entries(data)
@@ -27,7 +27,7 @@ export default function MainNav({ data }: { data: NavLinks }) {
     <nav className="z-20 sticky top-0 bg-gray-800 text-slate-50">
       <div className="max-w-7xl mx-auto py-4 px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          <div>Portfolio</div>
+          <div>{name} - Portfolio</div>
           <div className="hidden md:flex items-center space-x-5 text-sm">
             {navItemsArray.map((item, idx) => {
               if (item) {
@@ -39,9 +39,7 @@ export default function MainNav({ data }: { data: NavLinks }) {
                     href={meta.href}
                     onClick={() => scrollTo(meta.href.substring(1))}
                     target={meta?.target}
-                    className={
-                      meta.cssClass || 'py-1 px-2 hover:bg-gray-700 transition transition-duration-300 rounded'
-                    }
+                    className="last:nav-button py-1 px-2 hover:bg-gray-700 transition transition-duration-300 rounded"
                   >
                     {title}
                   </Link>

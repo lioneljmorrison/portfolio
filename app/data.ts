@@ -91,8 +91,6 @@ export const navData: NavLinks = {
   Resume: {
     href: './assets/Lionel Morrison - Resume.pdf',
     target: '_blank',
-    cssClass:
-      'bg-blue-400 hover:bg-blue-300 text-blue-800 hover:text-blue-700 rounded shadow py-1 px-2 transition transition-duration-300',
   },
 };
 

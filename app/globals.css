@@ -54,4 +54,8 @@ body {
   .project-right {
     @apply sm:col-start-5 ;
   }
+
+  .nav-button {
+    @apply bg-blue-400 hover:bg-blue-300 text-blue-800 hover:text-blue-700;
+  }
 }
