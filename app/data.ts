@@ -89,7 +89,7 @@ export const navData: NavLinks = {
     disabled: true,
   },
   Resume: {
-    href: './assets/Lionel Morrison - Resume.pdf',
+    href: 'https://drive.google.com/file/d/1_Lq07acaEXcrddp59ruIDXjVm3cvT96-/view?usp=sharing',
     target: '_blank',
     cssClass:
       'bg-blue-400 hover:bg-blue-300 text-blue-800 hover:text-blue-700 rounded shadow py-1 px-2 transition transition-duration-300',
@@ -117,7 +117,7 @@ export const projectData: Projects = {
     tldr: 'Technical design document created for a chat client based on Google Chat',
     techLabels: ['Confluence', 'Technical Writing'],
     links: {
-      PDF: { link: './assets/_55705897e246aa08af40f88319cb10b63f4f07-Project Clacks-100823-215008.pdf' },
+      PDF: { link: 'https://drive.google.com/file/d/17TacmAkk3619XaTAuc0Ex3NuOnIS6ebI/view?usp=sharing' },
     },
     images: { default: { link: './assets/clacks-tdd.png' } },
   },
