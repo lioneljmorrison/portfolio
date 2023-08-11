@@ -24,7 +24,7 @@ export default function MainNav({ data }: { data: NavLinks }) {
   }
 
   return (
-    <nav className="sticky top-0 bg-gray-800 text-slate-50">
+    <nav className="z-20 sticky top-0 bg-gray-800 text-slate-50">
       <div className="max-w-7xl mx-auto py-4 px-2 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           <div>Portfolio</div>
@@ -67,7 +67,7 @@ export default function MainNav({ data }: { data: NavLinks }) {
         </div>
       </div>
 
-      <div className={`${displayCss} min-h-screen px-4 transition transition-duration-300`}>
+      <div className={`${displayCss} min-h-screen transition transition-duration-300`}>
         {navItemsArray.map((item, idx) => {
           if (item) {
             const [title, meta] = [...item];
@@ -77,7 +77,7 @@ export default function MainNav({ data }: { data: NavLinks }) {
                 onClick={() => scrollTo(meta.href.substring(1))}
                 href={meta.href}
                 target={meta?.target}
-                className="block py-3 px-3 text-sm hover:bg-gray-700 text-right"
+                className="block py-3 px-6 text-lg hover:bg-gray-700 text-right"
               >
                 {title}
               </Link>
