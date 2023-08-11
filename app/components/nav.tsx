@@ -17,6 +17,7 @@ export default function MainNav({ data }: { data: NavLinks }) {
 
   function scrollTo(id: string) {
     var element = document.getElementById(id);
+    mobileMenuIconClick();
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
@@ -66,7 +67,7 @@ export default function MainNav({ data }: { data: NavLinks }) {
         </div>
       </div>
 
-      <div className={`${displayCss} px-4 transition transition-duration-300`}>
+      <div className={`${displayCss} min-h-screen px-4 transition transition-duration-300`}>
         {navItemsArray.map((item, idx) => {
           if (item) {
             const [title, meta] = [...item];
