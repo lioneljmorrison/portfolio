@@ -6,7 +6,7 @@ import SectionHeader from './section-header';
 export default function Projects({ anchor, data }: { anchor: string; data: Projects }) {
   function renderLinks(links: ProjectLinks, cssClass?: string, reverse?: boolean) {
     return links ? (
-      <div className="flex justify-end space-x-1">
+      <div className={`flex space-x-1 ${reverse ? 'sm:justify-end' : ''}`}>
         {Object.entries(links).map((item, idx: number) => {
           const [name, meta] = [...item];
           return (
@@ -23,7 +23,7 @@ export default function Projects({ anchor, data }: { anchor: string; data: Proje
 
   function renderLabels(labels: TechLables[], cssClass?: string, reverse?: boolean) {
     return labels ? (
-      <div className="grid gap-1 grid-cols-3 sm:grid-cols-4 sm:flex sm:justify-end sm:space-1">
+      <div className={`grid gap-1 grid-cols-3 sm:grid-cols-4 sm:flex sm:space-1  ${reverse ? 'sm:justify-end' : ''}`}>
         {labels.map((item: string, idx: number) => (
           <div className={cssClass} key={`tl-${idx}`}>
             {item}
@@ -44,36 +44,33 @@ export default function Projects({ anchor, data }: { anchor: string; data: Proje
       <SectionHeader title="Projects"></SectionHeader>
       {projects.map((data: any, idx: number) => {
         const [item, project] = [...data];
+        const odd = !!(idx % 2);
 
         return (
           <>
             <div className="grid grid-cols-10 gap-4 sm:pb-12 pb-12">
-              <div className="col-span-full sm:z-10 sm:order-2 sm:row-span-full sm:col-span-6 sm:col-end-11 sm:self-start sm:text-right sm:p-3 sm:text-xl text-slate-300">
-                {project.name}
-              </div>
+              <div className={`project-title ${!odd ? 'project-left' : 'project-right'}`}>{project.name}</div>
               <Image
                 src={project.images ? project.images['default'].link : './assets/image-placeholder.png'}
                 width={500}
                 height={250}
                 alt="Alt Text"
                 loading="lazy"
-                className="sm:order-1 sm:row-span-full sm:col-start-1 col-span-full sm:col-span-6 border-2 rounded-lg bd-pink-500"
+                className={`project-img ${odd ? 'project-left' : 'project-right'}`}
               ></Image>
-              <div className="sm:z-10 sm:row-span-full col-start-1 col-span-full sm:col-start-5 sm:col-span-6 sm:self-center p-4 text-xs bg-gray-800 rounded-lg">
-                {project.tldr}
-              </div>
-              <div className="sm:z-10 sm:row-span-full col-start-1 col-span-full sm:col-start-2 md:col-start-5 sm:col-span-full sm:self-end sm:mb-10 md:mb-10">
+              <div className={`project-tldr ${!odd ? 'project-left' : 'project-right'}`}>{project.tldr}</div>
+              <div className={`project-labels ${!odd ? 'project-left' : 'project-right'}`}>
                 {renderLabels(
                   project.techLabels,
                   'text-center text-xs py-1 px-2 bg-gray-800 border-gray-900 rounded',
-                  true
+                  odd
                 )}
               </div>
-              <div className="sm:z-10 sm:row-span-full col-start-1 col-span-full sm:col-start-5 sm:col-span-6 sm:self-end">
+              <div className={`project-links ${!odd ? 'project-left' : 'project-right'}`}>
                 {renderLinks(
                   project.links,
                   'text-center text-xs py-1 px-2 border-gray-800 border-2 rounded hover:underline',
-                  true
+                  odd
                 )}
               </div>
             </div>

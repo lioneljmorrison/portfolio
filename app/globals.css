@@ -27,7 +27,31 @@ body {
 }
 
 @layer components {
-  .button-green-rounded {
-    @apply text-white font-semibold bg-green-500 hover:bg-green-700 border-green-700 border-b hover:border-green-900 transition-all px-6 py-2 rounded-full;
+  .project-title {
+    @apply col-span-full sm:z-10 sm:order-2 sm:row-span-full sm:col-span-6 sm:col-end-11 sm:self-start sm:text-right sm:p-3 sm:text-xl text-slate-300;
+  }
+  
+  .project-img {
+    @apply sm:order-1 sm:row-span-full col-span-full sm:col-span-6 border-2 rounded-lg;
+  }
+  
+  .project-tldr {
+    @apply sm:z-10 sm:row-span-full col-start-1 col-span-full sm:col-span-6 sm:self-start sm:mt-12 p-4 text-xs bg-gray-800 rounded-lg;
+  }
+  
+  .project-labels {
+    @apply sm:z-10 sm:row-span-full col-start-1 col-span-full sm:col-start-2 md:col-start-5 sm:col-span-full sm:self-end sm:mb-10 md:mb-12;
+  }
+  
+  .project-links {
+    @apply sm:z-10 sm:row-span-full col-start-1 col-span-full sm:col-span-6 sm:self-end;
+  }
+
+  .project-left {
+    @apply sm:col-start-1 sm:text-left;
+  }
+
+  .project-right {
+    @apply sm:col-start-5 ;
   }
 }
