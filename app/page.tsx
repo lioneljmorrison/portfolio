@@ -9,14 +9,14 @@ import { Job } from './interfaces';
 export default function Home() {
   return (
     <>
-      <Script src="https://www.googletagmanager.com/gtag/js?id=G-B21GZBPK2Q" />
+      <Script src="https://www.googletagmanager.com/gtag/js?id=G-14RLENLVJH" />
       <Script id="google-analytics">
         {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
    
-            gtag('config', 'G-B21GZBPK2Q');
+            gtag('config', 'G-14RLENLVJH');
           `}
       </Script>
       <MainNav data={navData} name={aboutMe.name}></MainNav>
