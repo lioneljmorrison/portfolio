@@ -114,16 +114,16 @@ export const projectData: Projects = {
   },
   'clacks-tdd': {
     name: 'Clacks TTD',
-    tldr: 'Initial technical design document for a chat client based on Google Chat',
-    techLabels: ['Confluence'],
+    tldr: 'Technical design document created for a chat client based on Google Chat',
+    techLabels: ['Confluence', 'Technical Writing'],
     links: {
       PDF: { link: './assets/_55705897e246aa08af40f88319cb10b63f4f07-Project Clacks-100823-215008.pdf' },
     },
     images: { default: { link: './assets/clacks-tdd.png' } },
   },
   clacks: {
-    name: 'Clacks (Mock)',
-    tldr: 'Mock design of Clacks Technical Design Documnet based on Google Chat. Code using Angular and SCSS via StackBlitz with flexable layout options. This is non-functional mock ',
+    name: 'Clacks (Mockup)',
+    tldr: 'This high-fidelity mockup of the Clacks Technical Design Documnet based on Google Chat, was created using Angular and SCSS in StackBlitz with flexable layout options. Nb. This is non-functional mock',
     techLabels: ['TypeScript', 'SCSS', 'Angular', 'StackBlitz'],
     links: {
       'StackBlitz Code': { link: 'https://stackblitz.com/edit/stackblitz-starters-cpngaw?file=src%2Fmain.ts' },
