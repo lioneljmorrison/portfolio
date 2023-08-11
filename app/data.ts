@@ -124,7 +124,7 @@ export const projectData: Projects = {
   clacks: {
     name: 'Clacks (Mock)',
     tldr: 'Mock design of Clacks Technical Design Documnet based on Google Chat. Code using Angular and SCSS via StackBlitz with flexable layout options. This is non-functional mock ',
-    techLabels: ['SCSS', 'Angular', 'StackBlitz'],
+    techLabels: ['TypeScript', 'SCSS', 'Angular', 'StackBlitz'],
     links: {
       'StackBlitz Code': { link: 'https://stackblitz.com/edit/stackblitz-starters-cpngaw?file=src%2Fmain.ts' },
       'StackBlitz Mock': { link: 'https://stackblitz-starters-cpngaw.stackblitz.io' },
