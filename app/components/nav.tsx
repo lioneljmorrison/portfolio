@@ -36,8 +36,8 @@ export default function MainNav({ data, name }: { data: NavLinks; name: string }
                 return (
                   <Link
                     key={`nav-${idx}`}
-                    href={meta.href}
-                    onClick={() => scrollTo(meta.href.substring(1))}
+                    onClick={() => meta.onClick || scrollTo(meta.href?.substring(1) || '#')}
+                    href={meta?.href || '#'}
                     target={meta?.target}
                     className="last:nav-button py-1 px-2 hover:bg-gray-700 transition transition-duration-300 rounded"
                   >
@@ -72,8 +72,8 @@ export default function MainNav({ data, name }: { data: NavLinks; name: string }
             return (
               <Link
                 key={`nav-${idx}`}
-                onClick={() => scrollTo(meta.href.substring(1))}
-                href={meta.href}
+                onClick={() => meta.onClick || scrollTo(meta.href?.substring(1) || '#')}
+                href={meta?.href || '#'}
                 target={meta?.target}
                 className="block py-3 px-6 text-lg hover:bg-gray-700 text-right"
               >

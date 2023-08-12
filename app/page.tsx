@@ -5,6 +5,8 @@ import MainNav from './components/nav';
 import Projects from './components/projects';
 import { aboutMe, jobsData, navData, projectData } from './data';
 import { Job } from './interfaces';
+import Contact from './contact';
+import { featureFlags } from './flags';
 
 export default function Home() {
   return (
@@ -24,6 +26,7 @@ export default function Home() {
         <AboutMe anchor="about" data={aboutMe}></AboutMe>
         <Experience anchor="experience" jobs={jobsData as Job[]}></Experience>
         <Projects anchor="projects" data={projectData}></Projects>
+        {featureFlags.contact_form ? <Contact anchor="contact"></Contact> : ''}
       </div>
     </>
   );

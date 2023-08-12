@@ -44,7 +44,8 @@ export interface NavLinks {
 }
 
 export interface NavLink {
-  href: string;
+  href?: string;
+  onClick?: string;
   target?: '_blank' | string;
   disabled?: boolean;
   cssClass?: string;
