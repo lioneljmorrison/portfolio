@@ -95,6 +95,40 @@ export const navData: NavLinks = {
 };
 
 export const projectData: Projects = {
+  'clacks-tdd': {
+    name: 'Clacks TTD',
+    tldr: 'Technical design document created for a chat client based on Google Chat',
+    techLabels: ['Confluence', 'Technical Writing'],
+    links: {
+      PDF: { link: 'https://drive.google.com/file/d/17TacmAkk3619XaTAuc0Ex3NuOnIS6ebI/view?usp=sharing' },
+    },
+    images: { default: { link: './assets/clacks-tdd.png' } },
+    disabled: true,
+  },
+  clacks: {
+    name: 'Clacks (Mockup)',
+    tldr: 'High-fidelity mockup of the Clacks Technical Design Document (TDD) based on Google Chat, was created using Angular and SCSS in StackBlitz with flexable layout options. Nb. This is non-functional mock',
+    techLabels: ['TypeScript', 'SCSS', 'Angular', 'StackBlitz'],
+    links: {
+      StackBlitz: { link: 'https://stackblitz.com/edit/stackblitz-starters-cpngaw?file=src%2Fmain.ts' },
+      Mock: { link: 'https://stackblitz-starters-cpngaw.stackblitz.io' },
+      TDD: { link: 'https://drive.google.com/file/d/17TacmAkk3619XaTAuc0Ex3NuOnIS6ebI/view?usp=sharing' },
+    },
+    images: { default: { link: './assets/clacks-mock.png' } },
+  },
+  theWatch: {
+    name: 'The Watch',
+    // eslint-disable-next-line quotes
+    tldr: 'Born out of need. This project was developed for a local business that needed to monitor its fridges and freezers and alert staff.',
+    techLabels: ['Tailwind CSS', 'Next.js', 'Lambda', 'DynamoDB', 'SwitchBot API'],
+    links: {
+      Figma: {
+        link: 'https://www.figma.com/file/3KBVlkFySR6OYqk3vYrTpG/The-Watch?type=design&node-id=102%3A7&mode=design&t=wqgbseJE9ty0UAP2-1',
+      },
+      TDD: { link: 'https://drive.google.com/file/d/1webghPkOzo18Y6dtgm8XJuzCnVOBp6x6/view?usp=drive_link' },
+    },
+    images: { default: { link: './assets/the-watch.png' } },
+  },
   portfolio: {
     name: 'Portfolio v1',
     tldr: 'Created as a way to learn Tailwind CSS. Its is a living project as it fundementally serves as my resume.',
@@ -109,25 +143,6 @@ export const projectData: Projects = {
     tldr: 'Bla bla bla',
     techLabels: ['LESS', 'Nest.js'],
     disabled: true,
-  },
-  'clacks-tdd': {
-    name: 'Clacks TTD',
-    tldr: 'Technical design document created for a chat client based on Google Chat',
-    techLabels: ['Confluence', 'Technical Writing'],
-    links: {
-      PDF: { link: 'https://drive.google.com/file/d/17TacmAkk3619XaTAuc0Ex3NuOnIS6ebI/view?usp=sharing' },
-    },
-    images: { default: { link: './assets/clacks-tdd.png' } },
-  },
-  clacks: {
-    name: 'Clacks (Mockup)',
-    tldr: 'This high-fidelity mockup of the Clacks Technical Design Documnet based on Google Chat, was created using Angular and SCSS in StackBlitz with flexable layout options. Nb. This is non-functional mock',
-    techLabels: ['TypeScript', 'SCSS', 'Angular', 'StackBlitz'],
-    links: {
-      'StackBlitz Code': { link: 'https://stackblitz.com/edit/stackblitz-starters-cpngaw?file=src%2Fmain.ts' },
-      'StackBlitz Mock': { link: 'https://stackblitz-starters-cpngaw.stackblitz.io' },
-    },
-    images: { default: { link: './assets/clacks-mock.png' } },
   },
   soil: { name: 'Feed My Dirt', tldr: 'Bla bla bla', techLabels: ['Angular', 'Firebase', 'Firestore'], disabled: true },
   books: { name: 'Redux', tldr: 'Bla bla bla', techLabels: ['Angular', 'Firebase', 'Firestore'], disabled: true },
