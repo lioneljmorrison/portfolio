@@ -31,7 +31,8 @@ export default function AboutMe({ anchor, data }: { anchor: string; data: AboutM
           </div>
         )}
         <div className="pt-3 text-md text-slate-300">{data.skillsTitle}</div>
-        <div className="pt-3 flex flex-row space-x-2 text-xs">
+        {/* <div className="pt-3 flex flex-row space-x-2 text-xs"> */}
+        <div className="pt-3  grid gap-4 grid-flow-row-dense grid-cols-3 md:grid-cols-4 text-center text-xs">
           {data.skills.map((skill, idx) => (
             <div key={`s-${idx}`} className="py-1 px-2 bg-gray-900 rounded">
               {skill}

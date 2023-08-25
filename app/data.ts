@@ -67,7 +67,17 @@ export const aboutMe: AboutMe = {
   name: 'Lionel Morrison',
   tldr: 'Experienced Full Stack Developer focused on Continuous Integration, Continuous Development, developing APIs, and adding a sprinkle of Magic to web applications.',
   skillsTitle: 'Recent Technology Stack',
-  skills: ['SFCC SFRA', 'TypeScript', 'Tailwind CSS', 'Nest.js', 'Next.js', 'React'],
+  skills: [
+    'AWS API',
+    'AWS Lambda',
+    'AWS DynamoDB',
+    'SFCC SFRA',
+    'TypeScript',
+    'Tailwind CSS',
+    'Next.js',
+    'React',
+    'Nest.js',
+  ],
   quote: {
     author: 'Arthur C. Clarke',
     text: 'Any sufficiently advanced technology is indistinguishable from magic',
@@ -120,12 +130,13 @@ export const projectData: Projects = {
     name: 'The Watch',
     // eslint-disable-next-line quotes
     tldr: 'Born out of need. This project was developed for a local business that needed to monitor its fridges and freezers and alert staff.',
-    techLabels: ['Tailwind CSS', 'Next.js', 'Lambda', 'DynamoDB', 'SwitchBot API'],
+    techLabels: ['Tailwind CSS', 'Next.js', 'Lambda', 'DynamoDB', 'AWS API', 'Vercel', 'SwitchBot API'],
     links: {
       Figma: {
         link: 'https://www.figma.com/file/3KBVlkFySR6OYqk3vYrTpG/The-Watch?type=design&node-id=102%3A7&mode=design&t=wqgbseJE9ty0UAP2-1',
       },
       TDD: { link: 'https://drive.google.com/file/d/1webghPkOzo18Y6dtgm8XJuzCnVOBp6x6/view?usp=drive_link' },
+      Live: { link: 'https://the-watch-nextjs.vercel.app/' },
     },
     images: { default: { link: './assets/the-watch.png' } },
   },
