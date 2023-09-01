@@ -1,4 +1,4 @@
-import { AboutMe, Job, NavLinks, Projects } from './interfaces';
+import { AboutMe, Job, NavLinks, Projects, TechLabels } from './interfaces';
 
 export const jobsData: Job[] = [
   {
@@ -67,17 +67,7 @@ export const aboutMe: AboutMe = {
   name: 'Lionel Morrison',
   tldr: 'Experienced Full Stack Developer focused on Continuous Integration, Continuous Development, developing APIs, and adding a sprinkle of Magic to web applications.',
   skillsTitle: 'Recent Technology Stack',
-  skills: [
-    'AWS API',
-    'AWS Lambda',
-    'AWS DynamoDB',
-    'SFCC SFRA',
-    'TypeScript',
-    'Tailwind CSS',
-    'Next.js',
-    'React',
-    'Nest.js',
-  ],
+  skills: ['apiGateway', 'lambda', 'dynamoDb', 'typescript', 'tailwindCss', 'nextJs', 'react', 'nestJs'],
   quote: {
     author: 'Arthur C. Clarke',
     text: 'Any sufficiently advanced technology is indistinguishable from magic',
@@ -108,7 +98,7 @@ export const projectData: Projects = {
   'clacks-tdd': {
     name: 'Clacks TTD',
     tldr: 'Technical design document created for a chat client based on Google Chat',
-    techLabels: ['Confluence', 'Technical Writing'],
+    techLabels: ['confluence', 'techWriting'],
     links: {
       PDF: { link: 'https://drive.google.com/file/d/17TacmAkk3619XaTAuc0Ex3NuOnIS6ebI/view?usp=sharing' },
     },
@@ -118,7 +108,7 @@ export const projectData: Projects = {
   clacks: {
     name: 'Clacks (Mockup)',
     tldr: 'High-fidelity mockup of the Clacks Technical Design Document (TDD) based on Google Chat, was created using Angular and SCSS in StackBlitz with flexable layout options. Nb. This is non-functional mock',
-    techLabels: ['TypeScript', 'SCSS', 'Angular', 'StackBlitz'],
+    techLabels: ['typescript', 'scss', 'angular', 'stackblitz'],
     links: {
       StackBlitz: { link: 'https://stackblitz.com/edit/stackblitz-starters-cpngaw?file=src%2Fmain.ts' },
       Mock: { link: 'https://stackblitz-starters-cpngaw.stackblitz.io' },
@@ -130,7 +120,7 @@ export const projectData: Projects = {
     name: 'The Watch',
     // eslint-disable-next-line quotes
     tldr: 'Born out of need. This project was developed for a local business that needed to monitor its fridges and freezers and alert staff.',
-    techLabels: ['Tailwind CSS', 'Next.js', 'Lambda', 'DynamoDB', 'AWS API', 'Vercel', 'SwitchBot API'],
+    techLabels: ['tailwindCss', 'nextJs', 'lambda', 'dynamoDb', 'apiGateway', 'vercel', 'switchBot'],
     links: {
       Figma: {
         link: 'https://www.figma.com/file/3KBVlkFySR6OYqk3vYrTpG/The-Watch?type=design&node-id=102%3A7&mode=design&t=wqgbseJE9ty0UAP2-1',
@@ -143,7 +133,7 @@ export const projectData: Projects = {
   portfolio: {
     name: 'Portfolio v1',
     tldr: 'Created as a way to learn Tailwind CSS. Its is a living project as it fundementally serves as my resume.',
-    techLabels: ['Tailwind CSS', 'GitHub Actions', 'Nest.js', 'React'],
+    techLabels: ['tailwindCss', 'githubActions', 'nestJs', 'react'],
     links: {
       GitHub: { link: 'https://github.com/lioneljmorrison/portfolio' },
     },
@@ -152,15 +142,37 @@ export const projectData: Projects = {
   stardust: {
     name: 'Stardust',
     tldr: 'Bla bla bla',
-    techLabels: ['LESS', 'Nest.js'],
+    techLabels: ['less', 'nestJs'],
     disabled: true,
   },
-  soil: { name: 'Feed My Dirt', tldr: 'Bla bla bla', techLabels: ['Angular', 'Firebase', 'Firestore'], disabled: true },
-  books: { name: 'Redux', tldr: 'Bla bla bla', techLabels: ['Angular', 'Firebase', 'Firestore'], disabled: true },
+  soil: { name: 'Feed My Dirt', tldr: 'Bla bla bla', techLabels: ['angular', 'firebase', 'firestore'], disabled: true },
+  books: { name: 'Redux', tldr: 'Bla bla bla', techLabels: ['angular', 'firebase', 'firestore'], disabled: true },
   cidery: {
     name: 'Cidery Datalogger',
     tldr: 'Bla bla bla',
-    techLabels: ['Angular', 'Firebase', 'Firestore', 'StackBlitz'],
+    techLabels: ['angular', 'firebase', 'firestore', 'stackblitz'],
     disabled: true,
   },
+};
+
+export const technology: TechLabels = {
+  less: {},
+  scss: {},
+  sass: {},
+  tailwindCss: {},
+  angular: {},
+  typescript: {},
+  javascript: {},
+  es6: {},
+  nextJs: {},
+  nestJs: {},
+  react: {},
+  firebase: {},
+  firestore: {},
+  aws: {},
+  lambda: {},
+  dynamoDb: {},
+  route53: {},
+  s3: {},
+  php: {},
 };

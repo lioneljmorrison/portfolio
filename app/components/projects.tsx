@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ProjectLinkData, ProjectLinks, Projects, TechLables } from '../interfaces';
+import { ProjectLinkData, ProjectLinks, Projects, TechTypeLabels, TechTypes } from '../interfaces';
 import Image from 'next/image';
 import SectionHeader from './section-header';
 
@@ -21,12 +21,12 @@ export default function Projects({ anchor, data }: { anchor: string; data: Proje
     );
   }
 
-  function renderLabels(labels: TechLables[], cssClass?: string, reverse?: boolean) {
+  function renderLabels(labels: TechTypeLabels[], cssClass?: string, reverse?: boolean) {
     return labels ? (
       <div className={`grid gap-1 grid-cols-3 sm:grid-cols-4 sm:flex sm:space-1  ${reverse ? 'sm:justify-end' : ''}`}>
-        {labels.map((item: string, idx: number) => (
+        {labels.map((item: TechTypeLabels, idx: number) => (
           <div className={cssClass} key={`tl-${idx}`}>
-            {item}
+            {TechTypes[item]}
           </div>
         ))}
       </div>
@@ -43,7 +43,7 @@ export default function Projects({ anchor, data }: { anchor: string; data: Proje
     <div id={anchor} className="max-w-prose mx-auto py-4 text-slate-400">
       <SectionHeader title="Projects"></SectionHeader>
       {projects.map((data: any, idx: number) => {
-        const [item, project] = [...data];
+        const [, project] = [...data];
         const odd = !!(idx % 2);
 
         return (
