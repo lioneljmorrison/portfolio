@@ -1,7 +1,8 @@
 import Link from 'next/link';
-import { ProjectLinkData, ProjectLinks, Projects, TechTypeLabels, TechTypes } from '../interfaces';
+import { ProjectLinkData, ProjectLinks, Projects } from '../interfaces';
 import Image from 'next/image';
 import SectionHeader from './section-header';
+import { technology } from '../data';
 
 export default function Projects({ anchor, data }: { anchor: string; data: Projects }) {
   function renderLinks(links: ProjectLinks, cssClass?: string, reverse?: boolean) {
@@ -21,12 +22,12 @@ export default function Projects({ anchor, data }: { anchor: string; data: Proje
     );
   }
 
-  function renderLabels(labels: TechTypeLabels[], cssClass?: string, reverse?: boolean) {
+  function renderLabels(labels: string[], cssClass?: string, reverse?: boolean) {
     return labels ? (
       <div className={`grid gap-1 grid-cols-3 sm:grid-cols-4 sm:flex sm:space-1  ${reverse ? 'sm:justify-end' : ''}`}>
-        {labels.map((item: TechTypeLabels, idx: number) => (
+        {labels.map((item: string, idx: number) => (
           <div className={cssClass} key={`tl-${idx}`}>
-            {TechTypes[item]}
+            {technology[item]?.label || ''}
           </div>
         ))}
       </div>
