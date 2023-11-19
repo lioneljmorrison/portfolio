@@ -5,6 +5,7 @@ import MainNav from './components/nav';
 import Projects from './components/projects';
 import { aboutMe, jobsData, navData, projectData } from './data';
 import { Job } from './interfaces';
+import Chatbot from './components/chatbot';
 
 export default function Home() {
   return (
@@ -19,6 +20,7 @@ export default function Home() {
             gtag('config', 'G-14RLENLVJH');
           `}
       </Script>
+      <Chatbot></Chatbot>
       <MainNav data={navData} name={aboutMe.name}></MainNav>
       <div className="w-auto p-4 md:p-6 bg-gray-700">
         <AboutMe anchor="about" data={aboutMe}></AboutMe>
