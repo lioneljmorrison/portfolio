@@ -4,6 +4,10 @@ import SectionHeader from './section-header';
 
 function formatDate(date: string | undefined): string {
   if (date) {
+    if (/^\d{4}$/.test(date)) {
+      return date;
+    }
+
     return format(new Date(date), 'LLL yyyy');
   }
 
