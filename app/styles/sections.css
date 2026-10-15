@@ -580,8 +580,20 @@
 
 .case-gallery {
   display: grid;
+  grid-template-columns: 1fr;
   gap: var(--sp-24);
   list-style: none;
+}
+
+.case-gallery .case-diagram {
+  aspect-ratio: 1305 / 790;
+  object-fit: cover;
+}
+
+@media (min-width: 48rem) {
+  .case-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .case-gallery figcaption {
