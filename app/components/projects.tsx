@@ -75,6 +75,11 @@ function ProjectCard({ project, eager }: { project: ProjectEntry; eager?: boolea
               ))}
             </div>
           )}
+          {!project.links && project.access && (
+            <p className="project-card-access">
+              {project.access === 'internal' ? 'Internal tool, not publicly available' : 'Private repository'}
+            </p>
+          )}
         </div>
       </div>
     </article>

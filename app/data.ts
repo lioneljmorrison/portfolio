@@ -145,29 +145,98 @@ export const navData: NavLinks = {
 };
 
 export const projectData: Projects = {
-  // Work projects stay `disabled: true` until they are cleared for public view.
+  // Work cards without a public link carry `access: 'internal'` and say so on the card.
+  alembic: {
+    name: 'Alembic',
+    kind: 'work',
+    // eslint-disable-next-line quotes
+    problem: "MRCOOL's product imagery and marketing assets lived in Cloudinary, a rented platform with costs and lock-in to match.",
+    what: 'An in-house enterprise asset platform with AI integrations, semantic search and an MCP server, serving 1M+ requests a month across mrcool.com and mrcooldiy.com.',
+    detail: '93.8% annual cost savings; 1,524% ROI.',
+    techLabels: ['Go', 'Next.js', 'Typesense', 'MongoDB', 'FalkorDB', 'DragonflyDB', 'Cloudflare R2', 'Docker'],
+    access: 'internal',
+    // Screenshot not supplied yet: expected ./assets/alembic-studio.png
+    images: { default: { link: './assets/image-placeholder.png', alt: 'Alembic screenshot' } },
+  },
   pulse: {
     name: 'Pulse',
     kind: 'work',
-    problem:
-      // eslint-disable-next-line quotes
-      "SEO reporting was outsourced to an agency, and the insight arrived late, generic and disconnected from the team's actual work queue.",
-    what: 'Pulls Search Console, GA4, Ahrefs and PageSpeed data into one graph-backed model, surfaces SEO and AI-search opportunities, and turns them into ClickUp tasks.',
-    techLabels: ['Go', 'FalkorDB', 'Typesense', 'GA4 API', 'Search Console API', 'Ahrefs API', 'ClickUp API'],
+    // eslint-disable-next-line quotes
+    problem: "MRCOOL paid an SEO agency $80K a year for reporting that arrived late and sat apart from the team's work queue.",
+    what: 'Ingests Search Console, GA4, Ahrefs, DataForSEO and PageSpeed data; flags backlink, keyword, cannibalization and accessibility issues; and files LLM-generated recommendations as ClickUp tasks.',
+    detail: 'Runs on ~$1.2K/yr of data APIs: a 98.5% cost reduction.',
+    techLabels: [
+      'Go',
+      'FalkorDB',
+      'Typesense',
+      'GPT',
+      'Search Console API',
+      'GA4 API',
+      'Ahrefs API',
+      'DataForSEO',
+      'ClickUp API',
+    ],
+    access: 'internal',
     // Screenshot not supplied yet: expected ./assets/pulse.png
     images: { default: { link: './assets/image-placeholder.png', alt: 'Pulse screenshot' } },
-    disabled: true,
   },
-  alembic: {
-    name: 'Alembic Studio',
+  systemSelector: {
+    name: 'System Selector',
     kind: 'work',
+    problem:
+      // eslint-disable-next-line quotes
+      "Mini-split system configurations lived in a manually maintained 91K-row Excel sheet that couldn't handle mixed wall-mount and cassette bundles.",
     // eslint-disable-next-line quotes
-    problem: "MRCOOL's product imagery and marketing assets lived in a rented DAM (Cloudinary), with cost and lock-in to match.",
-    what: 'An internally owned DAM. Teams upload, organize, search and publish assets across workspaces; partners get public or PIN-protected release pages, no account needed.',
-    techLabels: ['Go', 'Next.js', 'Docker Compose', 'Cloudflare Tunnel', 'GitHub Actions', 'GHCR'],
-    // Screenshot not supplied yet: expected ./assets/alembic-studio.png
-    images: { default: { link: './assets/image-placeholder.png', alt: 'Alembic Studio screenshot' } },
-    disabled: true,
+    what: "A graph-based API and MCP server behind MRCOOL's online system selector. It generates ~2.9M valid configurations with sub-ms responses and sizes systems with Manual J/S estimates from local winter design temperatures.",
+    techLabels: ['Go', 'FalkorDB', 'MongoDB', 'Docker', 'MCP'],
+    access: 'internal',
+    // Screenshot not supplied yet: expected ./assets/system-selector.png
+    images: { default: { link: './assets/image-placeholder.png', alt: 'System Selector screenshot' } },
+  },
+  secretsManager: {
+    name: 'Secrets Manager',
+    kind: 'work',
+    problem: 'Developers were handling shared env vars, tokens and keys directly.',
+    what: 'Injects secrets at runtime so developers never handle shared credentials; v2 adds a locally encrypted credential store.',
+    techLabels: ['Go', 'MongoDB'],
+    access: 'internal',
+    // Screenshot not supplied yet: expected ./assets/secrets-manager.png
+    images: { default: { link: './assets/image-placeholder.png', alt: 'Secrets Manager screenshot' } },
+  },
+  backpack: {
+    name: 'Backpack',
+    kind: 'personal',
+    problem: 'AI coding agents forget the project between sessions and produce plans too big to review.',
+    what: 'An open-source Kanban workflow and MCP server that gives Claude persistent project memory and bite-sized, reviewable plans.',
+    techLabels: ['Go', 'SQLite', 'graph DB', 'MCP'],
+    links: {
+      GitHub: { link: 'https://github.com/lioneljmorrison/backpack' },
+    },
+    // Screenshot not supplied yet: expected ./assets/backpack.png
+    images: { default: { link: './assets/image-placeholder.png', alt: 'Backpack screenshot' } },
+  },
+  s3srv: {
+    name: 'S3srv',
+    kind: 'personal',
+    problem: 'Self-hosted services needed S3-compatible object storage I fully own, without running MinIO.',
+    what: 'An S3-compatible MinIO replacement with chunking, deduplication, tar-packed small-file batching and recovery.',
+    // eslint-disable-next-line quotes
+    detail: "Backpack's first run: 51 tasks done and 26 self-generated ideas in about 8 hours.",
+    techLabels: ['Go', 'SQLite', 'Docker', 'S3 API'],
+    access: 'private',
+    // Screenshot not supplied yet: expected ./assets/s3srv.png
+    images: { default: { link: './assets/image-placeholder.png', alt: 'S3srv screenshot' } },
+  },
+  wisper: {
+    name: 'Wisper',
+    kind: 'personal',
+    // eslint-disable-next-line quotes
+    problem: "Wispr Flow-style voice dictation isn't available on Windows and Linux in a form that runs locally.",
+    what: 'Privacy-first, system-wide dictation: on-device transcription (whisper.cpp) and LLM cleanup (Qwen3-0.6B) in ~314 ms end-to-end, fully local.',
+    techLabels: ['Go', 'whisper.cpp', 'Qwen3-0.6B'],
+    access: 'private',
+    // Screenshot not supplied yet: expected ./assets/wisper.png
+    images: { default: { link: './assets/image-placeholder.png', alt: 'Wisper screenshot' } },
   },
   squism: {
     name: 'Squism',
@@ -178,21 +247,10 @@ export const projectData: Projects = {
     techLabels: ['Go', 'Next.js 16', 'SQLite', 'Docker Compose', 'GHCR', 'Cloudflare Tunnel'],
     links: {
       Live: { link: 'https://squism.net' },
-      // TODO: GitHub repo URL pending
     },
+    access: 'private',
     // Screenshot not supplied yet: expected ./assets/squism.png
     images: { default: { link: './assets/image-placeholder.png', alt: 'Squism screenshot' } },
-  },
-  wisper: {
-    name: 'Wisper',
-    kind: 'personal',
-    // eslint-disable-next-line quotes
-    problem: "Wispr Flow-style voice dictation isn't available on Windows and Linux in a form that runs locally.",
-    what: 'System-wide dictation with local speech-to-text (whisper.cpp) plus a small local model that cleans up the transcript. Optionally routes to a self-hosted OpenAI-compatible endpoint.',
-    techLabels: ['Go', 'whisper.cpp', 'Qwen3-0.6B', 'OpenAI-compatible API'],
-    // TODO: GitHub repo URL pending (add a GitHub link)
-    // Screenshot not supplied yet: expected ./assets/wisper.png
-    images: { default: { link: './assets/image-placeholder.png', alt: 'Wisper screenshot' } },
   },
   partnerPortal: {
     name: 'Partner Portal',

@@ -354,6 +354,12 @@
   margin-top: var(--sp-8);
 }
 
+.project-card-access {
+  margin-top: var(--sp-16);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
 .project-card-links {
   display: flex;
   flex-wrap: wrap;

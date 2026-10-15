@@ -73,6 +73,8 @@ export interface Projects {
     what?: string;
     detail?: string;
     kind?: 'work' | 'personal';
+    // Why a card has no links: shown as a muted line when it has none.
+    access?: 'internal' | 'private';
     earlier?: boolean;
     role?: string;
     description?: string;
