@@ -396,3 +396,212 @@
 .earlier-work[open] > .earlier-work-summary {
   margin-bottom: var(--sp-16);
 }
+
+/* Project tiles: the lighter home card. The whole tile is a link to the case study; a grid of one column on phones,
+   two from 48rem. */
+
+.project-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.project-tile {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: var(--border-width-1) solid var(--border-default);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-bg-card);
+  box-shadow: var(--elevation-mid);
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-tile:hover,
+.project-tile:focus-visible {
+  border-color: var(--interactive-primary-rest);
+}
+
+.project-tile-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: top;
+  border-bottom: var(--border-width-1) solid var(--border-default);
+}
+
+.project-tile-body {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: var(--sp-12);
+  padding: var(--sp-20);
+}
+
+.project-tile-tagline {
+  color: var(--text-body-default);
+}
+
+@media (min-width: 48rem) {
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Case-study page (/projects/[slug]): hero, summary beside a project-info card, stat tiles, then the text
+   sections, diagram, gallery and prev/next. Text blocks cap their own measure. */
+
+.case {
+  display: grid;
+  gap: var(--sp-48);
+  padding-bottom: var(--sp-48);
+}
+
+.case-hero {
+  display: grid;
+  justify-items: start;
+  gap: var(--sp-12);
+}
+
+.case-hero-img {
+  border: var(--border-width-1) solid var(--border-default);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--sp-12);
+}
+
+.case-title {
+  color: var(--text-primary);
+}
+
+.case-tagline {
+  max-width: 42rem;
+  color: var(--text-body-default);
+}
+
+.case-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-32);
+}
+
+.case-text {
+  display: grid;
+  align-content: start;
+  gap: var(--sp-12);
+  max-width: 42rem;
+}
+
+.case-text p {
+  margin: 0;
+}
+
+.case-heading {
+  color: var(--text-primary);
+  font-size: 1.25rem;
+}
+
+.case-info {
+  align-self: start;
+  padding: var(--sp-20);
+}
+
+.case-info dl {
+  margin-top: var(--sp-12);
+}
+
+.case-info dt {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.case-info dd {
+  margin: var(--sp-4) 0 var(--sp-16);
+  color: var(--text-body-default);
+}
+
+.stat-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: var(--sp-16);
+  list-style: none;
+}
+
+.stat-tile {
+  display: grid;
+  gap: var(--sp-4);
+  padding: var(--sp-20);
+}
+
+.stat-value {
+  color: var(--text-brand);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.stat-label {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.case-body {
+  display: grid;
+  gap: var(--sp-32);
+}
+
+.case-list {
+  display: grid;
+  gap: var(--sp-8);
+  padding-left: var(--sp-20);
+  list-style: disc;
+}
+
+.case-list li::marker {
+  color: var(--text-brand);
+}
+
+.case-figure {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.case-diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: var(--border-width-1) solid var(--border-default);
+  border-radius: var(--radius-lg);
+}
+
+.case-gallery {
+  display: grid;
+  gap: var(--sp-24);
+  list-style: none;
+}
+
+.case-gallery figcaption {
+  margin-top: var(--sp-8);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.case-pager {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--sp-12);
+  padding-top: var(--sp-24);
+  border-top: var(--border-width-1) solid var(--border-default);
+}
+
+@media (min-width: 48rem) {
+  .case-summary {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: var(--sp-48);
+  }
+}

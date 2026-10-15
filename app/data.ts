@@ -149,6 +149,21 @@ export const projectData: Projects = {
   alembic: {
     name: 'Alembic',
     kind: 'work',
+    slug: 'alembic',
+    tagline: 'In-house asset platform that replaced Cloudinary.',
+    client: 'MRCOOL',
+    role: '{{TODO: Lionel to confirm, e.g. Lead engineer & architect}}',
+    results: [
+      { value: '93.8%', label: 'annual cost savings' },
+      { value: '1,524%', label: 'ROI' },
+      { value: '1M+', label: 'requests per month' },
+    ],
+    approach: [
+      'Replaces Cloudinary with an in-house enterprise asset platform.',
+      'Adds AI integrations, semantic search and an MCP server.',
+      'Serves 1M+ requests a month across mrcool.com and mrcooldiy.com.',
+    ],
+    diagram: { link: './assets/diagrams/alembic.svg', alt: 'Alembic architecture diagram' },
     // eslint-disable-next-line quotes
     problem: "MRCOOL's product imagery and marketing assets lived in Cloudinary, a rented platform with costs and lock-in to match.",
     what: 'An in-house enterprise asset platform with AI integrations, semantic search and an MCP server, serving 1M+ requests a month across mrcool.com and mrcooldiy.com.',
@@ -161,6 +176,20 @@ export const projectData: Projects = {
   pulse: {
     name: 'Pulse',
     kind: 'work',
+    slug: 'pulse',
+    tagline: 'In-house SEO/AIO platform that replaced an $80K/yr agency.',
+    client: 'MRCOOL',
+    role: '{{TODO: Lionel to confirm, e.g. Lead engineer & architect}}',
+    results: [
+      { value: '98.5%', label: 'cost reduction' },
+      { value: '~$1.2K/yr', label: 'in data APIs' },
+    ],
+    approach: [
+      'Ingests Search Console, GA4, Ahrefs, DataForSEO and PageSpeed data.',
+      'Flags backlink, keyword, cannibalization and accessibility issues.',
+      'Files LLM-generated recommendations as ClickUp tasks.',
+    ],
+    diagram: { link: './assets/diagrams/pulse.svg', alt: 'Pulse architecture diagram' },
     // eslint-disable-next-line quotes
     problem: "MRCOOL paid an SEO agency $80K a year for reporting that arrived late and sat apart from the team's work queue.",
     what: 'Ingests Search Console, GA4, Ahrefs, DataForSEO and PageSpeed data; flags backlink, keyword, cannibalization and accessibility issues; and files LLM-generated recommendations as ClickUp tasks.',
@@ -183,6 +212,20 @@ export const projectData: Projects = {
   systemSelector: {
     name: 'System Selector',
     kind: 'work',
+    slug: 'system-selector',
+    tagline: 'A graph-based configurator API that replaced a 91K-row spreadsheet.',
+    client: 'MRCOOL',
+    role: '{{TODO: Lionel to confirm, e.g. Lead engineer & architect}}',
+    results: [
+      { value: '~2.9M', label: 'valid configurations' },
+      { value: 'sub-ms', label: 'responses' },
+    ],
+    approach: [
+      'Models system configurations as a graph, served by an API and MCP server.',
+      'Generates ~2.9M valid configurations, including mixed wall-mount and cassette bundles.',
+      'Sizes systems with Manual J/S estimates from local winter design temperatures.',
+    ],
+    diagram: { link: './assets/diagrams/system-selector.svg', alt: 'System Selector architecture diagram' },
     problem:
       // eslint-disable-next-line quotes
       "Mini-split system configurations lived in a manually maintained 91K-row Excel sheet that couldn't handle mixed wall-mount and cassette bundles.",
@@ -196,6 +239,15 @@ export const projectData: Projects = {
   secretsManager: {
     name: 'Secrets Manager',
     kind: 'work',
+    slug: 'secrets-manager',
+    tagline: 'Runtime secret injection so developers never handle shared credentials.',
+    client: 'MRCOOL',
+    role: '{{TODO: Lionel to confirm, e.g. Lead engineer & architect}}',
+    approach: [
+      'Injects secrets at runtime so developers never handle shared credentials.',
+      'Version 2 adds a locally encrypted credential store.',
+    ],
+    diagram: { link: './assets/diagrams/secrets-manager.svg', alt: 'Secrets Manager architecture diagram' },
     problem: 'Developers were handling shared env vars, tokens and keys directly.',
     what: 'Injects secrets at runtime so developers never handle shared credentials; v2 adds a locally encrypted credential store.',
     techLabels: ['Go', 'MongoDB'],
@@ -206,6 +258,20 @@ export const projectData: Projects = {
   backpack: {
     name: 'Backpack',
     kind: 'personal',
+    slug: 'backpack',
+    tagline: 'Persistent project memory and reviewable plans for Claude.',
+    client: 'Personal',
+    role: 'Creator',
+    results: [
+      { value: '51', label: 'tasks in ~8 hours' },
+      { value: '26', label: 'self-generated ideas' },
+    ],
+    approach: [
+      'An open-source Kanban workflow and MCP server.',
+      'Gives Claude persistent project memory between sessions.',
+      'Breaks work into bite-sized plans that are reviewable.',
+    ],
+    diagram: { link: './assets/diagrams/backpack.svg', alt: 'Backpack architecture diagram' },
     problem: 'AI coding agents forget the project between sessions and produce plans too big to review.',
     what: 'An open-source Kanban workflow and MCP server that gives Claude persistent project memory and bite-sized, reviewable plans.',
     techLabels: ['Go', 'SQLite', 'graph DB', 'MCP'],
@@ -218,6 +284,19 @@ export const projectData: Projects = {
   s3srv: {
     name: 'S3srv',
     kind: 'personal',
+    slug: 's3srv',
+    tagline: 'S3-compatible object storage, built in a day by agents on Backpack.',
+    client: 'Personal',
+    role: 'Creator',
+    results: [
+      { value: '~8 hours', label: 'to build' },
+    ],
+    approach: [
+      'An S3-compatible replacement for MinIO.',
+      'Chunking, deduplication and tar-packed small-file batching.',
+      'Includes recovery; built in Go on SQLite.',
+    ],
+    diagram: { link: './assets/diagrams/s3srv.svg', alt: 'S3srv architecture diagram' },
     problem: 'Self-hosted services needed S3-compatible object storage I fully own, without running MinIO.',
     what: 'An S3-compatible MinIO replacement with chunking, deduplication, tar-packed small-file batching and recovery.',
     // eslint-disable-next-line quotes
@@ -230,6 +309,20 @@ export const projectData: Projects = {
   wisper: {
     name: 'Wisper',
     kind: 'personal',
+    slug: 'wisper',
+    tagline: 'Private, on-device dictation for Windows and Linux.',
+    client: 'Personal',
+    role: 'Creator',
+    results: [
+      { value: '~314 ms', label: 'end-to-end' },
+      { value: '100%', label: 'local' },
+    ],
+    approach: [
+      'System-wide dictation that never leaves the machine.',
+      'On-device transcription with whisper.cpp.',
+      'LLM cleanup with Qwen3-0.6B, ~314 ms end-to-end.',
+    ],
+    diagram: { link: './assets/diagrams/wisper.svg', alt: 'Wisper architecture diagram' },
     // eslint-disable-next-line quotes
     problem: "Wispr Flow-style voice dictation isn't available on Windows and Linux in a form that runs locally.",
     what: 'Privacy-first, system-wide dictation: on-device transcription (whisper.cpp) and LLM cleanup (Qwen3-0.6B) in ~314 ms end-to-end, fully local.',
@@ -241,6 +334,16 @@ export const projectData: Projects = {
   squism: {
     name: 'Squism',
     kind: 'personal',
+    slug: 'squism',
+    tagline: 'A self-hosted digital asset manager.',
+    client: 'Personal',
+    role: 'Creator',
+    approach: [
+      'Labels, saved views, drag-and-drop, bundles, QR sharing and a dependency tree.',
+      'Self-hosted and publicly reachable through a Cloudflare Tunnel.',
+      'Go back end covered by an end-to-end test suite.',
+    ],
+    diagram: { link: './assets/diagrams/squism.svg', alt: 'Squism architecture diagram' },
     problem: 'I wanted a self-hosted digital asset manager I fully control, without paying for a SaaS DAM.',
     what: 'A DAM with labels, saved views, drag-and-drop, bundles, QR sharing and a dependency tree. Self-hosted and publicly reachable through a Cloudflare Tunnel.',
     detail: 'Go back end covered by an end-to-end test suite.',

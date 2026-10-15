@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import type { AboutMe } from '../interfaces';
 import SectionHeader from './section-header';
+import { asset } from '../lib/asset';
 
 export default function About({ anchor, data }: { anchor: string; data: AboutMe }) {
   return (
@@ -10,7 +11,7 @@ export default function About({ anchor, data }: { anchor: string; data: AboutMe 
         {data.portrait && (
           <Image
             className="about-portrait"
-            src={data.portrait.link}
+            src={asset(data.portrait.link)}
             alt={data.portrait.alt}
             width={240}
             height={240}
