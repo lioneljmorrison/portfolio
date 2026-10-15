@@ -2,7 +2,7 @@
 
 ## What this is
 
-Lionel Morrison's personal portfolio: a single-page Next.js site (About Me, Experience, Projects) styled with Tailwind CSS, statically exported and hosted on GitHub Pages.
+Lionel Morrison's personal portfolio: a single-page Next.js site (About Me, Experience, Projects) styled with plain CSS design tokens, statically exported and hosted on GitHub Pages.
 
 This is Next.js 16 (App Router, Turbopack) and React 19 on Node 24, with TypeScript 5.9 (typescript-eslint doesn't yet support TypeScript 7). Check what the installed version supports (`node_modules/next/dist/docs/`, or the Next 16 docs) before reaching for newer APIs.
 
@@ -29,11 +29,11 @@ app/layout.tsx              root layout: <html>, Inter font, page metadata (titl
 app/page.tsx                the only page: GA4 scripts, Chatbot, MainNav, then AboutMe, Experience, Projects
 app/data.ts                 all site content: aboutMe, navData, jobsData, projectData
 app/interfaces.ts           types for that content (AboutMe, Job, NavLinks, Projects, TechLables)
-app/globals.css             Tailwind 4 setup (`@import 'tailwindcss'`, `@theme` breakpoints), imports of the four files below and a few leftover base rules
+app/globals.css             CSS entry: imports the four files below, base then components (layer order)
 app/styles/tokens.css       plain-CSS design tokens: primitives and light/dark semantic tokens (custom properties only)
 app/styles/base.css         plain-CSS reset, type scale, .container/.grid, .card, .btn and form basics, built on the tokens
-app/styles/layout.css       plain-CSS sticky header, mobile drawer, page shell (.page-main) and section titles; imported with layer(components)
-app/styles/sections.css     plain-CSS styles for About Me, Experience (tabs), Projects (overlapping grid) and the shared .section and .chip; imported with layer(components)
+app/styles/layout.css       plain-CSS sticky header, mobile drawer, page shell (.page-main) and section titles; components layer
+app/styles/sections.css     plain-CSS styles for About Me, Experience (tabs), Projects (overlapping grid) and the shared .section and .chip; components layer
 app/components/             one component per section, plus nav.tsx, section-header.tsx and chatbot.tsx
 public/assets/              project screenshots, referenced from data.ts as './assets/<file>.png'
 ```
@@ -48,10 +48,10 @@ public/assets/              project screenshots, referenced from data.ts as './a
 
 - ESLint (`eslint.config.mjs`, extending `eslint-config-next/core-web-vitals`): single quotes, semicolons, 2-space indent, no multiple spaces. A string that needs an apostrophe uses double quotes with `// eslint-disable-next-line quotes` above it, as in `data.ts`.
 - Formatting follows `.vscode/settings.json`: Prettier with single quotes, print width 120.
-- Tailwind 4 is configured in CSS, not `tailwind.config.js` (removed); PostCSS uses `@tailwindcss/postcss` (`postcss.config.js`). The `@theme` block in `app/globals.css` clears the default breakpoints (`--breakpoint-*: initial`) and **replaces** them: `sm` 576px, `md` 960px, `lg` 1440px. There is no `xl` or `2xl`; keep the `initial` reset or the defaults return. The mobile/desktop nav switches at 48rem, in plain CSS (`app/styles/layout.css`).
-- **Design tokens (`app/styles/`).** Plain CSS being built up to replace Tailwind (components move over one at a time). `tokens.css` has two tiers: primitives (`--sp-*`, `--radius-*`, `--color-gray-*`, `--color-primary-*` pine, ...) and semantic tokens (`--surface-*`, `--text-*`, `--border-*`, `--interactive-*`, `--elevation-*`); components use the semantic ones. Light is the default on `:root`; dark applies under `prefers-color-scheme: dark` unless `<html data-mode="light">`, and always under `data-mode="dark"` (the dark block is written twice, keep both identical). Breakpoints in plain CSS are literal: sm 40rem, md 48rem, lg 64rem, xl 80rem.
-- **Cascade rule while Tailwind coexists.** Tailwind utilities live in cascade layers and unlayered CSS beats every layer, so `base.css` is imported with `layer(base)` and `layout.css` and `sections.css` with `layer(components)` in `globals.css`, and both must stay layered (components sits above base and below utilities); `tokens.css` (custom properties only) may be unlayered. Token names such as `--color-gray-*` and `--radius-*` match Tailwind theme variables, so existing utilities pick up the token values. Link colour in `base.css` applies only to bare `<a>` and `.link`, so classed links keep inheriting.
-- Colours: the header and every section (About Me, Experience, Projects) use semantic tokens (light and dark); no component uses Tailwind utilities any more.
+- **Plain CSS, no CSS framework or PostCSS config.** All styling is in `app/styles/` (imported by `app/globals.css`); Next's built-in PostCSS handles it, so there is no `postcss.config.js`. Component styles use class names (`.btn`, `.card`, `.chip`, section classes), not utility classes. The mobile/desktop nav switches at 48rem (`app/styles/layout.css`).
+- **Design tokens (`app/styles/`).** `tokens.css` has two tiers: primitives (`--sp-*`, `--radius-*`, `--color-gray-*`, `--color-primary-*` pine, ...) and semantic tokens (`--surface-*`, `--text-*`, `--border-*`, `--interactive-*`, `--elevation-*`); components use the semantic ones. Light is the default on `:root`; dark applies under `prefers-color-scheme: dark` unless `<html data-mode="light">`, and always under `data-mode="dark"` (the dark block is written twice, keep both identical). Breakpoints in plain CSS are literal: sm 40rem, md 48rem, lg 64rem, xl 80rem.
+- **Cascade layers.** `globals.css` imports `base.css` with `layer(base)` and then `layout.css` and `sections.css` with `layer(components)`; layer order is import order (Next's bundler moves a leading `@layer a, b;` statement to the end, so don't rely on one), so a component rule beats a base rule whatever its specificity. Keep both layered and base first. `tokens.css` (custom properties only) is unlayered. `base.css` also holds the reset (it replaces the old framework preflight). Link colour there applies only to bare `<a>` and `.link`; classed links inherit.
+- Colours: components use the semantic tokens only (light and dark), never raw hex values or primitives.
 - **Experience tabs** (`experience.tsx`) follow the WAI-ARIA tabs pattern (roving tabindex, arrows/Home/End move and activate). `aria-orientation` is deliberately left at the default because the list is vertical only from 40rem up and CSS cannot change it.
 - Images go through `next/image` with `images: { unoptimized: true }`, which a static export needs. Keep asset paths relative (`./assets/...`).
 - `next.config.js` must stay a plain `.js`/`.cjs`/`.mjs` object literal: `actions/configure-pages` (`static_site_generator: next`) parses and rewrites it on the runner, and doesn't read `.ts`. `agentRules: false` stops Next writing into AGENTS.md during `next dev`.

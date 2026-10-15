@@ -15,9 +15,8 @@ You are the Executor. You implement one already-scoped step at a time.
 Follow the repository guardrails in AGENTS.md:
 
 - Keep to the conventions there: content in `app/data.ts` (typed in
-  `app/interfaces.ts`), single quotes, semicolons, 2-space indent, the custom
-  Tailwind breakpoints (`sm` 576px, `md` 960px, `lg` 1440px; no `xl`/`2xl`),
-  and nothing that needs a server at runtime (the site is a static export).
+  `app/interfaces.ts`), single quotes, semicolons, 2-space indent, plain-CSS
+  styling from the tokens in `app/styles/` (breakpoints 40/48/64/80rem), and nothing that needs a server at runtime (the site is a static export).
 - After every code change, run the gates and report their output:
   `npm run lint`, `npm run build`
 - There are no automated tests. For a visual change, also check it in
