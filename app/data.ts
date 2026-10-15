@@ -1,4 +1,23 @@
-import { AboutMe, Contact, Job, NavLinks, Projects } from './interfaces';
+import { AboutMe, Contact, FooterCopy, Job, NavLinks, Projects, SiteMeta } from './interfaces';
+
+export const siteMeta: SiteMeta = {
+  title: 'Lionel Morrison — Lead Software Engineer',
+  description:
+    'Lead software engineer building internal platforms, developer tooling and AI-assisted workflows in Go and TypeScript. Northern Vermont.',
+  // Carries /portfolio/ itself: configure-pages only injects basePath in CI. Image paths are relative to it.
+  siteUrl: 'https://lioneljmorrison.github.io/portfolio/',
+  ogImage: 'assets/og.png',
+  ogImageAlt: 'Lionel Morrison, Lead Software Engineer: Go, TypeScript, Agentic AI',
+};
+
+// Points to the old resume until a new link is available.
+export const resumeUrl = 'https://drive.google.com/file/d/1_Lq07acaEXcrddp59ruIDXjVm3cvT96-/view?usp=sharing';
+
+export const footerCopy: FooterCopy = {
+  title: 'Get in touch',
+  // eslint-disable-next-line quotes
+  text: "Have a platform to build or a team to grow? I'd like to hear about it.",
+};
 
 export const jobsData: Job[] = [
   {
@@ -65,19 +84,24 @@ export const aboutMe: AboutMe = {
   // eslint-disable-next-line quotes
   intro: "Hi, I'm",
   name: 'Lionel Morrison',
-  role: 'Full Stack Developer',
+  role: 'Lead Software Engineer',
   tldr: 'Experienced Full Stack Developer focused on Continuous Integration, Continuous Development, developing APIs, and adding a sprinkle of Magic to web applications.',
-  skillsTitle: 'Recent Technology Stack',
+  // eslint-disable-next-line quotes
+  pitch: "I build internal platforms, self-serve developer tooling and AI-assisted workflows. I lead MRCOOL's Digital Experience team, where we've replaced two vendor contracts with in-house platforms at 93.8% and 98.5% savings.",
+  skillsTitle: 'Current Stack',
   skills: [
-    'AWS API',
-    'AWS Lambda',
-    'AWS DynamoDB',
-    'SFCC SFRA',
+    'Go',
     'TypeScript',
-    'Tailwind CSS',
     'Next.js',
     'React',
-    'Nest.js',
+    'Claude Code',
+    'MCP servers',
+    'Docker',
+    'GitHub Actions',
+    'Cloudflare (R2, Edge)',
+    'FalkorDB',
+    'Typesense',
+    'Playwright',
   ],
   quote: {
     author: 'Arthur C. Clarke',
@@ -92,7 +116,7 @@ export const contact: Contact = {
 };
 
 export const navData: NavLinks = {
-  'About Me': {
+  About: {
     href: './#about',
   },
   Experience: {
@@ -105,7 +129,7 @@ export const navData: NavLinks = {
     href: './#contact',
   },
   Resume: {
-    href: 'https://drive.google.com/file/d/1_Lq07acaEXcrddp59ruIDXjVm3cvT96-/view?usp=sharing',
+    href: resumeUrl,
     target: '_blank',
   },
 };

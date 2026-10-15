@@ -1,15 +1,17 @@
-import type { AboutMe, Contact, NavLink } from '../interfaces';
+import type { AboutMe, Contact, FooterCopy } from '../interfaces';
 
 export default function Footer({
   anchor,
   name,
   contact,
-  resume,
+  resumeUrl,
+  copy,
 }: {
   anchor: string;
   name: AboutMe['name'];
   contact: Contact;
-  resume?: NavLink;
+  resumeUrl?: string;
+  copy: FooterCopy;
 }) {
   const year = new Date().getFullYear();
 
@@ -17,8 +19,8 @@ export default function Footer({
     <footer id={anchor} className="site-footer">
       <div className="footer-band">
         <div className="container container-xl footer-inner">
-          <h2 className="footer-title">Get in touch</h2>
-          <p className="p-lg footer-copy">Have a project or a role in mind? I would like to hear about it.</p>
+          <h2 className="footer-title">{copy.title}</h2>
+          <p className="p-lg footer-copy">{copy.text}</p>
           <div className="footer-actions">
             {contact.email && (
               <a className="btn btn-solid btn-md" href={`mailto:${contact.email}`}>
@@ -35,8 +37,8 @@ export default function Footer({
                 LinkedIn
               </a>
             )}
-            {resume && (
-              <a className="btn btn-outline btn-md" href={resume.href} target="_blank" rel="noreferrer">
+            {resumeUrl && (
+              <a className="btn btn-outline btn-md" href={resumeUrl} target="_blank" rel="noreferrer">
                 Resume
               </a>
             )}
