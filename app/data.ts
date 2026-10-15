@@ -85,7 +85,11 @@ export const aboutMe: AboutMe = {
   },
 };
 
-export const contact: Contact = {};
+export const contact: Contact = {
+  email: 'lionel@morrison.mobi',
+  github: 'https://github.com/lioneljmorrison',
+  linkedin: 'https://www.linkedin.com/in/lionelmorrison/',
+};
 
 export const navData: NavLinks = {
   'About Me': {
@@ -99,7 +103,6 @@ export const navData: NavLinks = {
   },
   Contact: {
     href: './#contact',
-    disabled: true,
   },
   Resume: {
     href: 'https://drive.google.com/file/d/1_Lq07acaEXcrddp59ruIDXjVm3cvT96-/view?usp=sharing',
