@@ -236,108 +236,83 @@
   }
 }
 
-/* Projects: stacked below 40rem; from 40rem a 10-column grid where the image takes six columns and the text
-   overlays it from the other side (columns 5 and 6 overlap). Odd-indexed projects get .project--reverse. */
+/* Projects: one card per project, stacked with a --sp-32 gap. Screenshot on top (16:9, 21:9 from 48rem), then a
+   body that is one column on phones and from 48rem a 3fr/2fr grid: problem and role left, stack and links right. */
 
-.project {
+.project-list {
   display: grid;
-  grid-template-columns: minmax(0, 1fr);
-  gap: var(--sp-12);
-  padding-bottom: var(--sp-64);
+  gap: var(--sp-32);
+  list-style: none;
 }
 
-.project:last-child {
-  padding-bottom: 0;
-}
-
-.project-title {
-  color: var(--text-primary);
-}
-
-.project-img {
-  display: block;
-  width: 100%;
-  height: auto;
+.project-card {
+  overflow: hidden;
   border: var(--border-width-1) solid var(--border-default);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-bg-card);
   box-shadow: var(--elevation-mid);
 }
 
-.project-tldr {
-  padding: var(--sp-16);
-  border: var(--border-width-1) solid var(--border-default);
-  border-radius: var(--radius-md);
-  background-color: var(--surface-bg-card);
-  box-shadow: var(--elevation-high);
-  color: var(--text-body-default);
-  font-size: 0.875rem;
+.project-card-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: top;
+  border-bottom: var(--border-width-1) solid var(--border-default);
 }
 
-/* Project tech labels reuse .chip; also a wrapping row, like the hero's */
-.project-labels,
-.project-links {
+.project-card-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-20);
+  padding: var(--sp-20);
+}
+
+.project-card-name {
+  margin-bottom: var(--sp-16);
+  color: var(--text-primary);
+  font-size: 1.5rem;
+}
+
+.project-card dt,
+.project-card-label {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-card dd {
+  margin-top: var(--sp-4);
+  color: var(--text-body-default);
+}
+
+.project-card dd + dt {
+  margin-top: var(--sp-16);
+}
+
+.project-card .chip-list {
+  margin-top: var(--sp-8);
+}
+
+.project-card-links {
   display: flex;
   flex-wrap: wrap;
   gap: var(--sp-8);
+  margin-top: var(--sp-16);
 }
 
-.project-labels .chip {
-  padding-left: var(--sp-12);
-  padding-right: var(--sp-12);
-}
-
-@media (min-width: 40rem) {
-  .project {
-    grid-template-columns: repeat(10, minmax(0, 1fr));
-    grid-template-rows: auto auto 1fr auto auto;
-    column-gap: var(--sp-16);
+@media (min-width: 48rem) {
+  .project-card-img {
+    aspect-ratio: 21 / 9;
   }
 
-  .project > * {
-    position: relative;
-    z-index: 1;
-  }
-
-  .project-img {
-    grid-column: 5 / 11;
-    grid-row: 1 / -1;
-    align-self: center;
-    z-index: 0;
-  }
-
-  .project-title {
-    grid-column: 1 / 5;
-    grid-row: 1;
-  }
-
-  .project-tldr {
-    grid-column: 1 / 7;
-    grid-row: 2;
-  }
-
-  .project-labels {
-    grid-column: 1 / 5;
-    grid-row: 4;
-  }
-
-  .project-links {
-    grid-column: 1 / 5;
-    grid-row: 5;
-  }
-
-  .project--reverse .project-img {
-    grid-column: 1 / 7;
-  }
-
-  .project--reverse .project-title,
-  .project--reverse .project-labels,
-  .project--reverse .project-links {
-    grid-column: 7 / 11;
-    justify-content: flex-end;
-    text-align: right;
-  }
-
-  .project--reverse .project-tldr {
-    grid-column: 5 / 11;
+  .project-card-body {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: var(--sp-32);
+    padding: var(--sp-32);
   }
 }
