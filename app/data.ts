@@ -172,6 +172,11 @@ export const projectData: Projects = {
     },
     gallery: [
       {
+        src: './assets/alembic/search.png',
+        alt: 'Alembic Studio semantic search: the query "dark hair" returns matching photos from the asset grid',
+        caption: 'Semantic search: describe an image in plain words to find it',
+      },
+      {
         src: './assets/alembic/manage.png',
         alt: 'Alembic Studio Manage page: cards for workspaces, users, presets, API keys, webhooks, audit log and more',
         caption: 'Manage: workspaces, users, presets, API keys, webhooks, audit log and more',
@@ -217,11 +222,56 @@ export const projectData: Projects = {
     access: 'internal',
     images: {
       default: {
-        link: './assets/pulse/sitemap-health.png',
-        alt: 'Pulse sitemap health: pages listed in the sitemap that are broken, redirecting or set not to index',
+        link: './assets/pulse/briefing.png',
+        alt: 'Pulse AI briefing: an executive summary of the period, with branded and non-branded search clicks',
       },
     },
     gallery: [
+      {
+        src: './assets/pulse/rankings.png',
+        alt: 'Pulse keyword rankings: positions for each product line and the top ranking opportunity',
+        caption: 'Rankings: keyword positions by product line and the top opportunity',
+      },
+      {
+        src: './assets/pulse/opportunities.png',
+        alt: 'Pulse opportunities: scored SEO opportunities listed for approval into ClickUp tasks',
+        caption: 'Opportunities: scored recommendations to approve into ClickUp',
+      },
+      {
+        src: './assets/pulse/backlinks.png',
+        alt: 'Pulse backlinks from Ahrefs: sites linking to the domain, with links gained and lost',
+        caption: 'Backlinks: referring sites, with links gained and lost',
+      },
+      {
+        src: './assets/pulse/cannibalization.png',
+        alt: 'Pulse keyword cannibalization report: queries where several pages compete, grouped by severity',
+        caption: 'Cannibalization: competing pages by severity',
+      },
+      {
+        src: './assets/pulse/pagespeed.png',
+        alt: 'Pulse PageSpeed report: Core Web Vitals and performance scores for each page',
+        caption: 'PageSpeed: Core Web Vitals per page',
+      },
+      {
+        src: './assets/pulse/accessibility.png',
+        alt: 'Pulse accessibility scan summary: axe WCAG 2.2 AA violations counted across the site',
+        caption: 'Accessibility: axe WCAG 2.2 AA scan summary',
+      },
+      {
+        src: './assets/pulse/accessibility-detail.png',
+        alt: 'Pulse accessibility detail: violations on each page grouped by rule',
+        caption: 'Accessibility detail: per-page violations grouped by rule',
+      },
+      {
+        src: './assets/pulse/sitemap-health.png',
+        alt: 'Pulse sitemap health: pages listed in the sitemap that are broken, redirecting or set not to index',
+        caption: 'Sitemap health: broken, redirecting and non-indexed pages',
+      },
+      {
+        src: './assets/pulse/engagement.png',
+        alt: 'Pulse GA4 engagement: engagement metrics for each page',
+        caption: 'Engagement: GA4 engagement per page',
+      },
       {
         src: './assets/pulse/product-catalogue.png',
         alt: 'Pulse product catalogue: products discovered from the sitemap crawl, with category and entity',
@@ -291,6 +341,13 @@ export const projectData: Projects = {
         alt: "Secrets Manager: a project's environments and variables, with every value masked",
       },
     },
+    gallery: [
+      {
+        src: './assets/secrets-manager/cli.png',
+        alt: 'Terminal running the secrets CLI: usage listing, then status, version and verify commands',
+        caption: 'The secrets CLI: init, verify, login, status and running commands with secrets injected',
+      },
+    ],
   },
   backpack: {
     name: 'Backpack',
