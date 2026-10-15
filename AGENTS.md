@@ -33,12 +33,12 @@ app/globals.css             CSS entry: imports the four files below, base then c
 app/styles/tokens.css       plain-CSS design tokens: primitives and light/dark semantic tokens (custom properties only)
 app/styles/base.css         plain-CSS reset, type scale, .container/.grid, .card, .btn and form basics, built on the tokens
 app/styles/layout.css       plain-CSS sticky header, mobile drawer, page shell (.page-main) and section titles; components layer
-app/styles/sections.css     plain-CSS styles for the Hero, Experience (timeline), Projects (overlapping grid) and the shared .section and .chip; components layer
+app/styles/sections.css     plain-CSS styles for the Hero, Experience (timeline), Projects (stacked cards) and the shared .section and .chip; components layer
 app/components/             one component per section, plus nav.tsx, footer.tsx, section-header.tsx and chatbot.tsx
 public/assets/              project screenshots, referenced from data.ts as './assets/<file>.png'
 ```
 
-- **Content lives in `app/data.ts`, not in components.** Adding a job, project or nav link is an edit to `data.ts` (and `interfaces.ts` if the shape changes). Projects and nav links with `disabled: true` are hidden; a project without `images.default` shows `image-placeholder.png`. Projects alternate left/right layout by index.
+- **Content lives in `app/data.ts`, not in components.** Adding a job, project or nav link is an edit to `data.ts` (and `interfaces.ts` if the shape changes). Projects and nav links with `disabled: true` are hidden; a project without `images.default` shows `image-placeholder.png`. Each project renders as a full-width card (`.project-card*` in `sections.css`): screenshot on top, then the problem (`problem`, falling back to `tldr`), the role (`role`; the row is omitted when unset), the stack chips and the links.
 - **The hero (`app/components/hero.tsx`)** shows `aboutMe.role`, name (the page's h1), `pitch` (falling back to `tldr`) and a See projects button, with skills and the quote in a side card. The Contact me button renders only when the `contact` export has a non-empty value. `aboutMe.intro` is no longer rendered.
 - **Sections are anchored by id** (`about`, `experience`, `projects`, and `contact` on the footer), passed as the `anchor` prop from `page.tsx`; nav links in `navData` scroll to them (`href: '#about'`, ...). The footer (`footer.tsx`, styles in `layout.css`) shows an email button, a GitHub button and the Resume link from `navData`, each only when set; the Contact nav link stays `disabled` until `contact` has a value.
 - **Only `nav.tsx` and `theme-toggle.tsx` are client components** (`'use client'`, for the mobile menu and the colour-mode toggle). Everything else renders at build time.
