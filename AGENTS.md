@@ -29,7 +29,7 @@ app/layout.tsx              root layout: <html>, Inter font, page metadata (titl
 app/page.tsx                the only page: GA4 scripts, Chatbot, MainNav, then AboutMe, Experience, Projects
 app/data.ts                 all site content: aboutMe, navData, jobsData, projectData
 app/interfaces.ts           types for that content (AboutMe, Job, NavLinks, Projects, TechLables)
-app/globals.css             Tailwind layers plus custom classes (project-*, nav-button, ...)
+app/globals.css             Tailwind 4 setup (`@import 'tailwindcss'`, `@theme` breakpoints) plus custom utilities (project-*, nav-button, ...)
 app/components/             one component per section, plus nav.tsx, section-header.tsx and chatbot.tsx
 public/assets/              project screenshots, referenced from data.ts as './assets/<file>.png'
 ```
@@ -43,7 +43,7 @@ public/assets/              project screenshots, referenced from data.ts as './a
 
 - ESLint (`eslint.config.mjs`, extending `eslint-config-next/core-web-vitals`): single quotes, semicolons, 2-space indent, no multiple spaces. A string that needs an apostrophe uses double quotes with `// eslint-disable-next-line quotes` above it, as in `data.ts`.
 - Formatting follows `.vscode/settings.json`: Prettier with single quotes, print width 120.
-- Tailwind `theme.screens` **replaces** the default breakpoints: `sm` 576px, `md` 960px, `lg` 1440px. There is no `xl` or `2xl`. The mobile/desktop nav switches at `md`.
+- Tailwind 4 is configured in CSS, not `tailwind.config.js` (removed); PostCSS uses `@tailwindcss/postcss` (`postcss.config.js`). The `@theme` block in `app/globals.css` clears the default breakpoints (`--breakpoint-*: initial`) and **replaces** them: `sm` 576px, `md` 960px, `lg` 1440px. There is no `xl` or `2xl`; keep the `initial` reset or the defaults return. The mobile/desktop nav switches at `md`.
 - Colours are the Tailwind gray/slate scale on a dark background (`bg-gray-700` page, `bg-gray-800` nav and chips).
 - Images go through `next/image` with `images: { unoptimized: true }`, which a static export needs. Keep asset paths relative (`./assets/...`).
 - `next.config.js` must stay a plain `.js`/`.cjs`/`.mjs` object literal: `actions/configure-pages` (`static_site_generator: next`) parses and rewrites it on the runner, and doesn't read `.ts`. `agentRules: false` stops Next writing into AGENTS.md during `next dev`.
