@@ -252,8 +252,12 @@ export const projectData: Projects = {
     links: {
       GitHub: { link: 'https://github.com/lioneljmorrison/backpack' },
     },
-    // Screenshot not supplied yet: expected ./assets/backpack.png
-    images: { default: { link: './assets/image-placeholder.png', alt: 'Backpack screenshot' } },
+    images: {
+      default: {
+        link: './assets/backpack.png',
+        alt: 'Backpack Kanban board: phase summary, an approval queue and story columns',
+      },
+    },
   },
   s3srv: {
     name: 'S3srv',
@@ -292,8 +296,15 @@ export const projectData: Projects = {
     what: 'Privacy-first, system-wide dictation: on-device transcription (whisper.cpp) and LLM cleanup (Qwen3-0.6B) in ~314 ms end-to-end, fully local.',
     techLabels: ['Go', 'whisper.cpp', 'Qwen3-0.6B'],
     access: 'private',
-    // Screenshot not supplied yet: expected ./assets/wisper.png
-    images: { default: { link: './assets/image-placeholder.png', alt: 'Wisper screenshot' } },
+    images: {
+      default: {
+        link: './assets/wisper.png',
+        alt: 'Wisper dashboard: words per minute, latency, words dictated and a usage streak',
+      },
+    },
+    gallery: [
+      { src: './assets/wisper-caramel.png', alt: 'The Wisper dashboard in the caramel theme', caption: 'Caramel theme' },
+    ],
   },
   squism: {
     name: 'Squism',
