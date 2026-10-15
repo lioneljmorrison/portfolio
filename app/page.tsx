@@ -5,6 +5,7 @@ import MainNav from './components/nav';
 import Projects from './components/projects';
 import { aboutMe, contact, jobsData, navData, projectData } from './data';
 import { Job } from './interfaces';
+import Footer from './components/footer';
 import Chatbot from './components/chatbot';
 
 export default function Home() {
@@ -27,6 +28,7 @@ export default function Home() {
         <Experience anchor="experience" jobs={jobsData as Job[]}></Experience>
         <Projects anchor="projects" data={projectData}></Projects>
       </main>
+      <Footer anchor="contact" name={aboutMe.name} contact={contact} resume={navData.Resume}></Footer>
     </>
   );
 }
