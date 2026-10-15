@@ -10,8 +10,7 @@ export const siteMeta: SiteMeta = {
   ogImageAlt: 'Lionel Morrison, Lead Software Engineer: Go, TypeScript, Agentic AI',
 };
 
-// Points to the old resume until a new link is available.
-export const resumeUrl = 'https://drive.google.com/file/d/1_Lq07acaEXcrddp59ruIDXjVm3cvT96-/view?usp=sharing';
+export const resumeUrl = 'https://docs.google.com/document/d/1djcpYl-HW-51otDOscM7gi36UWC6m60lrXzxuzNDCoA/edit?usp=sharing';
 
 export const footerCopy: FooterCopy = {
   title: 'Get in touch',
@@ -152,7 +151,7 @@ export const projectData: Projects = {
     slug: 'alembic',
     tagline: 'In-house asset platform that replaced Cloudinary.',
     client: 'MRCOOL',
-    role: '{{TODO: Lionel to confirm, e.g. Lead engineer & architect}}',
+    role: 'Architect and Lead Engineer',
     results: [
       { value: '93.8%', label: 'annual cost savings' },
       { value: '1,524%', label: 'ROI' },
@@ -199,7 +198,7 @@ export const projectData: Projects = {
     slug: 'pulse',
     tagline: 'In-house SEO/AIO platform that replaced an $80K/yr agency.',
     client: 'MRCOOL',
-    role: '{{TODO: Lionel to confirm, e.g. Lead engineer & architect}}',
+    role: 'Architect and Lead Engineer',
     results: [
       { value: '98.5%', label: 'cost reduction' },
       { value: '~$1.2K/yr', label: 'in data APIs' },
@@ -285,7 +284,7 @@ export const projectData: Projects = {
     slug: 'system-selector',
     tagline: 'A graph-based configurator API that replaced a 91K-row spreadsheet.',
     client: 'MRCOOL',
-    role: '{{TODO: Lionel to confirm, e.g. Lead engineer & architect}}',
+    role: 'Architect and Lead Engineer',
     results: [
       { value: '~2.9M', label: 'valid configurations' },
       { value: 'sub-ms', label: 'responses' },
@@ -328,7 +327,7 @@ export const projectData: Projects = {
     slug: 'secrets-manager',
     tagline: 'Runtime secret injection so developers never handle shared credentials.',
     client: 'MRCOOL',
-    role: '{{TODO: Lionel to confirm, e.g. Lead engineer & architect}}',
+    role: 'Architect and Lead Engineer',
     diagram: { link: './assets/secrets-manager/architecture.svg', alt: 'Secrets Manager architecture diagram' },
     problem: 'Developers were handling shared env vars, tokens and keys directly.',
     what: 'Injects secrets at runtime so developers never handle shared credentials; v2 adds a locally encrypted credential store.',
