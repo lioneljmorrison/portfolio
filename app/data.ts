@@ -128,7 +128,6 @@ export const projectData: Projects = {
   },
   theWatch: {
     name: 'The Watch',
-    // eslint-disable-next-line quotes
     tldr: 'Born out of need. This project was developed for a local business that needed to monitor its fridges and freezers and alert staff.',
     techLabels: ['Tailwind CSS', 'Next.js', 'Lambda', 'DynamoDB', 'AWS API', 'Vercel', 'SwitchBot API'],
     links: {

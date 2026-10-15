@@ -4,7 +4,7 @@
 
 Lionel Morrison's personal portfolio: a single-page Next.js site (About Me, Experience, Projects) styled with Tailwind CSS, statically exported and hosted on GitHub Pages.
 
-This is Next.js 13.4 (App Router) and React 18. Check what the installed version supports (`node_modules/next/dist/docs/`, or the 13.4 docs) before reaching for newer APIs.
+This is Next.js 16 (App Router, Turbopack) and React 19 on Node 24, with TypeScript 5.9 (typescript-eslint doesn't yet support TypeScript 7). Check what the installed version supports (`node_modules/next/dist/docs/`, or the Next 16 docs) before reaching for newer APIs.
 
 ## Where the docs are
 
@@ -17,7 +17,7 @@ Look facts up in the code or README rather than copying them here; point to the 
 ## Key commands
 
 - `npm run dev` — dev server on port 3000.
-- `npm run lint` — `next lint` with the rules in `.eslintrc.json`. CI runs it on every pull request that touches `app/**` (`.github/workflows/lint.yml`).
+- `npm run lint` — `eslint app` (ESLint CLI, flat config in `eslint.config.mjs`; `next lint` no longer exists in Next 16). CI runs it on every pull request that touches `app/**` (`.github/workflows/lint.yml`).
 - `npm run build` — production build; with `output: 'export'` (`next.config.js`) it writes the static site to `out/`.
 
 There are no tests. A change is verified by `npm run lint` and `npm run build` both passing, and by looking at it in `npm run dev` at mobile and desktop widths. `npm start` doesn't serve a static export; to preview the built site, serve `out/` with any static server (e.g. `npx serve out`).
@@ -41,11 +41,12 @@ public/assets/              project screenshots, referenced from data.ts as './a
 
 ## Conventions
 
-- ESLint (`.eslintrc.json`): single quotes, semicolons, 2-space indent, no multiple spaces. A string that needs an apostrophe uses double quotes with `// eslint-disable-next-line quotes` above it, as in `data.ts`.
+- ESLint (`eslint.config.mjs`, extending `eslint-config-next/core-web-vitals`): single quotes, semicolons, 2-space indent, no multiple spaces. A string that needs an apostrophe uses double quotes with `// eslint-disable-next-line quotes` above it, as in `data.ts`.
 - Formatting follows `.vscode/settings.json`: Prettier with single quotes, print width 120.
 - Tailwind `theme.screens` **replaces** the default breakpoints: `sm` 576px, `md` 960px, `lg` 1440px. There is no `xl` or `2xl`. The mobile/desktop nav switches at `md`.
 - Colours are the Tailwind gray/slate scale on a dark background (`bg-gray-700` page, `bg-gray-800` nav and chips).
 - Images go through `next/image` with `images: { unoptimized: true }`, which a static export needs. Keep asset paths relative (`./assets/...`).
+- `next.config.js` must stay a plain `.js`/`.cjs`/`.mjs` object literal: `actions/configure-pages` (`static_site_generator: next`) parses and rewrites it on the runner, and doesn't read `.ts`. `agentRules: false` stops Next writing into AGENTS.md during `next dev`.
 - Static export only: no API routes, server actions, middleware, or anything else that needs a Node server at runtime.
 
 ## Deployment
