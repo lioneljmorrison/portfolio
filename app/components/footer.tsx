@@ -30,6 +30,11 @@ export default function Footer({
                 GitHub
               </a>
             )}
+            {contact.linkedin && (
+              <a className="btn btn-outline btn-md" href={contact.linkedin} target="_blank" rel="noreferrer">
+                LinkedIn
+              </a>
+            )}
             {resume && (
               <a className="btn btn-outline btn-md" href={resume.href} target="_blank" rel="noreferrer">
                 Resume
