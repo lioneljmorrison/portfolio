@@ -19,7 +19,7 @@ export default function About({ anchor, data }: { anchor: string; data: AboutMe 
         )}
         <div className="about-text">
           {data.bio.map((paragraph, idx) => (
-            <p key={`bio-${idx}`} className="p-lg">
+            <p key={`bio-${idx}`}>
               {paragraph}
             </p>
           ))}
