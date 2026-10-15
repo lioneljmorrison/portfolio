@@ -133,7 +133,7 @@
   --surface-bg-default: var(--color-white);
   --surface-bg-subtle: var(--color-gray-100);
   --surface-bg-card: var(--color-white);
-  --surface-bg-brand: var(--color-primary-500);
+  --surface-bg-brand: var(--color-primary-600);
   --surface-bg-brand-subtle: var(--color-primary-100);
 
   --surface-bg-info: var(--color-info-500);
@@ -152,6 +152,7 @@
   --text-muted: var(--color-gray-550);
   --text-inverse: var(--color-white);
   --text-brand: var(--color-primary-600);
+  --text-on-brand: var(--color-white);
 
   --text-link: var(--color-primary-600);
   --text-link-hover: var(--color-primary-700);
@@ -165,8 +166,8 @@
   --border-default: var(--color-gray-200);
   --border-subtle: var(--color-gray-100);
   --border-strong: var(--color-gray-400);
-  --border-brand: var(--color-primary-500);
-  --border-focus: var(--color-primary-500);
+  --border-brand: var(--color-primary-600);
+  --border-focus: var(--color-primary-600);
 
   --border-info: var(--color-info-500);
   --border-success: var(--color-success-500);
@@ -174,11 +175,11 @@
   --border-error: var(--color-error-500);
 
   /* Interactive */
-  --interactive-primary-rest: var(--color-primary-500);
-  --interactive-primary-hover: var(--color-primary-600);
-  --interactive-primary-focus: var(--color-primary-600);
-  --interactive-primary-active: var(--color-primary-700);
-  --interactive-primary-disabled: rgba(47, 138, 99, 0.5);
+  --interactive-primary-rest: var(--color-primary-600);
+  --interactive-primary-hover: var(--color-primary-700);
+  --interactive-primary-focus: var(--color-primary-700);
+  --interactive-primary-active: var(--color-primary-800);
+  --interactive-primary-disabled: rgba(35, 111, 80, 0.5);
 
   /* Elevation: a tight key shadow plus a soft ambient one */
   --elevation-none: none;
@@ -186,11 +187,11 @@
   --elevation-mid: 0px 2px 4px rgba(23, 23, 23, 0.06), 0px 8px 16px rgba(23, 23, 23, 0.08);
   --elevation-high: 0px 4px 6px rgba(23, 23, 23, 0.06), 0px 20px 24px rgba(23, 23, 23, 0.12);
 
-  --elevation-brand-low: 0px 2px 8px rgba(47, 138, 99, 0.12);
-  --elevation-brand-mid: 0px 6px 16px rgba(47, 138, 99, 0.18);
-  --elevation-brand-high: 0px 12px 28px rgba(47, 138, 99, 0.24);
+  --elevation-brand-low: 0px 2px 8px rgba(35, 111, 80, 0.12);
+  --elevation-brand-mid: 0px 6px 16px rgba(35, 111, 80, 0.18);
+  --elevation-brand-high: 0px 12px 28px rgba(35, 111, 80, 0.24);
 
-  --focus-ring: 0 0 0 3px rgba(47, 138, 99, 0.2);
+  --focus-ring: 0 0 0 3px rgba(35, 111, 80, 0.2);
 
   /* Page layout defaults; base.css overrides these per viewport width */
   --page-margin: 7.5rem;
@@ -207,7 +208,7 @@
     --surface-bg-default: #121212;
     --surface-bg-subtle: #000000;
     --surface-bg-card: var(--color-gray-800);
-    --surface-bg-brand: var(--color-primary-500);
+    --surface-bg-brand: var(--color-primary-400);
     --surface-bg-brand-subtle: var(--color-primary-950);
 
     --surface-bg-info: var(--color-info-400);
@@ -226,6 +227,7 @@
     --text-muted: var(--color-gray-400);
     --text-inverse: var(--color-gray-900);
     --text-brand: var(--color-primary-400);
+    --text-on-brand: var(--color-gray-900);
 
     --text-link: var(--color-primary-400);
     --text-link-hover: var(--color-primary-300);
@@ -271,7 +273,7 @@
   --surface-bg-default: #121212;
   --surface-bg-subtle: #000000;
   --surface-bg-card: var(--color-gray-800);
-  --surface-bg-brand: var(--color-primary-500);
+  --surface-bg-brand: var(--color-primary-400);
   --surface-bg-brand-subtle: var(--color-primary-950);
 
   --surface-bg-info: var(--color-info-400);
@@ -290,6 +292,7 @@
   --text-muted: var(--color-gray-400);
   --text-inverse: var(--color-gray-900);
   --text-brand: var(--color-primary-400);
+  --text-on-brand: var(--color-gray-900);
 
   --text-link: var(--color-primary-400);
   --text-link-hover: var(--color-primary-300);
