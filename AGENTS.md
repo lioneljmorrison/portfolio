@@ -50,6 +50,6 @@ public/assets/              project screenshots, referenced from data.ts as './a
 
 ## Deployment
 
-Pushing to `main` deploys: `.github/workflows/nextjs.yml` builds the site and publishes `out/` to GitHub Pages. Nothing else deploys; a merge into `main` is a release. Both workflows pin Node 16 and the deploy workflow still runs the old `next export` step after `next build`.
+Pushing to `main` deploys: `.github/workflows/nextjs.yml` builds the site and publishes `out/` to GitHub Pages. Nothing else deploys; a merge into `main` is a release. Node 24 is required: it is pinned in `.nvmrc` (which both workflows read via `actions/setup-node` `node-version-file`), `engines` in `package.json`, and `engine-strict=true` in `.npmrc`, so `npm install`/`npm ci` refuse to run on any other Node. The build job's `next build` already writes `out/` (`output: 'export'`), so there is no separate `next export` step; `actions/configure-pages` with `static_site_generator: next` still injects `basePath` and the export settings into `next.config.js` at build time.
 
 Branches: `dev` is the integration branch and `main` the release branch. Task branches are `feature/YYYYMMDD-short-name` or `bug/YYYYMMDD-short-name`, cut from `dev` and merged back into `dev` by pull request. A release is a pull request from `dev` into `main`. Pushing to `dev` doesn't deploy, and `dev` has no preview site, so check changes locally (see "Key commands").

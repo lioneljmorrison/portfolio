@@ -8,9 +8,12 @@ Yes, you can fork this, as long as you don't _plegise_ and provide some attribut
 
 ## Getting Started
 
-First, run the development server:
+This project needs Node 24 (see `.nvmrc`; with nvm or fnm, run `nvm use` / `fnm use`). `npm install` refuses to run on any other Node version.
+
+Then install dependencies and run the development server:
 
 ```bash
+npm install
 npm run dev
 # or
 yarn dev
