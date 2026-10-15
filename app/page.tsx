@@ -7,7 +7,6 @@ import Projects from './components/projects';
 import { aboutMe, contact, footerCopy, jobsData, navData, projectData, resumeUrl } from './data';
 import { Job } from './interfaces';
 import Footer from './components/footer';
-import Chatbot from './components/chatbot';
 
 export default function Home() {
   return (
@@ -22,7 +21,6 @@ export default function Home() {
             gtag('config', 'G-14RLENLVJH');
           `}
       </Script>
-      <Chatbot></Chatbot>
       <MainNav data={navData} name={aboutMe.name}></MainNav>
       <main className="container container-xl page-main">
         <Hero anchor="top" data={aboutMe} contact={contact}></Hero>
