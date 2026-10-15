@@ -46,7 +46,6 @@ export default function ThemeToggle() {
       type="button"
       className="theme-toggle-btn"
       aria-label={mode === null ? 'Toggle colour mode' : `Switch to ${mode === 'dark' ? 'light' : 'dark'} mode`}
-      aria-pressed={mode === null ? undefined : mode === 'dark'}
       onClick={toggle}
     >
       <svg
