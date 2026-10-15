@@ -22,8 +22,13 @@ export default function MainNav({ data, name }: { data: NavLinks; name: string }
     return () => document.removeEventListener('keydown', onKeyDown);
   }, [open]);
 
-  function scrollTo(id: string) {
-    const element = document.getElementById(id);
+  // Hash links are root-relative ('/#about') so they work from nested pages too; next/link adds the basePath.
+  function target(href: string) {
+    return href.replace(/^\.(?=\/?#)/, '').replace(/^#/, '/#');
+  }
+
+  function scrollTo(href: string) {
+    const element = document.getElementById(href.slice(href.indexOf('#') + 1));
     setOpen(false);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -42,8 +47,8 @@ export default function MainNav({ data, name }: { data: NavLinks; name: string }
           {navItemsArray.map(([title, meta], index) => (
             <Link
               key={title}
-              href={meta.href}
-              onClick={() => scrollTo(meta.href.substring(1))}
+              href={target(meta.href)}
+              onClick={() => scrollTo(meta.href)}
               target={meta?.target}
               className={index === lastIndex ? 'btn btn-solid btn-sm' : 'nav-item'}
             >
@@ -105,8 +110,8 @@ export default function MainNav({ data, name }: { data: NavLinks; name: string }
           {navItemsArray.map(([title, meta], index) => (
             <Link
               key={title}
-              href={meta.href}
-              onClick={() => scrollTo(meta.href.substring(1))}
+              href={target(meta.href)}
+              onClick={() => scrollTo(meta.href)}
               target={meta?.target}
               className={index === lastIndex ? 'btn btn-solid btn-md' : 'drawer-nav-item'}
             >

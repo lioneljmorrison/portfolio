@@ -68,6 +68,18 @@ export interface ProjectLinkData {
 export interface Projects {
   [project: string]: {
     name: string;
+    // URL segment of the case-study page (/projects/<slug>); current (non-earlier) projects only.
+    slug?: string;
+    // One line shown on the card and under the page title.
+    tagline?: string;
+    client?: 'MRCOOL' | 'Personal';
+    // Stat tiles at the top of the case study.
+    results?: { value: string; label: string }[];
+    // 2-4 bullets for "The Approach", after `what`.
+    approach?: string[];
+    // Architecture diagram shown on the case-study page (public/assets/diagrams/<slug>.svg).
+    diagram?: { link: string; alt: string };
+    gallery?: { src: string; alt: string; caption: string }[];
     tldr?: string;
     problem?: string;
     what?: string;
@@ -76,6 +88,7 @@ export interface Projects {
     // Why a card has no links: shown as a muted line when it has none.
     access?: 'internal' | 'private';
     earlier?: boolean;
+    // Shown as "Role" in the Project Info aside; a {{TODO}} placeholder renders as is.
     role?: string;
     description?: string;
     techLabels?: TechLables[];

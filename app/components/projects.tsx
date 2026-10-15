@@ -2,8 +2,13 @@ import Link from 'next/link';
 import type { ProjectLinkData, Projects } from '../interfaces';
 import Image from 'next/image';
 import SectionHeader from './section-header';
+import { asset } from '../lib/asset';
 
 type ProjectEntry = Projects[string];
+
+export function projectTag(project: ProjectEntry): string {
+  return project.client === 'MRCOOL' ? 'Work · MRCOOL' : 'Personal';
+}
 
 function ProjectCard({ project, eager }: { project: ProjectEntry; eager?: boolean }) {
   const image = project.images?.['default'];
@@ -12,7 +17,7 @@ function ProjectCard({ project, eager }: { project: ProjectEntry; eager?: boolea
   return (
     <article className="project-card">
       <Image
-        src={image?.link ?? './assets/image-placeholder.png'}
+        src={asset(image?.link ?? './assets/image-placeholder.png')}
         width={1200}
         height={514}
         alt={image?.alt ?? `${project.name} screenshot`}
@@ -86,6 +91,38 @@ function ProjectCard({ project, eager }: { project: ProjectEntry; eager?: boolea
   );
 }
 
+// Current project: a lighter card that links to its case-study page.
+function ProjectTile({ project, eager }: { project: ProjectEntry; eager?: boolean }) {
+  const image = project.images?.['default'];
+
+  return (
+    <Link href={`/projects/${project.slug}`} className="project-tile">
+      <Image
+        src={asset(image?.link ?? './assets/image-placeholder.png')}
+        width={1200}
+        height={514}
+        alt={image?.alt ?? `${project.name} screenshot`}
+        loading={eager ? 'eager' : 'lazy'}
+        className="project-tile-img"
+      ></Image>
+      <div className="project-tile-body">
+        <span className="chip project-card-kind">{projectTag(project)}</span>
+        <h3 className="project-card-name">{project.name}</h3>
+        {project.tagline && <p className="project-tile-tagline">{project.tagline}</p>}
+        {project.techLabels && (
+          <ul className="chip-list">
+            {project.techLabels.slice(0, 4).map((label: string) => (
+              <li key={label} className="chip">
+                {label}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </Link>
+  );
+}
+
 export default function Projects({ anchor, data }: { anchor: string; data: Projects }) {
   const visible = Object.entries(data).filter(([, project]) => project?.disabled !== true);
   const projects = visible.filter(([, project]) => !project.earlier);
@@ -94,10 +131,14 @@ export default function Projects({ anchor, data }: { anchor: string; data: Proje
   return (
     <section id={anchor} className="section">
       <SectionHeader title="Projects"></SectionHeader>
-      <ul className="project-list">
+      <ul className="project-list project-grid">
         {projects.map(([key, project], idx: number) => (
           <li key={key}>
-            <ProjectCard project={project} eager={idx === 0} />
+            {project.slug ? (
+              <ProjectTile project={project} eager={idx < 2} />
+            ) : (
+              <ProjectCard project={project} eager={idx < 2} />
+            )}
           </li>
         ))}
       </ul>
