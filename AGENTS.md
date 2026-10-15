@@ -27,8 +27,8 @@ There are no tests. A change is verified by `npm run lint` and `npm run build` b
 ```
 app/layout.tsx              root layout: <html>, Inter font, page metadata (title, description), head script that applies the stored colour mode
 app/page.tsx                the only page: GA4 scripts, Chatbot, MainNav, then AboutMe, Experience, Projects
-app/data.ts                 all site content: aboutMe, navData, jobsData, projectData
-app/interfaces.ts           types for that content (AboutMe, Job, NavLinks, Projects, TechLables)
+app/data.ts                 all site content: aboutMe, navData, jobsData, projectData, contact
+app/interfaces.ts           types for that content (AboutMe, Contact, Job, NavLinks, Projects, TechLables)
 app/globals.css             CSS entry: imports the four files below, base then components (layer order)
 app/styles/tokens.css       plain-CSS design tokens: primitives and light/dark semantic tokens (custom properties only)
 app/styles/base.css         plain-CSS reset, type scale, .container/.grid, .card, .btn and form basics, built on the tokens

@@ -30,7 +30,9 @@ export interface Job {
 export interface AboutMe {
   intro: string;
   name: string;
+  role?: string;
   tldr: string;
+  pitch?: string;
   quote?: {
     text: string;
     author: string;
@@ -63,10 +65,19 @@ export interface Projects {
   [project: string]: {
     name: string;
     tldr?: string;
+    problem?: string;
+    role?: string;
     description?: string;
     techLabels?: TechLables[];
     images?: { [name: string]: { link: string; alt?: string; default?: boolean } };
     links?: ProjectLinks;
     disabled?: boolean;
   };
+}
+
+// github and linkedin are full URLs; email is a bare address (no mailto:).
+export interface Contact {
+  email?: string;
+  github?: string;
+  linkedin?: string;
 }
