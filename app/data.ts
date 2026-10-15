@@ -248,8 +248,29 @@ export const projectData: Projects = {
     what: "A graph-based API and MCP server behind MRCOOL's online system selector. It generates ~2.9M valid configurations with sub-ms responses and sizes systems with Manual J/S estimates from local winter design temperatures.",
     techLabels: ['Go', 'FalkorDB', 'MongoDB', 'Docker', 'MCP'],
     access: 'internal',
-    // Screenshot not supplied yet: expected ./assets/system-selector/screenshot.png
-    images: { default: { link: './assets/image-placeholder.png', alt: 'System Selector screenshot' } },
+    images: {
+      default: {
+        link: './assets/system-selector/zones.png',
+        alt: 'MRCOOL System Selector: picking rooms and zones on a floor plan, with a form for room size, air handler type and line-set length',
+      },
+    },
+    gallery: [
+      {
+        src: './assets/system-selector/intro.png',
+        alt: 'MRCOOL System Selector start screen asking whether you are a homeowner or a contractor',
+        caption: 'Start: choose homeowner or contractor',
+      },
+      {
+        src: './assets/system-selector/system.png',
+        alt: 'MRCOOL System Selector system view showing the condenser and two wall-mount indoor heads chosen for the zones, with the room form filled in',
+        caption: 'System view: the condenser and indoor heads chosen for the zones',
+      },
+      {
+        src: './assets/system-selector/results.png',
+        alt: 'MRCOOL System Selector results showing the matched bundle, its package specs and a QR code to copy and share',
+        caption: 'Results: the matched bundle, its specs and a shareable QR link',
+      },
+    ],
   },
   secretsManager: {
     name: 'Secrets Manager',
