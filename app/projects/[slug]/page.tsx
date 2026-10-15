@@ -44,7 +44,6 @@ export default async function CaseStudy({ params }: { params: Params }) {
   const prev = caseStudies[(index - 1 + caseStudies.length) % caseStudies.length];
   const next = caseStudies[(index + 1) % caseStudies.length];
   const image = project.images?.['default'];
-  const summary = [project.problem, project.what].filter(Boolean).join(' ');
 
   return (
     <>
@@ -66,8 +65,8 @@ export default async function CaseStudy({ params }: { params: Params }) {
 
         <div className="case-summary">
           <section className="case-text">
-            <h2 className="case-heading">Summary</h2>
-            <p>{summary}</p>
+            <h2 className="case-heading">The Challenge</h2>
+            <p>{project.problem}</p>
           </section>
           <aside className="card case-info" aria-label="Project info">
             <h2 className="case-heading">Project info</h2>
@@ -128,12 +127,6 @@ export default async function CaseStudy({ params }: { params: Params }) {
         )}
 
         <div className="case-body">
-          {project.problem && (
-            <section className="case-text">
-              <h2 className="case-heading">The Challenge</h2>
-              <p>{project.problem}</p>
-            </section>
-          )}
           {(project.what || project.approach) && (
             <section className="case-text">
               <h2 className="case-heading">The Approach</h2>

@@ -158,16 +158,10 @@ export const projectData: Projects = {
       { value: '1,524%', label: 'ROI' },
       { value: '1M+', label: 'requests per month' },
     ],
-    approach: [
-      'Replaces Cloudinary with an in-house enterprise asset platform.',
-      'Adds AI integrations, semantic search and an MCP server.',
-      'Serves 1M+ requests a month across mrcool.com and mrcooldiy.com.',
-    ],
     diagram: { link: './assets/diagrams/alembic.svg', alt: 'Alembic architecture diagram' },
     // eslint-disable-next-line quotes
     problem: "MRCOOL's product imagery and marketing assets lived in Cloudinary, a rented platform with costs and lock-in to match.",
     what: 'An in-house enterprise asset platform with AI integrations, semantic search and an MCP server, serving 1M+ requests a month across mrcool.com and mrcooldiy.com.',
-    detail: '93.8% annual cost savings; 1,524% ROI.',
     techLabels: ['Go', 'Next.js', 'Typesense', 'MongoDB', 'FalkorDB', 'DragonflyDB', 'Cloudflare R2', 'Docker'],
     access: 'internal',
     // Screenshot not supplied yet: expected ./assets/alembic-studio.png
@@ -184,16 +178,10 @@ export const projectData: Projects = {
       { value: '98.5%', label: 'cost reduction' },
       { value: '~$1.2K/yr', label: 'in data APIs' },
     ],
-    approach: [
-      'Ingests Search Console, GA4, Ahrefs, DataForSEO and PageSpeed data.',
-      'Flags backlink, keyword, cannibalization and accessibility issues.',
-      'Files LLM-generated recommendations as ClickUp tasks.',
-    ],
     diagram: { link: './assets/diagrams/pulse.svg', alt: 'Pulse architecture diagram' },
     // eslint-disable-next-line quotes
     problem: "MRCOOL paid an SEO agency $80K a year for reporting that arrived late and sat apart from the team's work queue.",
     what: 'Ingests Search Console, GA4, Ahrefs, DataForSEO and PageSpeed data; flags backlink, keyword, cannibalization and accessibility issues; and files LLM-generated recommendations as ClickUp tasks.',
-    detail: 'Runs on ~$1.2K/yr of data APIs: a 98.5% cost reduction.',
     techLabels: [
       'Go',
       'FalkorDB',
@@ -220,11 +208,6 @@ export const projectData: Projects = {
       { value: '~2.9M', label: 'valid configurations' },
       { value: 'sub-ms', label: 'responses' },
     ],
-    approach: [
-      'Models system configurations as a graph, served by an API and MCP server.',
-      'Generates ~2.9M valid configurations, including mixed wall-mount and cassette bundles.',
-      'Sizes systems with Manual J/S estimates from local winter design temperatures.',
-    ],
     diagram: { link: './assets/diagrams/system-selector.svg', alt: 'System Selector architecture diagram' },
     problem:
       // eslint-disable-next-line quotes
@@ -243,10 +226,6 @@ export const projectData: Projects = {
     tagline: 'Runtime secret injection so developers never handle shared credentials.',
     client: 'MRCOOL',
     role: '{{TODO: Lionel to confirm, e.g. Lead engineer & architect}}',
-    approach: [
-      'Injects secrets at runtime so developers never handle shared credentials.',
-      'Version 2 adds a locally encrypted credential store.',
-    ],
     diagram: { link: './assets/diagrams/secrets-manager.svg', alt: 'Secrets Manager architecture diagram' },
     problem: 'Developers were handling shared env vars, tokens and keys directly.',
     what: 'Injects secrets at runtime so developers never handle shared credentials; v2 adds a locally encrypted credential store.',
@@ -265,11 +244,6 @@ export const projectData: Projects = {
     results: [
       { value: '51', label: 'tasks in ~8 hours' },
       { value: '26', label: 'self-generated ideas' },
-    ],
-    approach: [
-      'An open-source Kanban workflow and MCP server.',
-      'Gives Claude persistent project memory between sessions.',
-      'Breaks work into bite-sized plans that are reviewable.',
     ],
     diagram: { link: './assets/diagrams/backpack.svg', alt: 'Backpack architecture diagram' },
     problem: 'AI coding agents forget the project between sessions and produce plans too big to review.',
@@ -290,11 +264,6 @@ export const projectData: Projects = {
     role: 'Creator',
     results: [
       { value: '~8 hours', label: 'to build' },
-    ],
-    approach: [
-      'An S3-compatible replacement for MinIO.',
-      'Chunking, deduplication and tar-packed small-file batching.',
-      'Includes recovery; built in Go on SQLite.',
     ],
     diagram: { link: './assets/diagrams/s3srv.svg', alt: 'S3srv architecture diagram' },
     problem: 'Self-hosted services needed S3-compatible object storage I fully own, without running MinIO.',
@@ -317,11 +286,6 @@ export const projectData: Projects = {
       { value: '~314 ms', label: 'end-to-end' },
       { value: '100%', label: 'local' },
     ],
-    approach: [
-      'System-wide dictation that never leaves the machine.',
-      'On-device transcription with whisper.cpp.',
-      'LLM cleanup with Qwen3-0.6B, ~314 ms end-to-end.',
-    ],
     diagram: { link: './assets/diagrams/wisper.svg', alt: 'Wisper architecture diagram' },
     // eslint-disable-next-line quotes
     problem: "Wispr Flow-style voice dictation isn't available on Windows and Linux in a form that runs locally.",
@@ -338,11 +302,6 @@ export const projectData: Projects = {
     tagline: 'A self-hosted digital asset manager.',
     client: 'Personal',
     role: 'Creator',
-    approach: [
-      'Labels, saved views, drag-and-drop, bundles, QR sharing and a dependency tree.',
-      'Self-hosted and publicly reachable through a Cloudflare Tunnel.',
-      'Go back end covered by an end-to-end test suite.',
-    ],
     diagram: { link: './assets/diagrams/squism.svg', alt: 'Squism architecture diagram' },
     problem: 'I wanted a self-hosted digital asset manager I fully control, without paying for a SaaS DAM.',
     what: 'A DAM with labels, saved views, drag-and-drop, bundles, QR sharing and a dependency tree. Self-hosted and publicly reachable through a Cloudflare Tunnel.',
