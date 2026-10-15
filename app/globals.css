@@ -1,4 +1,6 @@
 @import 'tailwindcss';
+@import './styles/tokens.css';
+@import './styles/base.css' layer(base);
 
 @theme {
   --breakpoint-*: initial;

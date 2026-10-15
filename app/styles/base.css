@@ -1,0 +1,422 @@
+/*
+  Base styles: reset, type scale, layout, card, button and form basics, all driven by tokens.css.
+
+  This file is imported into Tailwind's base layer (globals.css), so Tailwind utilities still win over
+  everything here while both coexist. Do not import it unlayered.
+  Breakpoints are literal because custom properties do not work in media queries:
+  sm 40rem, md 48rem, lg 64rem, xl 80rem.
+*/
+
+/* Reset */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  background-color: var(--surface-bg-default);
+  color: var(--text-body-default);
+  font-family: var(--font-family-sans);
+  font-size: 1rem;
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Type scale */
+
+.dh1,
+.dh2,
+.dh3 {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.05;
+  letter-spacing: normal;
+  color: var(--text-primary);
+}
+
+.dh1 { font-size: 3.5rem; }
+.dh2 { font-size: 3rem; }
+.dh3 { font-size: 2.5rem; }
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.1;
+  letter-spacing: normal;
+  color: var(--text-primary);
+  margin-bottom: 0.35em;
+}
+
+h1, .h1 { font-size: 2.25rem; }
+h2, .h2 { font-size: 2rem; }
+h3, .h3 { font-size: 1.75rem; line-height: 1.2; }
+h4, .h4 { font-size: 1.5rem; }
+h5, .h5 { font-size: 1.25rem; }
+h6, .h6 { font-size: 1.125rem; }
+
+.kicker,
+.kicker-sm {
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-bold);
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--text-primary);
+}
+
+.kicker { font-size: 0.875rem; }
+.kicker-sm { font-size: 0.75rem; }
+
+p, .p {
+  font-size: 1rem;
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5;
+  color: var(--text-body-default);
+  margin-bottom: var(--sp-16);
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+.p-lg { font-size: 1.125rem; line-height: 1.5; }
+.p-sm { font-size: 0.875rem; line-height: 1.5; }
+
+.label-lg { font-size: 1.125rem; line-height: 1; }
+.label { font-size: 1rem; line-height: 1; }
+.label-sm { font-size: 0.875rem; line-height: 1; }
+
+.meta-text {
+  font-size: 0.75rem;
+  line-height: 1.2;
+  color: var(--text-muted);
+}
+
+/*
+  Link colour applies to bare <a> and .link only. Links that carry their own classes (current nav and
+  project links) keep inheriting colour, as Tailwind's reset gives them, until their component moves over.
+*/
+a:not([class]),
+.link {
+  color: var(--text-link);
+  text-decoration: none;
+  transition: color 0.15s ease-in-out;
+}
+
+a:not([class]):hover,
+a:not([class]):focus,
+a:not([class]):active,
+.link:hover,
+.link:focus,
+.link:active {
+  color: var(--text-link-hover);
+}
+
+code, pre, kbd, samp {
+  font-family: var(--font-family-mono);
+  font-size: 0.875rem;
+}
+
+/* Larger type from 64rem up */
+@media (min-width: 64rem) {
+  .dh1 { font-size: 8rem; }
+  .dh2 { font-size: 6rem; }
+  .dh3 { font-size: 4.5rem; }
+
+  h1, .h1 { font-size: 3.75rem; }
+  h2, .h2 { font-size: 3rem; }
+  h3, .h3 { font-size: 2.25rem; }
+  h4, .h4 { font-size: 2rem; }
+  h5, .h5 { font-size: 1.5rem; }
+  h6, .h6 { font-size: 1.25rem; }
+
+  .p-lg { font-size: 1.25rem; }
+}
+
+/* Layout */
+
+.container {
+  width: 100%;
+  max-width: var(--container-xl);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--page-gutter);
+  padding-right: var(--page-gutter);
+}
+
+.container-xxs { max-width: var(--container-xxs); }
+.container-xs { max-width: var(--container-xs); }
+.container-sm { max-width: var(--container-sm); }
+.container-md { max-width: var(--container-md); }
+.container-lg { max-width: var(--container-lg); }
+.container-xl { max-width: var(--container-xl); }
+.container-xxl { max-width: var(--container-xxl); }
+
+/* 12 columns on desktop, 8 on tablet, 4 on phones; set by --page-columns below */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(var(--page-columns), minmax(0, 1fr));
+  column-gap: var(--page-gutter);
+  row-gap: var(--page-gutter);
+}
+
+.grid-span-1 { grid-column: span 1 / span 1; }
+.grid-span-2 { grid-column: span 2 / span 2; }
+.grid-span-3 { grid-column: span 3 / span 3; }
+.grid-span-4 { grid-column: span 4 / span 4; }
+.grid-span-6 { grid-column: span 6 / span 6; }
+.grid-span-8 { grid-column: span 8 / span 8; }
+.grid-span-9 { grid-column: span 9 / span 9; }
+.grid-span-12 { grid-column: span 12 / span 12; }
+
+@media (max-width: 39.94rem) {
+  :root {
+    --page-margin: 1rem;
+    --page-gutter: 1rem;
+    --page-columns: 4;
+  }
+}
+
+@media (min-width: 40rem) and (max-width: 47.94rem) {
+  :root {
+    --page-margin: 1.25rem;
+    --page-gutter: 1.25rem;
+    --page-columns: 8;
+  }
+}
+
+@media (min-width: 48rem) and (max-width: 79.94rem) {
+  :root {
+    --page-margin: 4rem;
+    --page-gutter: 1.25rem;
+    --page-columns: 12;
+  }
+}
+
+@media (min-width: 80rem) {
+  :root {
+    --page-margin: 7.5rem;
+    --page-gutter: 1.25rem;
+    --page-columns: 12;
+  }
+}
+
+/* Card */
+
+.card {
+  background-color: var(--surface-bg-card);
+  border: var(--border-width-1) solid var(--border-default);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--elevation-low);
+  padding: var(--sp-24);
+}
+
+.card-subtle {
+  background-color: var(--surface-bg-subtle);
+  border: var(--border-width-1) solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  padding: var(--sp-24);
+}
+
+/* Focus ring for keyboard users on interactive elements */
+:focus-visible {
+  outline: 3px solid var(--border-focus);
+  outline-offset: 2px;
+}
+
+/* Button: .btn plus a variant (-solid, -outline, -ghost) and a size (-sm, -md, -lg) */
+
+.btn {
+  /* State colours, derived from the semantic tokens so they follow light/dark */
+  --btn-solid-bg: var(--interactive-primary-rest);
+  --btn-solid-bg-hover: var(--interactive-primary-hover);
+  --btn-solid-bg-active: var(--interactive-primary-active);
+  --btn-solid-bg-disabled: var(--interactive-primary-disabled);
+  --btn-solid-border: var(--interactive-primary-rest);
+  --btn-solid-label: var(--color-white);
+
+  --btn-outline-border: var(--interactive-primary-rest);
+  --btn-outline-label: var(--interactive-primary-rest);
+  --btn-outline-bg-hover: color-mix(in srgb, var(--interactive-primary-rest) 10%, transparent);
+  --btn-outline-border-hover: var(--interactive-primary-hover);
+  --btn-outline-label-hover: var(--interactive-primary-hover);
+  --btn-outline-border-disabled: var(--interactive-primary-disabled);
+  --btn-outline-label-disabled: var(--interactive-primary-disabled);
+
+  --btn-ghost-label: var(--interactive-primary-rest);
+  --btn-ghost-bg-hover: color-mix(in srgb, var(--interactive-primary-rest) 10%, transparent);
+  --btn-ghost-label-hover: var(--interactive-primary-hover);
+  --btn-ghost-label-disabled: var(--interactive-primary-disabled);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  font-family: var(--font-family-sans);
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+  text-decoration: none;
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+  transition: all 0.15s ease-in-out;
+}
+
+/* White on pine-400 (dark mode rest colour) is too faint; use the dark inverse text there */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-mode="light"]) .btn {
+    --btn-solid-label: var(--text-inverse);
+  }
+}
+
+:root[data-mode="dark"] .btn {
+  --btn-solid-label: var(--text-inverse);
+}
+
+.btn-solid {
+  background-color: var(--btn-solid-bg);
+  border: var(--border-width-1) solid var(--btn-solid-border);
+  color: var(--btn-solid-label);
+  box-shadow: var(--elevation-low);
+}
+
+.btn-solid:hover:not(:disabled) {
+  background-color: var(--btn-solid-bg-hover);
+  border-color: var(--btn-solid-bg-hover);
+  color: var(--btn-solid-label);
+  box-shadow: var(--elevation-mid);
+}
+
+.btn-solid:active:not(:disabled) {
+  background-color: var(--btn-solid-bg-active);
+  border-color: var(--btn-solid-bg-active);
+}
+
+.btn-solid:disabled {
+  background-color: var(--btn-solid-bg-disabled);
+  border-color: var(--btn-solid-bg-disabled);
+  cursor: not-allowed;
+  opacity: 0.85;
+  box-shadow: none;
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: var(--border-width-1) solid var(--btn-outline-border);
+  color: var(--btn-outline-label);
+}
+
+.btn-outline:hover:not(:disabled) {
+  background-color: var(--btn-outline-bg-hover);
+  border-color: var(--btn-outline-border-hover);
+  color: var(--btn-outline-label-hover);
+}
+
+.btn-outline:active:not(:disabled) {
+  background-color: var(--btn-outline-bg-hover);
+}
+
+.btn-outline:disabled {
+  border-color: var(--btn-outline-border-disabled);
+  color: var(--btn-outline-label-disabled);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.btn-ghost {
+  background-color: transparent;
+  border: var(--border-width-1) solid transparent;
+  color: var(--btn-ghost-label);
+}
+
+.btn-ghost:hover:not(:disabled) {
+  background-color: var(--btn-ghost-bg-hover);
+  color: var(--btn-ghost-label-hover);
+}
+
+.btn-ghost:disabled {
+  color: var(--btn-ghost-label-disabled);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.btn-sm {
+  height: 30px;
+  font-size: 0.875rem;
+  padding: 4px 12px;
+  gap: 4px;
+}
+
+.btn-md {
+  height: 46px;
+  font-size: 1rem;
+  padding: 10px 24px;
+  gap: 6px;
+}
+
+.btn-lg {
+  height: 56px;
+  font-size: 1.125rem;
+  padding: 14px 28px;
+  gap: 10px;
+}
+
+/* Icon buttons: tighter horizontal padding */
+.btn-sm.has-icon { padding-left: 8px; padding-right: 8px; }
+.btn-md.has-icon { padding-left: 20px; padding-right: 20px; }
+.btn-lg.has-icon { padding-left: 24px; padding-right: 24px; }
+
+/* Form elements */
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='number'],
+input[type='search'],
+input[type='tel'],
+select,
+textarea {
+  width: 100%;
+  padding: var(--sp-12) var(--sp-16);
+  background-color: var(--surface-bg-default);
+  color: var(--text-primary);
+  border: var(--border-width-1) solid var(--border-default);
+  border-radius: var(--radius-md);
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: var(--border-focus);
+  box-shadow: var(--focus-ring);
+}

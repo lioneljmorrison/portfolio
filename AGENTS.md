@@ -29,14 +29,16 @@ app/layout.tsx              root layout: <html>, Inter font, page metadata (titl
 app/page.tsx                the only page: GA4 scripts, Chatbot, MainNav, then AboutMe, Experience, Projects
 app/data.ts                 all site content: aboutMe, navData, jobsData, projectData
 app/interfaces.ts           types for that content (AboutMe, Job, NavLinks, Projects, TechLables)
-app/globals.css             Tailwind 4 setup (`@import 'tailwindcss'`, `@theme` breakpoints) plus custom utilities (project-*, nav-button, ...)
+app/globals.css             Tailwind 4 setup (`@import 'tailwindcss'`, `@theme` breakpoints), imports of the two files below, plus custom utilities (project-*, nav-button, ...)
+app/styles/tokens.css       plain-CSS design tokens: primitives and light/dark semantic tokens (custom properties only)
+app/styles/base.css         plain-CSS reset, type scale, .container/.grid, .card, .btn and form basics, built on the tokens
 app/components/             one component per section, plus nav.tsx, section-header.tsx and chatbot.tsx
 public/assets/              project screenshots, referenced from data.ts as './assets/<file>.png'
 ```
 
 - **Content lives in `app/data.ts`, not in components.** Adding a job, project or nav link is an edit to `data.ts` (and `interfaces.ts` if the shape changes). Projects and nav links with `disabled: true` are hidden; a project without `images.default` shows `image-placeholder.png`. Projects alternate left/right layout by index.
 - **Sections are anchored by id** (`about`, `experience`, `projects`), passed as the `anchor` prop from `page.tsx`; nav links in `navData` scroll to them (`href: '#about'`, ...).
-- **Only `nav.tsx` is a client component** (`'use client'`, for the mobile menu state). Everything else renders at build time.
+- **Only `nav.tsx` and `experience.tsx` are client components** (`'use client'`, for the mobile menu and the selected-job state). Everything else renders at build time.
 - **Third-party scripts:** Google Analytics 4 (tag `G-14RLENLVJH`, inline in `app/page.tsx`) and the Tidio chat widget (`app/components/chatbot.tsx`). Don't remove or change either without being asked.
 
 ## Conventions
@@ -44,6 +46,8 @@ public/assets/              project screenshots, referenced from data.ts as './a
 - ESLint (`eslint.config.mjs`, extending `eslint-config-next/core-web-vitals`): single quotes, semicolons, 2-space indent, no multiple spaces. A string that needs an apostrophe uses double quotes with `// eslint-disable-next-line quotes` above it, as in `data.ts`.
 - Formatting follows `.vscode/settings.json`: Prettier with single quotes, print width 120.
 - Tailwind 4 is configured in CSS, not `tailwind.config.js` (removed); PostCSS uses `@tailwindcss/postcss` (`postcss.config.js`). The `@theme` block in `app/globals.css` clears the default breakpoints (`--breakpoint-*: initial`) and **replaces** them: `sm` 576px, `md` 960px, `lg` 1440px. There is no `xl` or `2xl`; keep the `initial` reset or the defaults return. The mobile/desktop nav switches at `md`.
+- **Design tokens (`app/styles/`).** Plain CSS being built up to replace Tailwind (components move over one at a time). `tokens.css` has two tiers: primitives (`--sp-*`, `--radius-*`, `--color-gray-*`, `--color-primary-*` pine, ...) and semantic tokens (`--surface-*`, `--text-*`, `--border-*`, `--interactive-*`, `--elevation-*`); components use the semantic ones. Light is the default on `:root`; dark applies under `prefers-color-scheme: dark` unless `<html data-mode="light">`, and always under `data-mode="dark"` (the dark block is written twice, keep both identical). Breakpoints in plain CSS are literal: sm 40rem, md 48rem, lg 64rem, xl 80rem.
+- **Cascade rule while Tailwind coexists.** Tailwind utilities live in cascade layers and unlayered CSS beats every layer, so `base.css` is imported with `layer(base)` in `globals.css` and must stay layered; `tokens.css` (custom properties only) may be unlayered. Token names such as `--color-gray-*` and `--radius-*` match Tailwind theme variables, so existing utilities pick up the token values. Link colour in `base.css` applies only to bare `<a>` and `.link`, so classed links keep inheriting.
 - Colours are the Tailwind gray/slate scale on a dark background (`bg-gray-700` page, `bg-gray-800` nav and chips).
 - Images go through `next/image` with `images: { unoptimized: true }`, which a static export needs. Keep asset paths relative (`./assets/...`).
 - `next.config.js` must stay a plain `.js`/`.cjs`/`.mjs` object literal: `actions/configure-pages` (`static_site_generator: next`) parses and rewrites it on the runner, and doesn't read `.ts`. `agentRules: false` stops Next writing into AGENTS.md during `next dev`.
