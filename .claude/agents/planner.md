@@ -24,9 +24,11 @@ Follow the repository guardrails in AGENTS.md:
   plus what to check in `npm run dev` at mobile and desktop widths for a
   visual change. There are no automated tests; if a step would benefit from
   one, say so rather than assuming a framework exists.
-- Plan within the stack as installed: Next.js 13.4 App Router, React 18,
-  plain CSS (`app/styles/`), static export (`output: 'export'`). No API routes, server
-  actions or middleware.
+- Plan within the stack as installed (see AGENTS.md for the stack): check the
+  installed versions in `package.json` and `node_modules/next/dist/docs/`
+  before reaching for newer APIs. Styling is plain CSS (`app/styles/`) and the
+  site is a static export (`output: 'export'`). No API routes, server actions
+  or middleware.
 - Content belongs in `app/data.ts` with its types in `app/interfaces.ts`;
   components stay presentational.
 - Every task branch starts from `dev` and merges back to `dev` by pull
