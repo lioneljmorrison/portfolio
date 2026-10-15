@@ -75,6 +75,7 @@
   --color-gray-300: #d4d4d4;
   --color-gray-400: #a3a3a3;
   --color-gray-500: #737373;
+  --color-gray-550: #6b6b6b; /* lightest grey that still passes AA (4.5:1) on gray-100 */
   --color-gray-600: #525252;
   --color-gray-700: #404040;
   --color-gray-800: #262626;
@@ -148,7 +149,7 @@
   --text-primary: var(--color-gray-900);
   --text-body-default: #333333;
   --text-secondary: var(--color-gray-600);
-  --text-muted: var(--color-gray-400);
+  --text-muted: var(--color-gray-550);
   --text-inverse: var(--color-white);
   --text-brand: var(--color-primary-600);
 
@@ -222,7 +223,7 @@
     --text-primary: var(--color-white);
     --text-body-default: var(--color-gray-200);
     --text-secondary: var(--color-gray-300);
-    --text-muted: var(--color-gray-500);
+    --text-muted: var(--color-gray-400);
     --text-inverse: var(--color-gray-900);
     --text-brand: var(--color-primary-400);
 
@@ -286,7 +287,7 @@
   --text-primary: var(--color-white);
   --text-body-default: var(--color-gray-200);
   --text-secondary: var(--color-gray-300);
-  --text-muted: var(--color-gray-500);
+  --text-muted: var(--color-gray-400);
   --text-inverse: var(--color-gray-900);
   --text-brand: var(--color-primary-400);
 

@@ -144,10 +144,8 @@
   margin-bottom: var(--sp-4);
 }
 
-/* --text-muted is too faint on white for 12px dates; use the secondary text colour */
 .exp-dates {
   margin-bottom: var(--sp-16);
-  color: var(--text-secondary);
 }
 
 .exp-highlights {
