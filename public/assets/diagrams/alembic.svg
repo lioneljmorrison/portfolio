@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 514" role="img" aria-label="alembic architecture diagram">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#7c8a99"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="514" fill="#8a97a6" fill-opacity=".12"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle" font-size="22" font-weight="600">
+    <g fill="#7c8a99" fill-opacity=".28" stroke="#7c8a99" stroke-width="2"><rect x="40" y="111" width="220" height="84" rx="14"/><rect x="40" y="215" width="220" height="84" rx="14"/><rect x="40" y="319" width="220" height="84" rx="14"/><rect x="490" y="215" width="220" height="84" rx="14"/><rect x="940" y="33" width="220" height="84" rx="14"/><rect x="940" y="124" width="220" height="84" rx="14"/><rect x="940" y="215" width="220" height="84" rx="14"/><rect x="940" y="306" width="220" height="84" rx="14"/><rect x="940" y="397" width="220" height="84" rx="14"/></g>
+    <g fill="none" stroke="#7c8a99" stroke-width="2.5" marker-end="url(#a)"><path d="M260 153 C371 153 371 257 482 257"/><path d="M260 257 C371 257 371 257 482 257"/><path d="M260 361 C371 361 371 257 482 257"/><path d="M710 257 C821 257 821 75 932 75"/><path d="M710 257 C821 257 821 166 932 166"/><path d="M710 257 C821 257 821 257 932 257"/><path d="M710 257 C821 257 821 348 932 348"/><path d="M710 257 C821 257 821 439 932 439"/></g>
+    <g fill="#6b7a8a" stroke="none"><text x="150" y="161">mrcool.com</text><text x="150" y="265">mrcooldiy.com</text><text x="150" y="369">AI agents (MCP)</text><text x="600" y="253">Go + Next.js</text><text x="600" y="281" font-size="16" font-weight="400">asset platform</text><text x="1050" y="83">Typesense</text><text x="1050" y="174">MongoDB</text><text x="1050" y="265">FalkorDB</text><text x="1050" y="356">DragonflyDB</text><text x="1050" y="447">Cloudflare R2</text></g>
+  </g>
+</svg>

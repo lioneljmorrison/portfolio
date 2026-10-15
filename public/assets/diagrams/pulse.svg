@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 514" role="img" aria-label="pulse architecture diagram">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0L10 5L0 10z" fill="#7c8a99"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="514" fill="#8a97a6" fill-opacity=".12"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle" font-size="22" font-weight="600">
+    <g fill="#7c8a99" fill-opacity=".28" stroke="#7c8a99" stroke-width="2"><rect x="40" y="33" width="205" height="84" rx="14"/><rect x="40" y="124" width="205" height="84" rx="14"/><rect x="40" y="215" width="205" height="84" rx="14"/><rect x="40" y="306" width="205" height="84" rx="14"/><rect x="40" y="397" width="205" height="84" rx="14"/><rect x="345" y="215" width="205" height="84" rx="14"/><rect x="650" y="163" width="205" height="84" rx="14"/><rect x="650" y="267" width="205" height="84" rx="14"/><rect x="955" y="215" width="205" height="84" rx="14"/></g>
+    <g fill="none" stroke="#7c8a99" stroke-width="2.5" marker-end="url(#a)"><path d="M245 75 C291 75 291 257 337 257"/><path d="M245 166 C291 166 291 257 337 257"/><path d="M245 257 C291 257 291 257 337 257"/><path d="M245 348 C291 348 291 257 337 257"/><path d="M245 439 C291 439 291 257 337 257"/><path d="M550 257 C596 257 596 205 642 205"/><path d="M550 257 C596 257 596 309 642 309"/><path d="M855 205 C901 205 901 257 947 257"/><path d="M855 309 C901 309 901 257 947 257"/></g>
+    <g fill="#6b7a8a" stroke="none"><text x="142.5" y="83">Search Console</text><text x="142.5" y="174">GA4</text><text x="142.5" y="265">Ahrefs</text><text x="142.5" y="356">DataForSEO</text><text x="142.5" y="447">PageSpeed</text><text x="447.5" y="253">Go</text><text x="447.5" y="281" font-size="16" font-weight="400">ingest + analysis</text><text x="752.5" y="213">FalkorDB</text><text x="752.5" y="317">Typesense</text><text x="1057.5" y="253">LLM</text><text x="1057.5" y="281" font-size="16" font-weight="400">files ClickUp tasks</text></g>
+  </g>
+</svg>
