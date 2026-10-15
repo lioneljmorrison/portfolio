@@ -158,13 +158,13 @@ export const projectData: Projects = {
       { value: '1,524%', label: 'ROI' },
       { value: '1M+', label: 'requests per month' },
     ],
-    diagram: { link: './assets/diagrams/alembic.svg', alt: 'Alembic architecture diagram' },
+    diagram: { link: './assets/alembic/architecture.svg', alt: 'Alembic architecture diagram' },
     // eslint-disable-next-line quotes
     problem: "MRCOOL's product imagery and marketing assets lived in Cloudinary, a rented platform with costs and lock-in to match.",
     what: 'An in-house enterprise asset platform with AI integrations, semantic search and an MCP server, serving 1M+ requests a month across mrcool.com and mrcooldiy.com.',
     techLabels: ['Go', 'Next.js', 'Typesense', 'MongoDB', 'FalkorDB', 'DragonflyDB', 'Cloudflare R2', 'Docker'],
     access: 'internal',
-    // Screenshot not supplied yet: expected ./assets/alembic-studio.png
+    // Screenshot not supplied yet: expected ./assets/alembic/screenshot.png
     images: { default: { link: './assets/image-placeholder.png', alt: 'Alembic screenshot' } },
   },
   pulse: {
@@ -178,7 +178,7 @@ export const projectData: Projects = {
       { value: '98.5%', label: 'cost reduction' },
       { value: '~$1.2K/yr', label: 'in data APIs' },
     ],
-    diagram: { link: './assets/diagrams/pulse.svg', alt: 'Pulse architecture diagram' },
+    diagram: { link: './assets/pulse/architecture.svg', alt: 'Pulse architecture diagram' },
     // eslint-disable-next-line quotes
     problem: "MRCOOL paid an SEO agency $80K a year for reporting that arrived late and sat apart from the team's work queue.",
     what: 'Ingests Search Console, GA4, Ahrefs, DataForSEO and PageSpeed data; flags backlink, keyword, cannibalization and accessibility issues; and files LLM-generated recommendations as ClickUp tasks.',
@@ -194,7 +194,7 @@ export const projectData: Projects = {
       'ClickUp API',
     ],
     access: 'internal',
-    // Screenshot not supplied yet: expected ./assets/pulse.png
+    // Screenshot not supplied yet: expected ./assets/pulse/screenshot.png
     images: { default: { link: './assets/image-placeholder.png', alt: 'Pulse screenshot' } },
   },
   systemSelector: {
@@ -208,7 +208,7 @@ export const projectData: Projects = {
       { value: '~2.9M', label: 'valid configurations' },
       { value: 'sub-ms', label: 'responses' },
     ],
-    diagram: { link: './assets/diagrams/system-selector.svg', alt: 'System Selector architecture diagram' },
+    diagram: { link: './assets/system-selector/architecture.svg', alt: 'System Selector architecture diagram' },
     problem:
       // eslint-disable-next-line quotes
       "Mini-split system configurations lived in a manually maintained 91K-row Excel sheet that couldn't handle mixed wall-mount and cassette bundles.",
@@ -216,7 +216,7 @@ export const projectData: Projects = {
     what: "A graph-based API and MCP server behind MRCOOL's online system selector. It generates ~2.9M valid configurations with sub-ms responses and sizes systems with Manual J/S estimates from local winter design temperatures.",
     techLabels: ['Go', 'FalkorDB', 'MongoDB', 'Docker', 'MCP'],
     access: 'internal',
-    // Screenshot not supplied yet: expected ./assets/system-selector.png
+    // Screenshot not supplied yet: expected ./assets/system-selector/screenshot.png
     images: { default: { link: './assets/image-placeholder.png', alt: 'System Selector screenshot' } },
   },
   secretsManager: {
@@ -226,12 +226,12 @@ export const projectData: Projects = {
     tagline: 'Runtime secret injection so developers never handle shared credentials.',
     client: 'MRCOOL',
     role: '{{TODO: Lionel to confirm, e.g. Lead engineer & architect}}',
-    diagram: { link: './assets/diagrams/secrets-manager.svg', alt: 'Secrets Manager architecture diagram' },
+    diagram: { link: './assets/secrets-manager/architecture.svg', alt: 'Secrets Manager architecture diagram' },
     problem: 'Developers were handling shared env vars, tokens and keys directly.',
     what: 'Injects secrets at runtime so developers never handle shared credentials; v2 adds a locally encrypted credential store.',
     techLabels: ['Go', 'MongoDB'],
     access: 'internal',
-    // Screenshot not supplied yet: expected ./assets/secrets-manager.png
+    // Screenshot not supplied yet: expected ./assets/secrets-manager/screenshot.png
     images: { default: { link: './assets/image-placeholder.png', alt: 'Secrets Manager screenshot' } },
   },
   backpack: {
@@ -245,7 +245,7 @@ export const projectData: Projects = {
       { value: '51', label: 'tasks in ~8 hours' },
       { value: '26', label: 'self-generated ideas' },
     ],
-    diagram: { link: './assets/diagrams/backpack.svg', alt: 'Backpack architecture diagram' },
+    diagram: { link: './assets/backpack/architecture.svg', alt: 'Backpack architecture diagram' },
     problem: 'AI coding agents forget the project between sessions and produce plans too big to review.',
     what: 'An open-source Kanban workflow and MCP server that gives Claude persistent project memory and bite-sized, reviewable plans.',
     techLabels: ['Go', 'SQLite', 'graph DB', 'MCP'],
@@ -254,7 +254,7 @@ export const projectData: Projects = {
     },
     images: {
       default: {
-        link: './assets/backpack.png',
+        link: './assets/backpack/kanban.png',
         alt: 'Backpack Kanban board: phase summary, an approval queue and story columns',
       },
     },
@@ -269,14 +269,14 @@ export const projectData: Projects = {
     results: [
       { value: '~8 hours', label: 'to build' },
     ],
-    diagram: { link: './assets/diagrams/s3srv.svg', alt: 'S3srv architecture diagram' },
+    diagram: { link: './assets/s3srv/architecture.svg', alt: 'S3srv architecture diagram' },
     problem: 'Self-hosted services needed S3-compatible object storage I fully own, without running MinIO.',
     what: 'An S3-compatible MinIO replacement with chunking, deduplication, tar-packed small-file batching and recovery.',
     // eslint-disable-next-line quotes
     detail: "Backpack's first run: 51 tasks done and 26 self-generated ideas in about 8 hours.",
     techLabels: ['Go', 'SQLite', 'Docker', 'S3 API'],
     access: 'private',
-    // Screenshot not supplied yet: expected ./assets/s3srv.png
+    // Screenshot not supplied yet: expected ./assets/s3srv/screenshot.png
     images: { default: { link: './assets/image-placeholder.png', alt: 'S3srv screenshot' } },
   },
   wisper: {
@@ -287,18 +287,18 @@ export const projectData: Projects = {
     client: 'Personal',
     role: 'Creator',
     results: [
-      { value: '~314 ms', label: 'end-to-end' },
+      { value: '422 ms', label: 'average latency, key release to text' },
       { value: '100%', label: 'local' },
     ],
-    diagram: { link: './assets/diagrams/wisper.svg', alt: 'Wisper architecture diagram' },
+    diagram: { link: './assets/wisper/architecture.svg', alt: 'Wisper architecture diagram' },
     // eslint-disable-next-line quotes
     problem: "Wispr Flow-style voice dictation isn't available on Windows and Linux in a form that runs locally.",
-    what: 'Privacy-first, system-wide dictation: on-device transcription (whisper.cpp) and LLM cleanup (Qwen3-0.6B) in ~314 ms end-to-end, fully local.',
+    what: 'Privacy-first, system-wide dictation: on-device transcription (whisper.cpp) and LLM cleanup (Qwen3-0.6B), about 422 ms on average from key release to pasted text, fully local.',
     techLabels: ['Go', 'whisper.cpp', 'Qwen3-0.6B'],
     access: 'private',
     images: {
       default: {
-        link: './assets/wisper.png',
+        link: './assets/wisper/dashboard.png',
         alt: 'Wisper dashboard: words per minute, latency, words dictated and a usage streak',
       },
     },
@@ -352,7 +352,7 @@ export const projectData: Projects = {
     tagline: 'A self-hosted digital asset manager.',
     client: 'Personal',
     role: 'Creator',
-    diagram: { link: './assets/diagrams/squism.svg', alt: 'Squism architecture diagram' },
+    diagram: { link: './assets/squism/architecture.svg', alt: 'Squism architecture diagram' },
     problem: 'I wanted a self-hosted digital asset manager I fully control, without paying for a SaaS DAM.',
     what: 'A DAM with labels, saved views, drag-and-drop, bundles, QR sharing and a dependency tree. Self-hosted and publicly reachable through a Cloudflare Tunnel.',
     detail: 'Go back end covered by an end-to-end test suite.',
@@ -361,7 +361,7 @@ export const projectData: Projects = {
       Live: { link: 'https://squism.net' },
     },
     access: 'private',
-    // Screenshot not supplied yet: expected ./assets/squism.png
+    // Screenshot not supplied yet: expected ./assets/squism/screenshot.png
     images: { default: { link: './assets/image-placeholder.png', alt: 'Squism screenshot' } },
   },
   partnerPortal: {
@@ -372,7 +372,7 @@ export const projectData: Projects = {
     // eslint-disable-next-line quotes
     what: "A Next.js partner portal running on a Raspberry Pi Zero 2W under PM2. SQLite is continuously replicated to Cloudflare R2 with Litestream, so the box is disposable and the data isn't.",
     techLabels: ['Next.js', 'SQLite', 'Litestream', 'Cloudflare R2', 'PM2', 'Raspberry Pi'],
-    // Screenshot not supplied yet: expected ./assets/partner-portal.png
+    // Screenshot not supplied yet: expected ./assets/partner-portal/screenshot.png
     images: { default: { link: './assets/image-placeholder.png', alt: 'Partner Portal screenshot' } },
     disabled: true,
   },
@@ -386,7 +386,7 @@ export const projectData: Projects = {
     techLabels: ['Go', 'Playwright', 'Vertex AI'],
     images: {
       default: {
-        link: './assets/scraper.svg',
+        link: './assets/retail-product-scraper/architecture.svg',
         alt: 'Diagram: a Playwright browser feeds embedded structured data or Vertex AI extraction into structured product output',
       },
     },
@@ -399,7 +399,7 @@ export const projectData: Projects = {
     links: {
       PDF: { link: 'https://drive.google.com/file/d/17TacmAkk3619XaTAuc0Ex3NuOnIS6ebI/view?usp=sharing' },
     },
-    images: { default: { link: './assets/clacks-tdd.png' } },
+    images: { default: { link: './assets/clacks/tdd.png' } },
     disabled: true,
   },
   theWatch: {
@@ -414,7 +414,7 @@ export const projectData: Projects = {
       TDD: { link: 'https://drive.google.com/file/d/1webghPkOzo18Y6dtgm8XJuzCnVOBp6x6/view?usp=drive_link' },
       Live: { link: 'https://the-watch-nextjs.vercel.app/' },
     },
-    images: { default: { link: './assets/the-watch.png' } },
+    images: { default: { link: './assets/the-watch/dashboard.png' } },
     earlier: true,
   },
   clacks: {
@@ -427,7 +427,7 @@ export const projectData: Projects = {
       Mock: { link: 'https://stackblitz-starters-cpngaw.stackblitz.io' },
       TDD: { link: 'https://drive.google.com/file/d/17TacmAkk3619XaTAuc0Ex3NuOnIS6ebI/view?usp=sharing' },
     },
-    images: { default: { link: './assets/clacks-mock.png' } },
+    images: { default: { link: './assets/clacks/mockup.png' } },
     earlier: true,
   },
   stardust: {

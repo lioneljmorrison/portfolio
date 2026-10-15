@@ -77,7 +77,7 @@ export interface Projects {
     results?: { value: string; label: string }[];
     // 2-4 bullets for "The Approach", after `what`.
     approach?: string[];
-    // Architecture diagram shown on the case-study page (public/assets/diagrams/<slug>.svg).
+    // Architecture diagram shown on the case-study page (public/assets/<slug>/architecture.svg).
     diagram?: { link: string; alt: string };
     gallery?: { src: string; alt: string; caption: string }[];
     tldr?: string;
