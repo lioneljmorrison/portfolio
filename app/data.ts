@@ -1,4 +1,4 @@
-import { AboutMe, Job, NavLinks, Projects } from './interfaces';
+import { AboutMe, Contact, Job, NavLinks, Projects } from './interfaces';
 
 export const jobsData: Job[] = [
   {
@@ -65,6 +65,7 @@ export const aboutMe: AboutMe = {
   // eslint-disable-next-line quotes
   intro: "Hi, I'm",
   name: 'Lionel Morrison',
+  role: 'Full Stack Developer',
   tldr: 'Experienced Full Stack Developer focused on Continuous Integration, Continuous Development, developing APIs, and adding a sprinkle of Magic to web applications.',
   skillsTitle: 'Recent Technology Stack',
   skills: [
@@ -83,6 +84,8 @@ export const aboutMe: AboutMe = {
     text: 'Any sufficiently advanced technology is indistinguishable from magic',
   },
 };
+
+export const contact: Contact = {};
 
 export const navData: NavLinks = {
   'About Me': {
@@ -117,7 +120,8 @@ export const projectData: Projects = {
   },
   clacks: {
     name: 'Clacks (Mockup)',
-    tldr: 'High-fidelity mockup of the Clacks Technical Design Document (TDD) based on Google Chat, was created using Angular and SCSS in StackBlitz with flexable layout options. Nb. This is non-functional mock',
+    tldr: 'High-fidelity mockup of the Clacks Technical Design Document (TDD) based on Google Chat, was created using Angular and SCSS in StackBlitz with flexible layout options. Nb. This is non-functional mock',
+    problem: 'A chat client based on Google Chat needed to be seen, not only described in a design document.',
     techLabels: ['TypeScript', 'SCSS', 'Angular', 'StackBlitz'],
     links: {
       StackBlitz: { link: 'https://stackblitz.com/edit/stackblitz-starters-cpngaw?file=src%2Fmain.ts' },
@@ -129,6 +133,7 @@ export const projectData: Projects = {
   theWatch: {
     name: 'The Watch',
     tldr: 'Born out of need. This project was developed for a local business that needed to monitor its fridges and freezers and alert staff.',
+    problem: 'A local business needed to monitor its fridges and freezers and alert staff.',
     techLabels: ['Tailwind CSS', 'Next.js', 'Lambda', 'DynamoDB', 'AWS API', 'Vercel', 'SwitchBot API'],
     links: {
       Figma: {
@@ -141,7 +146,8 @@ export const projectData: Projects = {
   },
   portfolio: {
     name: 'Portfolio v1',
-    tldr: 'Created as a way to learn Tailwind CSS. Its is a living project as it fundementally serves as my resume.',
+    tldr: 'Created as a way to learn Tailwind CSS. It is a living project as it fundamentally serves as my resume.',
+    problem: 'I needed a way to learn the stack that doubles as a living resume.',
     techLabels: ['Tailwind CSS', 'GitHub Actions', 'Nest.js', 'React'],
     links: {
       GitHub: { link: 'https://github.com/lioneljmorrison/portfolio' },
