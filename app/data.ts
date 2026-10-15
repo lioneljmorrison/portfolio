@@ -164,8 +164,29 @@ export const projectData: Projects = {
     what: 'An in-house enterprise asset platform with AI integrations, semantic search and an MCP server, serving 1M+ requests a month across mrcool.com and mrcooldiy.com.',
     techLabels: ['Go', 'Next.js', 'Typesense', 'MongoDB', 'FalkorDB', 'DragonflyDB', 'Cloudflare R2', 'Docker'],
     access: 'internal',
-    // Screenshot not supplied yet: expected ./assets/alembic/screenshot.png
-    images: { default: { link: './assets/image-placeholder.png', alt: 'Alembic screenshot' } },
+    images: {
+      default: {
+        link: './assets/alembic/asset-grid.png',
+        alt: 'Alembic Studio asset browser: a grid of MRCOOL product and lifestyle images with groups, labels and search',
+      },
+    },
+    gallery: [
+      {
+        src: './assets/alembic/manage.png',
+        alt: 'Alembic Studio Manage page: cards for workspaces, users, presets, API keys, webhooks, audit log and more',
+        caption: 'Manage: workspaces, users, presets, API keys, webhooks, audit log and more',
+      },
+      {
+        src: './assets/alembic/asset-detail.png',
+        alt: 'Asset detail flyout showing type, size, dimensions and upload dates beside the asset grid',
+        caption: 'Asset detail: metadata and dimensions',
+      },
+      {
+        src: './assets/alembic/asset-colours.png',
+        alt: 'Colour analysis panel listing predominant colours and top hex colours with percentages for an asset',
+        caption: 'Colour analysis: predominant and top colours extracted from each asset',
+      },
+    ],
   },
   pulse: {
     name: 'Pulse',
@@ -194,8 +215,19 @@ export const projectData: Projects = {
       'ClickUp API',
     ],
     access: 'internal',
-    // Screenshot not supplied yet: expected ./assets/pulse/screenshot.png
-    images: { default: { link: './assets/image-placeholder.png', alt: 'Pulse screenshot' } },
+    images: {
+      default: {
+        link: './assets/pulse/sitemap-health.png',
+        alt: 'Pulse sitemap health: pages listed in the sitemap that are broken, redirecting or set not to index',
+      },
+    },
+    gallery: [
+      {
+        src: './assets/pulse/product-catalogue.png',
+        alt: 'Pulse product catalogue: products discovered from the sitemap crawl, with category and entity',
+        caption: 'Product catalogue: products discovered from the sitemap crawl, with category and entity',
+      },
+    ],
   },
   systemSelector: {
     name: 'System Selector',
@@ -231,8 +263,13 @@ export const projectData: Projects = {
     what: 'Injects secrets at runtime so developers never handle shared credentials; v2 adds a locally encrypted credential store.',
     techLabels: ['Go', 'MongoDB'],
     access: 'internal',
-    // Screenshot not supplied yet: expected ./assets/secrets-manager/screenshot.png
-    images: { default: { link: './assets/image-placeholder.png', alt: 'Secrets Manager screenshot' } },
+    images: {
+      default: {
+        link: './assets/secrets-manager/web-ui.png',
+        // eslint-disable-next-line quotes
+        alt: "Secrets Manager: a project's environments and variables, with every value masked",
+      },
+    },
   },
   backpack: {
     name: 'Backpack',
