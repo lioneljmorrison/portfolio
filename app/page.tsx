@@ -22,11 +22,11 @@ export default function Home() {
       </Script>
       <Chatbot></Chatbot>
       <MainNav data={navData} name={aboutMe.name}></MainNav>
-      <div className="w-auto p-4 md:p-6 bg-gray-700">
+      <main className="container container-xl page-main">
         <AboutMe anchor="about" data={aboutMe}></AboutMe>
         <Experience anchor="experience" jobs={jobsData as Job[]}></Experience>
         <Projects anchor="projects" data={projectData}></Projects>
-      </div>
+      </main>
     </>
   );
 }
