@@ -1,5 +1,5 @@
 /*
-  Sections: About Me, Experience and Projects, plus the shared .chip, built on tokens.css and base.css.
+  Sections: Hero, Experience and Projects, plus the shared .chip, built on tokens.css and base.css.
 
   Imported into the components layer (globals.css), like layout.css, so it beats base.css. Do not import it
   unlayered.
@@ -16,72 +16,108 @@
   padding-bottom: var(--sp-32);
 }
 
-/* About Me */
+/* Hero: role, name, pitch and calls to action beside a card with the stack and quote. One column on phones;
+   from 48rem a 7fr/5fr grid with the card on the bottom edge. Uses the full container width, not .section. */
 
-.about-intro {
-  margin-bottom: var(--sp-4);
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-32);
+  padding-top: var(--sp-48);
+  padding-bottom: var(--sp-48);
+}
+
+.hero-kicker {
+  margin-bottom: var(--sp-8);
+  color: var(--text-brand);
+  letter-spacing: 0.08em;
+}
+
+.hero-name {
+  margin-bottom: var(--sp-16);
+  font-size: 2.5rem;
+  line-height: 1.05;
+}
+
+.hero-pitch {
+  max-width: 34rem;
+  margin-bottom: var(--sp-24);
+}
+
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-12);
+}
+
+.hero-card {
+  padding: var(--sp-24);
+  border: var(--border-width-1) solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-bg-subtle);
+}
+
+.hero-card-title {
+  margin-bottom: var(--sp-12);
   color: var(--text-secondary);
 }
 
-.about-name {
-  margin-bottom: var(--sp-24);
-  color: var(--text-brand);
+.hero-quote {
+  margin: var(--sp-16) 0 0;
 }
 
-.about-tldr {
-  color: var(--text-body-default);
-  margin-bottom: var(--sp-32);
-}
-
-.about-quote {
-  display: flex;
-  align-items: flex-start;
-  gap: var(--sp-16);
-  margin: 0 0 var(--sp-32);
-  color: var(--text-body-default);
-}
-
-.about-quote-mark {
-  flex: none;
-  width: 1.75rem;
-  height: 1.75rem;
-  fill: currentColor;
-  color: var(--text-brand);
-}
-
-.about-quote-body {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-.about-quote blockquote {
+.hero-quote blockquote {
   margin: 0;
 }
 
-.about-quote figcaption {
+.hero-quote blockquote p {
+  margin: 0;
+  color: var(--text-body-default);
+  font-size: 0.9375rem;
+  quotes: '\201C' '\201D';
+}
+
+.hero-quote blockquote p::before {
+  content: open-quote;
+}
+
+.hero-quote blockquote p::after {
+  content: close-quote;
+}
+
+.hero-quote figcaption {
   margin-top: var(--sp-8);
   color: var(--text-secondary);
 }
 
-.skills-title {
-  margin-bottom: var(--sp-12);
-  color: var(--text-secondary);
-  font-size: 1.125rem;
+@media (min-width: 48rem) {
+  .hero {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: var(--sp-64);
+    padding-top: var(--sp-96);
+    padding-bottom: var(--sp-96);
+  }
+
+  .hero-name {
+    font-size: 4.5rem;
+  }
+
+  .hero-pitch {
+    font-size: 1.25rem;
+  }
+
+  .hero-card {
+    align-self: end;
+  }
 }
 
 /* Chip: a pill label; shared by skills here and project tech labels in Projects */
 
 .chip-list {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: wrap;
   gap: var(--sp-8);
   list-style: none;
-}
-
-@media (min-width: 48rem) {
-  .chip-list {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-  }
 }
 
 .chip {
@@ -237,7 +273,7 @@
   font-size: 0.875rem;
 }
 
-/* Project tech labels reuse .chip; a wrapping row rather than About Me's fixed grid */
+/* Project tech labels reuse .chip; also a wrapping row, like the hero's */
 .project-labels,
 .project-links {
   display: flex;
