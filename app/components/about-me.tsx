@@ -1,4 +1,4 @@
-import { AboutMe } from '../interfaces';
+import type { AboutMe } from '../interfaces';
 
 export default function AboutMe({ anchor, data }: { anchor: string; data: AboutMe }) {
   return (

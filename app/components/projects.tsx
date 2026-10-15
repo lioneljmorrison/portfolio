@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ProjectLinkData, ProjectLinks, Projects, TechLables } from '../interfaces';
+import type { ProjectLinkData, ProjectLinks, Projects, TechLables } from '../interfaces';
 import Image from 'next/image';
 import SectionHeader from './section-header';
 
