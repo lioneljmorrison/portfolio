@@ -51,7 +51,7 @@ export default function Projects({ anchor, data }: { anchor: string; data: Proje
               width={500}
               height={250}
               alt="Alt Text"
-              loading="lazy"
+              loading={idx === 0 ? 'eager' : 'lazy'}
               className={`project-img ${odd ? 'project-left' : 'project-right'}`}
             ></Image>
             <div className={`project-tldr ${!odd ? 'project-left' : 'project-right'}`}>{project.tldr}</div>
