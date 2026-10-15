@@ -2,6 +2,7 @@
 @import './styles/tokens.css';
 @import './styles/base.css' layer(base);
 @import './styles/layout.css' layer(components);
+@import './styles/sections.css' layer(components);
 
 @theme {
   --breakpoint-*: initial;
