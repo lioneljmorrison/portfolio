@@ -2,7 +2,7 @@
 
 ## What this is
 
-Lionel Morrison's personal portfolio: a single-page Next.js site (About Me, Experience, Projects) styled with plain CSS design tokens, statically exported and hosted on GitHub Pages.
+Lionel Morrison's personal portfolio: a single-page Next.js site (hero, Experience, Projects) styled with plain CSS design tokens, statically exported and hosted on GitHub Pages.
 
 This is Next.js 16 (App Router, Turbopack) and React 19 on Node 24, with TypeScript 5.9 (typescript-eslint doesn't yet support TypeScript 7). Check what the installed version supports (`node_modules/next/dist/docs/`, or the Next 16 docs) before reaching for newer APIs.
 
@@ -26,19 +26,20 @@ There are no tests. A change is verified by `npm run lint` and `npm run build` b
 
 ```
 app/layout.tsx              root layout: <html>, Inter font, page metadata (title, description), head script that applies the stored colour mode
-app/page.tsx                the only page: GA4 scripts, Chatbot, MainNav, then AboutMe, Experience, Projects
+app/page.tsx                the only page: GA4 scripts, Chatbot, MainNav, then Hero, Experience, Projects
 app/data.ts                 all site content: aboutMe, navData, jobsData, projectData, contact
 app/interfaces.ts           types for that content (AboutMe, Contact, Job, NavLinks, Projects, TechLables)
 app/globals.css             CSS entry: imports the four files below, base then components (layer order)
 app/styles/tokens.css       plain-CSS design tokens: primitives and light/dark semantic tokens (custom properties only)
 app/styles/base.css         plain-CSS reset, type scale, .container/.grid, .card, .btn and form basics, built on the tokens
 app/styles/layout.css       plain-CSS sticky header, mobile drawer, page shell (.page-main) and section titles; components layer
-app/styles/sections.css     plain-CSS styles for About Me, Experience (tabs), Projects (overlapping grid) and the shared .section and .chip; components layer
+app/styles/sections.css     plain-CSS styles for the Hero, Experience (tabs), Projects (overlapping grid) and the shared .section and .chip; components layer
 app/components/             one component per section, plus nav.tsx, section-header.tsx and chatbot.tsx
 public/assets/              project screenshots, referenced from data.ts as './assets/<file>.png'
 ```
 
 - **Content lives in `app/data.ts`, not in components.** Adding a job, project or nav link is an edit to `data.ts` (and `interfaces.ts` if the shape changes). Projects and nav links with `disabled: true` are hidden; a project without `images.default` shows `image-placeholder.png`. Projects alternate left/right layout by index.
+- **The hero (`app/components/hero.tsx`)** shows `aboutMe.role`, name (the page's h1), `pitch` (falling back to `tldr`) and a See projects button, with skills and the quote in a side card. The Contact me button renders only when the `contact` export has a non-empty value. `aboutMe.intro` is no longer rendered.
 - **Sections are anchored by id** (`about`, `experience`, `projects`), passed as the `anchor` prop from `page.tsx`; nav links in `navData` scroll to them (`href: '#about'`, ...).
 - **Only `nav.tsx`, `experience.tsx` and `theme-toggle.tsx` are client components** (`'use client'`, for the mobile menu, the selected-job state and the colour-mode toggle). Everything else renders at build time.
 - **Colour mode:** follows the OS until the header toggle is pressed, then the choice is stored in `localStorage` (`theme-mode`) and set as `data-mode` on `<html>`. `layout.tsx` has an inline `<script>` in `<head>` that applies the stored value before first paint (no flash); it must stay tiny and dependency-free, and `<html>` carries `suppressHydrationWarning` for it. The toggle's icon is chosen in CSS, so the server HTML is the same for everyone.
