@@ -26,7 +26,7 @@ There are no tests. A change is verified by `npm run lint` and `npm run build` b
 
 ```
 app/layout.tsx              root layout: <html>, Inter font, page metadata (title, description, Open Graph and Twitter card, all read from `siteMeta` in `data.ts`), head script that applies the stored colour mode
-app/page.tsx                the home page: GA4 scripts, MainNav, then Hero, About, Experience, Projects
+app/page.tsx                the home page: MainNav, then Hero, About, Experience, Projects
 app/projects/[slug]/page.tsx  case-study page per current project (static: generateStaticParams, dynamicParams = false, per-page metadata)
 app/lib/asset.ts            asset(path): root-relative, basePath-aware URL for files in public/
 app/data.ts                 all site content: aboutMe, navData, jobsData, projectData, contact
@@ -47,7 +47,7 @@ public/assets/              project screenshots (and the scraper.svg diagram), r
 - **Sections are anchored by id** (`about` is the About section; `experience`, `projects`, and `contact` on the footer), passed as the `anchor` prop from `page.tsx`; nav links in `navData` scroll to them (`href: '#about'`, ...). The footer (`footer.tsx`, styles in `layout.css`) shows an email button, GitHub and LinkedIn buttons and the Resume link (`resumeUrl`), each only when set; the Contact nav link is enabled now that `contact` has values (set `disabled: true` on it to hide it again).
 - **Only `nav.tsx` and `theme-toggle.tsx` are client components** (`'use client'`, for the mobile menu and the colour-mode toggle). Everything else renders at build time.
 - **Colour mode:** follows the OS until the header toggle is pressed, then the choice is stored in `localStorage` (`theme-mode`) and set as `data-mode` on `<html>`. `layout.tsx` has an inline `<script>` in `<head>` that applies the stored value before first paint (no flash); it must stay tiny and dependency-free, and `<html>` carries `suppressHydrationWarning` for it. The toggle's icon is chosen in CSS, so the server HTML is the same for everyone.
-- **Third-party scripts:** Google Analytics 4 (tag `G-14RLENLVJH`, inline in `app/page.tsx`). Don't remove or change it without being asked.
+- **No third-party scripts:** the site loads no analytics, chat or other third-party scripts. Adding one is a deliberate change that needs a plan and approval.
 
 ## Conventions
 
