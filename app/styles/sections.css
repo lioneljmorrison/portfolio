@@ -270,8 +270,30 @@
   padding: var(--sp-20);
 }
 
-.project-card-name {
+.project-card-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-8) var(--sp-12);
   margin-bottom: var(--sp-16);
+}
+
+/* Work/Personal tag: a chip, outlined so it reads differently from the filled stack chips */
+.project-card-kind {
+  border: var(--border-width-1) solid var(--border-default);
+  background-color: transparent;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.project-card-detail {
+  margin-top: var(--sp-16);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.project-card-name {
   color: var(--text-primary);
   font-size: 1.5rem;
 }
@@ -315,4 +337,22 @@
     gap: var(--sp-32);
     padding: var(--sp-32);
   }
+}
+
+/* Earlier work: a native disclosure below the main list holding older projects */
+
+.earlier-work {
+  margin-top: var(--sp-32);
+}
+
+.earlier-work-summary {
+  display: inline-block;
+  padding: var(--sp-8) 0;
+  color: var(--text-primary);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+}
+
+.earlier-work[open] > .earlier-work-summary {
+  margin-bottom: var(--sp-16);
 }

@@ -66,6 +66,10 @@ export interface Projects {
     name: string;
     tldr?: string;
     problem?: string;
+    what?: string;
+    detail?: string;
+    kind?: 'work' | 'personal';
+    earlier?: boolean;
     role?: string;
     description?: string;
     techLabels?: TechLables[];

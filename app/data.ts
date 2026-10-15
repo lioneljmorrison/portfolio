@@ -111,6 +111,83 @@ export const navData: NavLinks = {
 };
 
 export const projectData: Projects = {
+  // Work projects stay `disabled: true` until they are cleared for public view.
+  pulse: {
+    name: 'Pulse',
+    kind: 'work',
+    problem:
+      // eslint-disable-next-line quotes
+      "SEO reporting was outsourced to an agency, and the insight arrived late, generic and disconnected from the team's actual work queue.",
+    what: 'Pulls Search Console, GA4, Ahrefs and PageSpeed data into one graph-backed model, surfaces SEO and AI-search opportunities, and turns them into ClickUp tasks.',
+    techLabels: ['Go', 'FalkorDB', 'Typesense', 'GA4 API', 'Search Console API', 'Ahrefs API', 'ClickUp API'],
+    // Screenshot not supplied yet: expected ./assets/pulse.png
+    images: { default: { link: './assets/image-placeholder.png', alt: 'Pulse screenshot' } },
+    disabled: true,
+  },
+  alembic: {
+    name: 'Alembic Studio',
+    kind: 'work',
+    // eslint-disable-next-line quotes
+    problem: "MRCOOL's product imagery and marketing assets lived in a rented DAM (Cloudinary), with cost and lock-in to match.",
+    what: 'An internally owned DAM. Teams upload, organize, search and publish assets across workspaces; partners get public or PIN-protected release pages, no account needed.',
+    techLabels: ['Go', 'Next.js', 'Docker Compose', 'Cloudflare Tunnel', 'GitHub Actions', 'GHCR'],
+    // Screenshot not supplied yet: expected ./assets/alembic-studio.png
+    images: { default: { link: './assets/image-placeholder.png', alt: 'Alembic Studio screenshot' } },
+    disabled: true,
+  },
+  squism: {
+    name: 'Squism',
+    kind: 'personal',
+    problem: 'I wanted a self-hosted digital asset manager I fully control, without paying for a SaaS DAM.',
+    what: 'A DAM with labels, saved views, drag-and-drop, bundles, QR sharing and a dependency tree. Self-hosted and publicly reachable through a Cloudflare Tunnel.',
+    detail: 'Go back end covered by an end-to-end test suite.',
+    techLabels: ['Go', 'Next.js 16', 'SQLite', 'Docker Compose', 'GHCR', 'Cloudflare Tunnel'],
+    links: {
+      Live: { link: 'https://squism.net' },
+      // TODO: GitHub repo URL pending
+    },
+    // Screenshot not supplied yet: expected ./assets/squism.png
+    images: { default: { link: './assets/image-placeholder.png', alt: 'Squism screenshot' } },
+  },
+  wisper: {
+    name: 'Wisper',
+    kind: 'personal',
+    // eslint-disable-next-line quotes
+    problem: "Wispr Flow-style voice dictation isn't available on Windows and Linux in a form that runs locally.",
+    what: 'System-wide dictation with local speech-to-text (whisper.cpp) plus a small local model that cleans up the transcript. Optionally routes to a self-hosted OpenAI-compatible endpoint.',
+    techLabels: ['Go', 'whisper.cpp', 'Qwen3-0.6B', 'OpenAI-compatible API'],
+    // TODO: GitHub repo URL pending (add a GitHub link)
+    // Screenshot not supplied yet: expected ./assets/wisper.png
+    images: { default: { link: './assets/image-placeholder.png', alt: 'Wisper screenshot' } },
+  },
+  partnerPortal: {
+    name: 'Partner Portal',
+    kind: 'work',
+    // eslint-disable-next-line quotes
+    problem: "Partners needed a portal, but the job didn't justify cloud infrastructure costs.",
+    // eslint-disable-next-line quotes
+    what: "A Next.js partner portal running on a Raspberry Pi Zero 2W under PM2. SQLite is continuously replicated to Cloudflare R2 with Litestream, so the box is disposable and the data isn't.",
+    techLabels: ['Next.js', 'SQLite', 'Litestream', 'Cloudflare R2', 'PM2', 'Raspberry Pi'],
+    // Screenshot not supplied yet: expected ./assets/partner-portal.png
+    images: { default: { link: './assets/image-placeholder.png', alt: 'Partner Portal screenshot' } },
+    disabled: true,
+  },
+  scraper: {
+    name: 'Retail Product Scraper',
+    kind: 'work',
+    // eslint-disable-next-line quotes
+    problem: "Product listings on retailer sites drift from the source of truth, and checking them by hand doesn't scale.",
+    // eslint-disable-next-line quotes
+    what: "Drives real browsers with Playwright, prefers each retailer's embedded structured data where it exists (e.g. Apollo/GraphQL cache blobs), and falls back to Vertex AI with Google Search grounding for structured extraction.",
+    techLabels: ['Go', 'Playwright', 'Vertex AI'],
+    images: {
+      default: {
+        link: './assets/scraper.svg',
+        alt: 'Diagram: a Playwright browser feeds embedded structured data or Vertex AI extraction into structured product output',
+      },
+    },
+    disabled: true,
+  },
   'clacks-tdd': {
     name: 'Clacks TTD',
     tldr: 'Technical design document created for a chat client based on Google Chat',
@@ -120,18 +197,6 @@ export const projectData: Projects = {
     },
     images: { default: { link: './assets/clacks-tdd.png' } },
     disabled: true,
-  },
-  clacks: {
-    name: 'Clacks (Mockup)',
-    tldr: 'High-fidelity mockup of the Clacks Technical Design Document (TDD) based on Google Chat, was created using Angular and SCSS in StackBlitz with flexible layout options. Nb. This is non-functional mock',
-    problem: 'A chat client based on Google Chat needed to be seen, not only described in a design document.',
-    techLabels: ['TypeScript', 'SCSS', 'Angular', 'StackBlitz'],
-    links: {
-      StackBlitz: { link: 'https://stackblitz.com/edit/stackblitz-starters-cpngaw?file=src%2Fmain.ts' },
-      Mock: { link: 'https://stackblitz-starters-cpngaw.stackblitz.io' },
-      TDD: { link: 'https://drive.google.com/file/d/17TacmAkk3619XaTAuc0Ex3NuOnIS6ebI/view?usp=sharing' },
-    },
-    images: { default: { link: './assets/clacks-mock.png' } },
   },
   theWatch: {
     name: 'The Watch',
@@ -146,16 +211,20 @@ export const projectData: Projects = {
       Live: { link: 'https://the-watch-nextjs.vercel.app/' },
     },
     images: { default: { link: './assets/the-watch.png' } },
+    earlier: true,
   },
-  portfolio: {
-    name: 'Portfolio v1',
-    tldr: 'Created as a way to learn Tailwind CSS. It is a living project as it fundamentally serves as my resume.',
-    problem: 'I needed a way to learn the stack that doubles as a living resume.',
-    techLabels: ['Tailwind CSS', 'GitHub Actions', 'Nest.js', 'React'],
+  clacks: {
+    name: 'Clacks (Mockup)',
+    tldr: 'High-fidelity mockup of the Clacks Technical Design Document (TDD) based on Google Chat, was created using Angular and SCSS in StackBlitz with flexible layout options. Nb. This is non-functional mock',
+    problem: 'A chat client based on Google Chat needed to be seen, not only described in a design document.',
+    techLabels: ['TypeScript', 'SCSS', 'Angular', 'StackBlitz'],
     links: {
-      GitHub: { link: 'https://github.com/lioneljmorrison/portfolio' },
+      StackBlitz: { link: 'https://stackblitz.com/edit/stackblitz-starters-cpngaw?file=src%2Fmain.ts' },
+      Mock: { link: 'https://stackblitz-starters-cpngaw.stackblitz.io' },
+      TDD: { link: 'https://drive.google.com/file/d/17TacmAkk3619XaTAuc0Ex3NuOnIS6ebI/view?usp=sharing' },
     },
-    images: { default: { link: './assets/portfolio-v1.png' } },
+    images: { default: { link: './assets/clacks-mock.png' } },
+    earlier: true,
   },
   stardust: {
     name: 'Stardust',
