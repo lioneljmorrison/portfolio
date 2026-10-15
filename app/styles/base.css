@@ -275,7 +275,7 @@ code, pre, kbd, samp {
   --btn-solid-bg-active: var(--interactive-primary-active);
   --btn-solid-bg-disabled: var(--interactive-primary-disabled);
   --btn-solid-border: var(--interactive-primary-rest);
-  --btn-solid-label: var(--color-white);
+  --btn-solid-label: var(--text-on-brand);
 
   --btn-outline-border: var(--interactive-primary-rest);
   --btn-outline-label: var(--interactive-primary-rest);
@@ -302,17 +302,6 @@ code, pre, kbd, samp {
   user-select: none;
   white-space: nowrap;
   transition: all 0.15s ease-in-out;
-}
-
-/* White on pine-400 (dark mode rest colour) is too faint; use the dark inverse text there */
-@media (prefers-color-scheme: dark) {
-  :root:not([data-mode="light"]) .btn {
-    --btn-solid-label: var(--text-inverse);
-  }
-}
-
-:root[data-mode="dark"] .btn {
-  --btn-solid-label: var(--text-inverse);
 }
 
 .btn-solid {
