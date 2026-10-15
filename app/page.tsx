@@ -1,4 +1,3 @@
-import Script from 'next/script';
 import About from './components/about';
 import Hero from './components/hero';
 import Experience from './components/experience';
@@ -11,16 +10,6 @@ import Footer from './components/footer';
 export default function Home() {
   return (
     <>
-      <Script src="https://www.googletagmanager.com/gtag/js?id=G-14RLENLVJH" />
-      <Script id="google-analytics">
-        {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-   
-            gtag('config', 'G-14RLENLVJH');
-          `}
-      </Script>
       <MainNav data={navData} name={aboutMe.name}></MainNav>
       <main className="container container-xl page-main">
         <Hero anchor="top" data={aboutMe} contact={contact}></Hero>
