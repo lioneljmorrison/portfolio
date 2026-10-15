@@ -1,82 +1,159 @@
 import Link from 'next/link';
-import { ProjectLinkData, ProjectLinks, Projects, TechLables } from '../interfaces';
+import type { ProjectLinkData, Projects } from '../interfaces';
 import Image from 'next/image';
 import SectionHeader from './section-header';
+import { asset } from '../lib/asset';
 
-export default function Projects({ anchor, data }: { anchor: string; data: Projects }) {
-  function renderLinks(links: ProjectLinks, cssClass?: string, reverse?: boolean) {
-    return links ? (
-      <div className={`flex space-x-1 ${reverse ? 'sm:justify-end' : ''}`}>
-        {Object.entries(links).map((item, idx: number) => {
-          const [name, meta] = [...item];
-          return (
-            <Link href={(meta as ProjectLinkData).link} className={cssClass} key={`link-${idx}`}>
-              {name}
-            </Link>
-          );
-        })}
-      </div>
-    ) : (
-      ''
-    );
-  }
+type ProjectEntry = Projects[string];
 
-  function renderLabels(labels: TechLables[], cssClass?: string, reverse?: boolean) {
-    return labels ? (
-      <div className={`grid gap-1 grid-cols-3 sm:grid-cols-4 sm:flex sm:space-1  ${reverse ? 'sm:justify-end' : ''}`}>
-        {labels.map((item: string, idx: number) => (
-          <div className={cssClass} key={`tl-${idx}`}>
-            {item}
-          </div>
-        ))}
-      </div>
-    ) : (
-      ''
-    );
-  }
+export function projectTag(project: ProjectEntry): string {
+  return project.client === 'MRCOOL' ? 'Work · MRCOOL' : 'Personal';
+}
 
-  const projects = Object.entries(data)
-    .map((item) => (item[1]?.disabled !== true ? item : undefined))
-    .filter((item) => item !== undefined);
+function ProjectCard({ project, eager }: { project: ProjectEntry; eager?: boolean }) {
+  const image = project.images?.['default'];
+  const problem = project.problem ?? project.tldr;
 
   return (
-    <div id={anchor} className="max-w-prose mx-auto py-4 text-slate-400">
-      <SectionHeader title="Projects"></SectionHeader>
-      {projects.map((data: any, idx: number) => {
-        const [item, project] = [...data];
-        const odd = !!(idx % 2);
-
-        return (
-          <>
-            <div className="grid grid-cols-10 gap-4 sm:pb-12 pb-12">
-              <div className={`project-title ${!odd ? 'project-left' : 'project-right'}`}>{project.name}</div>
-              <Image
-                src={project.images ? project.images['default'].link : './assets/image-placeholder.png'}
-                width={500}
-                height={250}
-                alt="Alt Text"
-                loading="lazy"
-                className={`project-img ${odd ? 'project-left' : 'project-right'}`}
-              ></Image>
-              <div className={`project-tldr ${!odd ? 'project-left' : 'project-right'}`}>{project.tldr}</div>
-              <div className={`project-labels ${!odd ? 'project-left' : 'project-right'}`}>
-                {renderLabels(
-                  project.techLabels,
-                  'text-center text-xs py-1 px-2 bg-gray-800 border-gray-900 rounded',
-                  odd
-                )}
-              </div>
-              <div className={`project-links ${!odd ? 'project-left' : 'project-right'}`}>
-                {renderLinks(
-                  project.links,
-                  'text-center text-xs py-1 px-2 border-gray-800 border-2 rounded hover:underline',
-                  odd
-                )}
-              </div>
+    <article className="project-card">
+      <Image
+        src={asset(image?.link ?? './assets/image-placeholder.png')}
+        width={1200}
+        height={514}
+        alt={image?.alt ?? `${project.name} screenshot`}
+        loading={eager ? 'eager' : 'lazy'}
+        className="project-card-img"
+      ></Image>
+      <div className="project-card-body">
+        <div>
+          <div className="project-card-heading">
+            <h3 className="project-card-name">{project.name}</h3>
+            {project.kind && (
+              <span className={`chip project-card-kind project-card-kind-${project.kind}`}>
+                {project.kind === 'work' ? 'Work' : 'Personal'}
+              </span>
+            )}
+          </div>
+          {(problem || project.what || project.role) && (
+            <dl>
+              {problem && (
+                <>
+                  <dt>The problem</dt>
+                  <dd>{problem}</dd>
+                </>
+              )}
+              {project.what && (
+                <>
+                  <dt>What it does</dt>
+                  <dd>{project.what}</dd>
+                </>
+              )}
+              {project.role && (
+                <>
+                  <dt>My role</dt>
+                  <dd>{project.role}</dd>
+                </>
+              )}
+            </dl>
+          )}
+          {project.detail && <p className="project-card-detail">{project.detail}</p>}
+        </div>
+        <div>
+          {project.techLabels && (
+            <>
+              <p className="project-card-label">Stack</p>
+              <ul className="chip-list">
+                {project.techLabels.map((label: string, i: number) => (
+                  <li key={`tl-${i}`} className="chip">
+                    {label}
+                  </li>
+                ))}
+              </ul>
+            </>
+          )}
+          {project.links && (
+            <div className="project-card-links">
+              {Object.entries(project.links).map(([name, meta], i: number) => (
+                <Link href={(meta as ProjectLinkData).link} className="btn btn-outline btn-sm" key={`link-${i}`}>
+                  {name}
+                </Link>
+              ))}
             </div>
-          </>
-        );
-      })}
-    </div>
+          )}
+          {!project.links && project.access && (
+            <p className="project-card-access">
+              {project.access === 'internal' ? 'Internal tool, not publicly available' : 'Private repository'}
+            </p>
+          )}
+        </div>
+      </div>
+    </article>
+  );
+}
+
+// Current project: a lighter card that links to its case-study page.
+function ProjectTile({ project, eager }: { project: ProjectEntry; eager?: boolean }) {
+  const image = project.images?.['default'];
+
+  return (
+    <Link href={`/projects/${project.slug}`} className="project-tile">
+      <Image
+        src={asset(image?.link ?? './assets/image-placeholder.png')}
+        width={1200}
+        height={514}
+        alt={image?.alt ?? `${project.name} screenshot`}
+        loading={eager ? 'eager' : 'lazy'}
+        className="project-tile-img"
+      ></Image>
+      <div className="project-tile-body">
+        <span className="chip project-card-kind">{projectTag(project)}</span>
+        <h3 className="project-card-name">{project.name}</h3>
+        {project.tagline && <p className="project-tile-tagline">{project.tagline}</p>}
+        {project.techLabels && (
+          <ul className="chip-list">
+            {project.techLabels.slice(0, 4).map((label: string) => (
+              <li key={label} className="chip">
+                {label}
+              </li>
+            ))}
+          </ul>
+        )}
+      </div>
+    </Link>
+  );
+}
+
+export default function Projects({ anchor, data }: { anchor: string; data: Projects }) {
+  const visible = Object.entries(data).filter(([, project]) => project?.disabled !== true);
+  const projects = visible.filter(([, project]) => !project.earlier);
+  const earlier = visible.filter(([, project]) => project.earlier);
+
+  return (
+    <section id={anchor} className="section">
+      <SectionHeader title="Projects"></SectionHeader>
+      <ul className="project-list project-grid">
+        {projects.map(([key, project], idx: number) => (
+          <li key={key}>
+            {project.slug ? (
+              <ProjectTile project={project} eager={idx < 2} />
+            ) : (
+              <ProjectCard project={project} eager={idx < 2} />
+            )}
+          </li>
+        ))}
+      </ul>
+      {earlier.length > 0 && (
+        <details className="earlier-work">
+          <summary className="earlier-work-summary">Earlier work</summary>
+          <ul className="project-list">
+            {earlier.map(([key, project]) => (
+              <li key={key}>
+                <ProjectCard project={project} />
+              </li>
+            ))}
+          </ul>
+        </details>
+      )}
+    </section>
   );
 }

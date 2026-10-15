@@ -1,88 +1,125 @@
 'use client';
 import Link from 'next/link';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { NavLinks } from '../interfaces';
+import ThemeToggle from './theme-toggle';
 
 export default function MainNav({ data, name }: { data: NavLinks; name: string }) {
-  const [display, setDisplay] = useState(false);
-  const [displayCss, setDisplayCss] = useState('hidden');
-  const navItemsArray = Object.entries(data)
-    .map((item) => (item[1]?.disabled !== true ? item : undefined))
-    .filter((item) => item !== undefined);
+  const [open, setOpen] = useState(false);
+  const menuButton = useRef<HTMLButtonElement>(null);
+  const navItemsArray = Object.entries(data).filter(([, meta]) => meta?.disabled !== true);
+  const lastIndex = navItemsArray.length - 1;
 
-  function mobileMenuIconClick() {
-    setDisplay((prevDisplay) => !prevDisplay);
-    setDisplayCss(display ? 'hidden' : 'md:hidden');
+  useEffect(() => {
+    if (!open) return;
+    function onKeyDown(event: KeyboardEvent) {
+      if (event.key === 'Escape') {
+        setOpen(false);
+        menuButton.current?.focus();
+      }
+    }
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [open]);
+
+  // Hash links are root-relative ('/#about') so they work from nested pages too; next/link adds the basePath.
+  function target(href: string) {
+    return href.replace(/^\.(?=\/?#)/, '').replace(/^#/, '/#');
   }
 
-  function scrollTo(id: string) {
-    var element = document.getElementById(id);
-    mobileMenuIconClick();
+  function scrollTo(href: string) {
+    const element = document.getElementById(href.slice(href.indexOf('#') + 1));
+    setOpen(false);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
     }
   }
 
   return (
-    <nav className="z-20 sticky top-0 bg-gray-800 text-slate-50">
-      <div className="max-w-7xl mx-auto py-4 px-6 lg:px-8">
-        <div className="flex items-center justify-between">
-          <div>{name} - Portfolio</div>
-          <div className="hidden md:flex items-center space-x-5 text-sm">
-            {navItemsArray.map((item, idx) => {
-              if (item) {
-                const [title, meta] = [...item];
+    <header className="site-header">
+      <div className="container container-xl header-inner">
+        <div className="brand">
+          <span>{name}</span>
+          <span className="meta-text">Portfolio</span>
+        </div>
 
-                return (
-                  <Link
-                    key={`nav-${idx}`}
-                    href={meta.href}
-                    onClick={() => scrollTo(meta.href.substring(1))}
-                    target={meta?.target}
-                    className="last:nav-button py-1 px-2 hover:bg-gray-700 transition transition-duration-300 rounded"
-                  >
-                    {title}
-                  </Link>
-                );
-              }
-            })}
-          </div>
+        <nav className="main-nav" aria-label="Main">
+          {navItemsArray.map(([title, meta], index) => (
+            <Link
+              key={title}
+              href={target(meta.href)}
+              onClick={() => scrollTo(meta.href)}
+              target={meta?.target}
+              className={index === lastIndex ? 'btn btn-solid btn-sm' : 'nav-item'}
+            >
+              {title}
+            </Link>
+          ))}
+        </nav>
 
-          <div className="md:hidden flex items-center">
-            <button onClick={mobileMenuIconClick}>
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6"
-              >
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-              </svg>
-            </button>
-          </div>
+        <div className="header-actions">
+          <ThemeToggle />
+          <button
+            ref={menuButton}
+            type="button"
+            className="menu-toggle-btn"
+            aria-label="Open menu"
+            aria-expanded={open}
+            aria-controls="mobile-drawer"
+            onClick={() => setOpen(true)}
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+            </svg>
+          </button>
         </div>
       </div>
 
-      <div className={`${displayCss} min-h-screen transition transition-duration-300`}>
-        {navItemsArray.map((item, idx) => {
-          if (item) {
-            const [title, meta] = [...item];
-            return (
-              <Link
-                key={`nav-${idx}`}
-                onClick={() => scrollTo(meta.href.substring(1))}
-                href={meta.href}
-                target={meta?.target}
-                className="block py-3 px-6 text-lg hover:bg-gray-700 text-right"
-              >
-                {title}
-              </Link>
-            );
-          }
-        })}
+      <div className={`drawer-overlay${open ? ' is-active' : ''}`} onClick={() => setOpen(false)} aria-hidden="true" />
+      <div
+        id="mobile-drawer"
+        className={`mobile-drawer${open ? ' is-active' : ''}`}
+        aria-hidden={!open}
+        inert={!open}
+      >
+        <div className="drawer-header">
+          <div className="brand">
+            <span>{name}</span>
+          </div>
+          <button type="button" className="menu-toggle-btn" aria-label="Close menu" onClick={() => setOpen(false)}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              strokeWidth={1.5}
+              stroke="currentColor"
+              aria-hidden="true"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M6 6l12 12M18 6L6 18" />
+            </svg>
+          </button>
+        </div>
+        <nav className="drawer-nav" aria-label="Mobile">
+          {navItemsArray.map(([title, meta], index) => (
+            <Link
+              key={title}
+              href={target(meta.href)}
+              onClick={() => scrollTo(meta.href)}
+              target={meta?.target}
+              className={index === lastIndex ? 'btn btn-solid btn-md' : 'drawer-nav-item'}
+            >
+              {title}
+            </Link>
+          ))}
+        </nav>
       </div>
-    </nav>
+    </header>
   );
 }

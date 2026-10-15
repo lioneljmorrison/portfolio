@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 514" role="img" aria-label="wisper architecture diagram">
+  <defs>
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0 0L10 5L0 10z" fill="#7c8a99"/>
+    </marker>
+  </defs>
+  <rect width="1200" height="514" fill="#8a97a6" fill-opacity=".12"/>
+  <g font-family="system-ui, sans-serif" text-anchor="middle" font-size="22" font-weight="600">
+    <g fill="#7c8a99" fill-opacity=".28" stroke="#7c8a99" stroke-width="2"><rect x="40" y="215" width="205" height="84" rx="14"/><rect x="345" y="215" width="205" height="84" rx="14"/><rect x="650" y="215" width="205" height="84" rx="14"/><rect x="955" y="215" width="205" height="84" rx="14"/></g>
+    <g fill="none" stroke="#7c8a99" stroke-width="2.5" marker-end="url(#a)"><path d="M245 257 C293 257 293 257 341 257"/><path d="M550 257 C598 257 598 257 646 257"/><path d="M855 257 C903 257 903 257 951 257"/></g>
+    <g fill="#6b7a8a" stroke="none"><text x="142.5" y="253">Microphone</text><text x="142.5" y="281" font-size="16" font-weight="400">audio</text><text x="447.5" y="253">whisper.cpp</text><text x="447.5" y="281" font-size="16" font-weight="400">transcription</text><text x="752.5" y="253">Qwen3-0.6B</text><text x="752.5" y="281" font-size="16" font-weight="400">LLM cleanup</text><text x="1057.5" y="253">Text in</text><text x="1057.5" y="281" font-size="16" font-weight="400">any app</text></g>
+  </g>
+</svg>

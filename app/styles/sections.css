@@ -1,0 +1,619 @@
+/*
+  Sections: Hero, About, Experience and Projects, plus the shared .chip, built on tokens.css and base.css.
+
+  Imported into the components layer (globals.css), like layout.css, so it beats base.css. Do not import it
+  unlayered.
+  Breakpoints are literal: sm 40rem, md 48rem.
+*/
+
+/* Section shell: the full 65rem container, so its left edge lines up with the hero's. Text blocks cap their own
+   measure (e.g. .timeline-highlights). */
+
+.section {
+  padding-top: var(--sp-32);
+  padding-bottom: var(--sp-32);
+}
+
+/* About: paragraphs at body size spanning the full section width; with a portrait set, a square image sits beside
+   them from 48rem. */
+
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-24);
+}
+
+.about-text {
+  display: grid;
+  gap: var(--sp-16);
+}
+
+.about-text p {
+  margin: 0;
+}
+
+.about-portrait {
+  width: 10rem;
+  height: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+}
+
+@media (min-width: 48rem) {
+  .about-with-portrait {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: var(--sp-32);
+  }
+}
+
+/* Hero: role, name, pitch and calls to action beside a card with the stack and quote. One column on phones;
+   from 48rem a 7fr/5fr grid with the card on the bottom edge. Uses the full container width, not .section. */
+
+.hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-32);
+  /* .page-main already adds --sp-24 above, so the header-to-kicker gap is 48px on phones and 80px from 48rem.
+     The bottom padding plus .section's --sp-32 top padding equals the gap between sections (64px). */
+  padding-top: var(--sp-24);
+  padding-bottom: var(--sp-32);
+}
+
+.hero-kicker {
+  margin-bottom: var(--sp-8);
+  color: var(--text-brand);
+  letter-spacing: 0.08em;
+}
+
+.hero-name {
+  margin-bottom: var(--sp-16);
+  font-size: 2.5rem;
+  line-height: 1.05;
+}
+
+.hero-pitch {
+  max-width: 34rem;
+  margin-bottom: var(--sp-24);
+}
+
+.hero-cta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-12);
+}
+
+.hero-card {
+  padding: var(--sp-24);
+  border: var(--border-width-1) solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-bg-subtle);
+}
+
+.hero-card-title {
+  margin-bottom: var(--sp-12);
+  color: var(--text-secondary);
+}
+
+.hero-quote {
+  margin: var(--sp-16) 0 0;
+}
+
+.hero-quote blockquote {
+  margin: 0;
+}
+
+.hero-quote blockquote p {
+  margin: 0;
+  color: var(--text-body-default);
+  font-size: 0.9375rem;
+  quotes: '\201C' '\201D';
+}
+
+.hero-quote blockquote p::before {
+  content: open-quote;
+}
+
+.hero-quote blockquote p::after {
+  content: close-quote;
+}
+
+.hero-quote figcaption {
+  margin-top: var(--sp-8);
+  color: var(--text-secondary);
+}
+
+@media (min-width: 48rem) {
+  .hero {
+    grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+    gap: var(--sp-32);
+    padding-top: var(--sp-56);
+    padding-bottom: var(--sp-32);
+  }
+
+  /* Scales with the viewport so the name stays on one line in the 7fr column (about 8.6em wide) */
+  .hero-name {
+    font-size: clamp(2.5rem, 5.6vw, 3.75rem);
+  }
+
+  .hero-pitch {
+    font-size: 1.25rem;
+  }
+
+  .hero-card {
+    align-self: end;
+  }
+}
+
+@media (min-width: 64rem) {
+  .hero {
+    gap: var(--sp-48);
+  }
+}
+
+/* Chip: a pill label; shared by skills here and project tech labels in Projects */
+
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-8);
+  list-style: none;
+}
+
+.chip {
+  display: block;
+  padding: var(--sp-6) var(--sp-12);
+  border-radius: var(--radius-full);
+  background-color: var(--surface-bg-brand-subtle);
+  color: var(--text-brand);
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+/* Experience: every job on a vertical timeline. A 2px line runs down the left of the list with a ring marker per
+   item; from 48rem each item is a two-column grid (dates, company and role | tldr and highlights). */
+
+.timeline {
+  position: relative;
+  margin-top: var(--sp-16);
+  padding-left: calc(var(--sp-24) + 0.5rem);
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(0.5rem - 1px);
+  width: var(--border-width-2);
+  background-color: var(--border-default);
+}
+
+.timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-12);
+  padding-bottom: var(--sp-40);
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+/* The line sits 0.5rem in so the ring stays inside the container edge. Ring centred on the line, level with the dates (a 1.5 line-height meta-text row) */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  top: 0.25rem;
+  left: calc(-1 * var(--sp-24) - 0.5rem);
+  width: 1rem;
+  height: 1rem;
+  border: var(--border-width-2) solid var(--border-brand);
+  border-radius: var(--radius-full);
+  background-color: var(--surface-bg-default);
+}
+
+.timeline-dates {
+  margin-bottom: var(--sp-4);
+}
+
+.timeline-company {
+  margin-bottom: var(--sp-4);
+}
+
+.timeline-role {
+  color: var(--text-secondary);
+}
+
+.timeline-tldr {
+  max-width: 42rem;
+  margin-bottom: var(--sp-12);
+}
+
+.timeline-highlights {
+  max-width: 42rem;
+  padding-left: var(--sp-20);
+  list-style: disc;
+  font-size: 0.9375rem;
+}
+
+.timeline-highlights li {
+  margin-bottom: var(--sp-8);
+  padding-left: var(--sp-4);
+  color: var(--text-body-default);
+}
+
+.timeline-highlights li:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-highlights li::marker {
+  color: var(--text-brand);
+}
+
+@media (min-width: 48rem) {
+  .timeline {
+    padding-left: calc(var(--sp-40) + 0.5rem);
+  }
+
+  .timeline-item {
+    grid-template-columns: 15rem minmax(0, 1fr);
+    gap: var(--sp-32);
+  }
+
+  .timeline-item::before {
+    left: calc(-1 * var(--sp-40) - 0.5rem);
+  }
+}
+
+/* Projects: one card per project, stacked with a --sp-32 gap. Screenshot on top (16:9, 21:9 from 48rem), then a
+   body that is one column on phones and from 48rem a 3fr/2fr grid: problem and role left, stack and links right. */
+
+.project-list {
+  display: grid;
+  gap: var(--sp-32);
+  list-style: none;
+}
+
+.project-card {
+  overflow: hidden;
+  border: var(--border-width-1) solid var(--border-default);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-bg-card);
+  box-shadow: var(--elevation-mid);
+}
+
+.project-card-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: top;
+  border-bottom: var(--border-width-1) solid var(--border-default);
+}
+
+.project-card-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-20);
+  padding: var(--sp-20);
+}
+
+.project-card-heading {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--sp-8) var(--sp-12);
+  margin-bottom: var(--sp-16);
+}
+
+/* Work/Personal tag: a chip, outlined so it reads differently from the filled stack chips */
+.project-card-kind {
+  border: var(--border-width-1) solid var(--border-default);
+  background-color: transparent;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.project-card-detail {
+  margin-top: var(--sp-16);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.project-card-name {
+  color: var(--text-primary);
+  font-size: 1.5rem;
+}
+
+.project-card dt,
+.project-card-label {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.project-card dd {
+  margin-top: var(--sp-4);
+  color: var(--text-body-default);
+}
+
+.project-card dd + dt {
+  margin-top: var(--sp-16);
+}
+
+.project-card .chip-list {
+  margin-top: var(--sp-8);
+}
+
+.project-card-access {
+  margin-top: var(--sp-16);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.project-card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-8);
+  margin-top: var(--sp-16);
+}
+
+@media (min-width: 48rem) {
+  .project-card-img {
+    aspect-ratio: 21 / 9;
+  }
+
+  .project-card-body {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: var(--sp-32);
+    padding: var(--sp-32);
+  }
+}
+
+/* Earlier work: a native disclosure below the main list holding older projects */
+
+.earlier-work {
+  margin-top: var(--sp-32);
+}
+
+.earlier-work-summary {
+  display: inline-block;
+  padding: var(--sp-8) 0;
+  color: var(--text-primary);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+}
+
+.earlier-work[open] > .earlier-work-summary {
+  margin-bottom: var(--sp-16);
+}
+
+/* Project tiles: the lighter home card. The whole tile is a link to the case study; a grid of one column on phones,
+   two from 48rem. */
+
+.project-grid {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.project-tile {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  border: var(--border-width-1) solid var(--border-default);
+  border-radius: var(--radius-lg);
+  background-color: var(--surface-bg-card);
+  box-shadow: var(--elevation-mid);
+  color: inherit;
+  text-decoration: none;
+}
+
+.project-tile:hover,
+.project-tile:focus-visible {
+  border-color: var(--interactive-primary-rest);
+}
+
+.project-tile-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  object-position: top;
+  border-bottom: var(--border-width-1) solid var(--border-default);
+}
+
+.project-tile-body {
+  display: grid;
+  align-content: start;
+  justify-items: start;
+  gap: var(--sp-12);
+  padding: var(--sp-20);
+}
+
+.project-tile-tagline {
+  color: var(--text-body-default);
+}
+
+@media (min-width: 48rem) {
+  .project-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Case-study page (/projects/[slug]): hero, summary beside a project-info card, stat tiles, then the text
+   sections, diagram, gallery and prev/next. Text blocks cap their own measure. */
+
+.case {
+  display: grid;
+  gap: var(--sp-48);
+  padding-bottom: var(--sp-48);
+}
+
+.case-hero {
+  display: grid;
+  justify-items: start;
+  gap: var(--sp-12);
+}
+
+.case-hero-img {
+  border: var(--border-width-1) solid var(--border-default);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--sp-12);
+}
+
+.case-title {
+  color: var(--text-primary);
+}
+
+.case-tagline {
+  max-width: 42rem;
+  color: var(--text-body-default);
+}
+
+.case-summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-32);
+}
+
+.case-text {
+  display: grid;
+  align-content: start;
+  gap: var(--sp-12);
+  max-width: 42rem;
+}
+
+.case-text p {
+  margin: 0;
+}
+
+.case-heading {
+  color: var(--text-primary);
+  font-size: 1.25rem;
+}
+
+.case-info {
+  align-self: start;
+  padding: var(--sp-20);
+}
+
+.case-info dl {
+  margin-top: var(--sp-12);
+}
+
+.case-info dt {
+  color: var(--text-muted);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.case-info dd {
+  margin: var(--sp-4) 0 var(--sp-16);
+  color: var(--text-body-default);
+}
+
+.stat-tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: var(--sp-16);
+  list-style: none;
+}
+
+.stat-tile {
+  display: grid;
+  gap: var(--sp-4);
+  padding: var(--sp-20);
+}
+
+.stat-value {
+  color: var(--text-brand);
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.stat-label {
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.case-body {
+  display: grid;
+  gap: var(--sp-32);
+}
+
+.case-list {
+  display: grid;
+  gap: var(--sp-8);
+  padding-left: var(--sp-20);
+  list-style: disc;
+}
+
+.case-list li::marker {
+  color: var(--text-brand);
+}
+
+.case-figure {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.case-diagram {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: var(--border-width-1) solid var(--border-default);
+  border-radius: var(--radius-lg);
+}
+
+.case-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-24);
+  list-style: none;
+}
+
+.case-gallery .case-diagram {
+  aspect-ratio: 1305 / 790;
+  object-fit: cover;
+}
+
+@media (min-width: 48rem) {
+  .case-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.case-gallery figcaption {
+  margin-top: var(--sp-8);
+  color: var(--text-muted);
+  font-size: 0.875rem;
+}
+
+.case-pager {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--sp-12);
+  padding-top: var(--sp-24);
+  border-top: var(--border-width-1) solid var(--border-default);
+}
+
+@media (min-width: 48rem) {
+  .case-summary {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
+    gap: var(--sp-48);
+  }
+}

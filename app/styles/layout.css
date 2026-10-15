@@ -1,0 +1,328 @@
+/*
+  Layout: sticky header, mobile drawer, page shell and section titles, built on tokens.css and base.css.
+
+  Imported into the components layer (globals.css), which sits above base, so these rules beat base.css.
+  Do not import it unlayered.
+  The header switches between the inline nav and the drawer at 48rem (the md breakpoint in base.css).
+*/
+
+html {
+  /* Keep anchored sections clear of the sticky header */
+  scroll-padding-top: 4.5rem;
+}
+
+/* Page shell */
+
+.page-main {
+  padding-top: var(--sp-24);
+  padding-bottom: var(--sp-64);
+}
+
+/* Header */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  background-color: var(--surface-bg-default);
+  border-bottom: var(--border-width-1) solid var(--border-default);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-16);
+  min-height: 4rem;
+}
+
+.brand {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sp-8);
+  color: var(--text-primary);
+  font-weight: var(--font-weight-bold);
+  white-space: nowrap;
+}
+
+.brand .meta-text {
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Desktop nav */
+
+.main-nav {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  margin-left: auto;
+}
+
+.nav-item {
+  padding: var(--sp-6) var(--sp-12);
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+  text-decoration: none;
+  transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+}
+
+.nav-item:hover,
+.nav-item:focus-visible,
+.nav-item.is-active {
+  background-color: var(--surface-bg-subtle);
+  color: var(--text-brand);
+}
+
+/* Right-hand slot; the theme toggle mounts here */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-8);
+}
+
+.theme-toggle-btn,
+.menu-toggle-btn {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--radius-full);
+  color: var(--text-primary);
+  transition: background-color 0.15s ease-in-out;
+}
+
+.theme-toggle-btn {
+  display: inline-flex;
+}
+
+.theme-toggle-btn:hover,
+.menu-toggle-btn:hover {
+  background-color: var(--surface-bg-subtle);
+}
+
+.theme-toggle-btn:focus-visible,
+.menu-toggle-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--radius-full);
+}
+
+.theme-toggle-btn svg,
+.menu-toggle-btn svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+/* Icon shows the mode a click switches to: moon in light, sun in dark. Pure CSS so the HTML never differs. */
+.theme-icon-sun {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-mode="light"]) .theme-icon-sun {
+    display: block;
+  }
+
+  :root:not([data-mode="light"]) .theme-icon-moon {
+    display: none;
+  }
+}
+
+:root[data-mode="dark"] .theme-icon-sun {
+  display: block;
+}
+
+:root[data-mode="dark"] .theme-icon-moon {
+  display: none;
+}
+
+/* Mobile drawer: closed by default, hidden from the tab order until opened */
+
+.drawer-overlay {
+  display: none;
+}
+
+.mobile-drawer {
+  display: none;
+}
+
+@media (max-width: 47.99rem) {
+  .main-nav {
+    display: none;
+  }
+
+  .header-actions {
+    margin-left: auto;
+  }
+
+  .menu-toggle-btn {
+    display: inline-flex;
+  }
+
+  .drawer-overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    z-index: 40;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.25s ease, visibility 0s linear 0.25s;
+  }
+
+  .drawer-overlay.is-active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.25s ease, visibility 0s;
+  }
+
+  .mobile-drawer {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    width: min(20rem, 85vw);
+    background-color: var(--surface-bg-default);
+    border-left: var(--border-width-1) solid var(--border-default);
+    box-shadow: var(--elevation-high);
+    transform: translateX(100%);
+    visibility: hidden;
+    transition: transform 0.25s ease, visibility 0s linear 0.25s;
+  }
+
+  .mobile-drawer.is-active {
+    transform: translateX(0);
+    visibility: visible;
+    transition: transform 0.25s ease, visibility 0s;
+  }
+
+  .drawer-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 4rem;
+    padding: 0 var(--sp-16);
+    border-bottom: var(--border-width-1) solid var(--border-default);
+  }
+
+  .drawer-nav {
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-4);
+    padding: var(--sp-16);
+    overflow-y: auto;
+  }
+
+  .drawer-nav-item {
+    display: block;
+    padding: var(--sp-12) var(--sp-16);
+    border-radius: var(--radius-sm);
+    color: var(--text-primary);
+    font-size: 1.125rem;
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+    transition: background-color 0.15s ease-in-out, color 0.15s ease-in-out;
+  }
+
+  .drawer-nav-item:hover,
+  .drawer-nav-item:focus-visible {
+    background-color: var(--surface-bg-subtle);
+    color: var(--text-brand);
+  }
+
+  /* The call-to-action link keeps its button look inside the drawer */
+  .drawer-nav .btn {
+    margin-top: var(--sp-8);
+    height: 46px;
+    font-size: 1rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .drawer-overlay,
+  .mobile-drawer,
+  .drawer-overlay.is-active,
+  .mobile-drawer.is-active {
+    transition: none;
+  }
+}
+
+/* Section title: a label with a rule either side */
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-16);
+  margin: 0;
+  padding: var(--sp-20) 0;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+}
+
+.section-title::before,
+.section-title::after {
+  content: '';
+  flex: 1 1 auto;
+  border-top: var(--border-width-1) solid var(--border-default);
+}
+
+/* Contact footer: a brand-tinted band, then the copyright line */
+
+.site-footer {
+  margin-top: var(--sp-64);
+}
+
+.footer-band {
+  background-color: var(--surface-bg-brand-subtle);
+  border-top: var(--border-width-1) solid var(--border-default);
+}
+
+.footer-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--sp-16);
+  padding-top: var(--sp-48);
+  padding-bottom: var(--sp-48);
+}
+
+.footer-title {
+  margin: 0;
+  color: var(--text-primary);
+}
+
+.footer-copy {
+  margin: 0;
+  max-width: 40rem;
+  color: var(--text-secondary);
+}
+
+.footer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sp-12);
+}
+
+.footer-meta {
+  padding-top: var(--sp-24);
+  padding-bottom: var(--sp-24);
+}
+
+.footer-meta .meta-text {
+  margin: 0;
+}
+
+@media (min-width: 48rem) {
+  .footer-inner {
+    padding-top: var(--sp-64);
+    padding-bottom: var(--sp-64);
+  }
+}
