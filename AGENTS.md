@@ -25,7 +25,7 @@ There are no tests. A change is verified by `npm run lint` and `npm run build` b
 ## Architecture
 
 ```
-app/layout.tsx              root layout: <html>, Inter font, page metadata (title, description)
+app/layout.tsx              root layout: <html>, Inter font, page metadata (title, description), head script that applies the stored colour mode
 app/page.tsx                the only page: GA4 scripts, Chatbot, MainNav, then AboutMe, Experience, Projects
 app/data.ts                 all site content: aboutMe, navData, jobsData, projectData
 app/interfaces.ts           types for that content (AboutMe, Job, NavLinks, Projects, TechLables)
@@ -39,7 +39,8 @@ public/assets/              project screenshots, referenced from data.ts as './a
 
 - **Content lives in `app/data.ts`, not in components.** Adding a job, project or nav link is an edit to `data.ts` (and `interfaces.ts` if the shape changes). Projects and nav links with `disabled: true` are hidden; a project without `images.default` shows `image-placeholder.png`. Projects alternate left/right layout by index.
 - **Sections are anchored by id** (`about`, `experience`, `projects`), passed as the `anchor` prop from `page.tsx`; nav links in `navData` scroll to them (`href: '#about'`, ...).
-- **Only `nav.tsx` and `experience.tsx` are client components** (`'use client'`, for the mobile menu and the selected-job state). Everything else renders at build time.
+- **Only `nav.tsx`, `experience.tsx` and `theme-toggle.tsx` are client components** (`'use client'`, for the mobile menu, the selected-job state and the colour-mode toggle). Everything else renders at build time.
+- **Colour mode:** follows the OS until the header toggle is pressed, then the choice is stored in `localStorage` (`theme-mode`) and set as `data-mode` on `<html>`. `layout.tsx` has an inline `<script>` in `<head>` that applies the stored value before first paint (no flash); it must stay tiny and dependency-free, and `<html>` carries `suppressHydrationWarning` for it. The toggle's icon is chosen in CSS, so the server HTML is the same for everyone.
 - **Third-party scripts:** Google Analytics 4 (tag `G-14RLENLVJH`, inline in `app/page.tsx`) and the Tidio chat widget (`app/components/chatbot.tsx`). Don't remove or change either without being asked.
 
 ## Conventions

@@ -2,6 +2,7 @@
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
 import { NavLinks } from '../interfaces';
+import ThemeToggle from './theme-toggle';
 
 export default function MainNav({ data, name }: { data: NavLinks; name: string }) {
   const [open, setOpen] = useState(false);
@@ -52,7 +53,7 @@ export default function MainNav({ data, name }: { data: NavLinks; name: string }
         </nav>
 
         <div className="header-actions">
-          {/* S-10: the theme toggle mounts here */}
+          <ThemeToggle />
           <button
             ref={menuButton}
             type="button"

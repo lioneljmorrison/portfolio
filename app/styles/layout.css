@@ -84,6 +84,7 @@ html {
   gap: var(--sp-8);
 }
 
+.theme-toggle-btn,
 .menu-toggle-btn {
   display: none;
   align-items: center;
@@ -95,13 +96,49 @@ html {
   transition: background-color 0.15s ease-in-out;
 }
 
+.theme-toggle-btn {
+  display: inline-flex;
+}
+
+.theme-toggle-btn:hover,
 .menu-toggle-btn:hover {
   background-color: var(--surface-bg-subtle);
 }
 
+.theme-toggle-btn:focus-visible,
+.menu-toggle-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--radius-full);
+}
+
+.theme-toggle-btn svg,
 .menu-toggle-btn svg {
   width: 1.5rem;
   height: 1.5rem;
+}
+
+/* Icon shows the mode a click switches to: moon in light, sun in dark. Pure CSS so the HTML never differs. */
+.theme-icon-sun {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-mode="light"]) .theme-icon-sun {
+    display: block;
+  }
+
+  :root:not([data-mode="light"]) .theme-icon-moon {
+    display: none;
+  }
+}
+
+:root[data-mode="dark"] .theme-icon-sun {
+  display: block;
+}
+
+:root[data-mode="dark"] .theme-icon-moon {
+  display: none;
 }
 
 /* Mobile drawer: closed by default, hidden from the tab order until opened */
