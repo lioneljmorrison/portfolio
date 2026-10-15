@@ -1,0 +1,199 @@
+/*
+  Sections: About Me, Experience and (later) Projects, plus the shared .chip, built on tokens.css and base.css.
+
+  Imported into Tailwind's components layer (globals.css), like layout.css: it beats base.css and Tailwind's
+  reset, and any Tailwind utility on the same element still wins while both coexist. Do not import it unlayered.
+  Breakpoints are literal: sm 40rem, md 48rem.
+*/
+
+/* Section shell: a readable measure (48rem, about 75 characters at body size), centred in the 65rem container */
+
+.section {
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: var(--sp-32);
+  padding-bottom: var(--sp-32);
+}
+
+/* About Me */
+
+.about-intro {
+  margin-bottom: var(--sp-4);
+  color: var(--text-secondary);
+}
+
+.about-name {
+  margin-bottom: var(--sp-24);
+  color: var(--text-brand);
+}
+
+.about-tldr {
+  color: var(--text-body-default);
+  margin-bottom: var(--sp-32);
+}
+
+.about-quote {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-16);
+  margin: 0 0 var(--sp-32);
+  color: var(--text-body-default);
+}
+
+.about-quote-mark {
+  flex: none;
+  width: 1.75rem;
+  height: 1.75rem;
+  fill: currentColor;
+  color: var(--text-brand);
+}
+
+.about-quote-body {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.about-quote blockquote {
+  margin: 0;
+}
+
+.about-quote figcaption {
+  margin-top: var(--sp-8);
+  color: var(--text-secondary);
+}
+
+.skills-title {
+  margin-bottom: var(--sp-12);
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+}
+
+/* Chip: a pill label; shared by skills here and project tech labels in Projects */
+
+.chip-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--sp-8);
+  list-style: none;
+}
+
+@media (min-width: 48rem) {
+  .chip-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+.chip {
+  display: block;
+  padding: var(--sp-6) var(--sp-12);
+  border-radius: var(--radius-full);
+  background-color: var(--surface-bg-brand-subtle);
+  color: var(--text-brand);
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-semibold);
+  line-height: 1.2;
+  text-align: center;
+  overflow-wrap: anywhere;
+}
+
+/* Experience: vertical tabs beside a panel; a horizontal scrolling row of tabs above it below 40rem */
+
+.exp-layout {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-16);
+}
+
+.exp-tabs {
+  display: flex;
+  flex-direction: row;
+  flex: none;
+  overflow-x: auto;
+  border-bottom: var(--border-width-1) solid var(--border-default);
+}
+
+.exp-tab {
+  flex: none;
+  padding: var(--sp-8) var(--sp-16);
+  border-bottom: var(--border-width-2) solid transparent;
+  margin-bottom: -1px;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  font-weight: var(--font-weight-medium);
+  text-align: left;
+  white-space: nowrap;
+  transition: color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+}
+
+.exp-tab:hover {
+  color: var(--text-primary);
+}
+
+.exp-tab[aria-selected='true'] {
+  border-color: var(--border-brand);
+  color: var(--text-brand);
+}
+
+.exp-panel {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.exp-title {
+  margin-bottom: var(--sp-4);
+}
+
+/* --text-muted is too faint on white for 12px dates; use the secondary text colour */
+.exp-dates {
+  margin-bottom: var(--sp-16);
+  color: var(--text-secondary);
+}
+
+.exp-highlights {
+  margin-top: var(--sp-16);
+  padding-top: var(--sp-16);
+  border-top: var(--border-width-1) solid var(--border-default);
+  padding-left: var(--sp-20);
+  list-style: disc;
+}
+
+.exp-highlights li {
+  margin-bottom: var(--sp-8);
+  padding-left: var(--sp-4);
+  color: var(--text-body-default);
+}
+
+.exp-highlights li:last-child {
+  margin-bottom: 0;
+}
+
+.exp-highlights li::marker {
+  color: var(--text-brand);
+}
+
+@media (min-width: 40rem) {
+  .exp-layout {
+    flex-direction: row;
+    gap: var(--sp-32);
+  }
+
+  .exp-tabs {
+    flex-direction: column;
+    width: 12rem;
+    overflow-x: visible;
+    border-bottom: 0;
+  }
+
+  .exp-tab {
+    margin-bottom: 0;
+    margin-left: -1px;
+    border-bottom: 0;
+    border-left: var(--border-width-2) solid var(--border-default);
+    white-space: normal;
+  }
+
+  .exp-tab[aria-selected='true'] {
+    border-left-color: var(--border-brand);
+  }
+}

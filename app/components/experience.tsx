@@ -1,13 +1,13 @@
 'use client';
 import { format } from 'date-fns';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
+import type { KeyboardEvent } from 'react';
 import { Job } from '../interfaces';
 import SectionHeader from './section-header';
 
 export default function Experience({ anchor, jobs }: { anchor: string; jobs: Job[] }) {
   const [active, setActive] = useState(0);
-  const activeClass = 'text-sm border-l-2';
-  const inactiveClass = 'text-sm border-l-2 border-transparent';
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
   function formatDate(date: string | undefined): string {
     if (date) {
@@ -17,39 +17,76 @@ export default function Experience({ anchor, jobs }: { anchor: string; jobs: Job
     return 'Present';
   }
 
+  function select(idx: number) {
+    setActive(idx);
+    tabRefs.current[idx]?.focus();
+  }
+
+  // WAI-ARIA tabs pattern: arrows move and activate, Home/End jump, focus wraps
+  function onKeyDown(event: KeyboardEvent<HTMLButtonElement>, idx: number) {
+    const last = jobs.length - 1;
+    const moves: Record<string, number> = {
+      ArrowDown: idx === last ? 0 : idx + 1,
+      ArrowRight: idx === last ? 0 : idx + 1,
+      ArrowUp: idx === 0 ? last : idx - 1,
+      ArrowLeft: idx === 0 ? last : idx - 1,
+      Home: 0,
+      End: last,
+    };
+    const next = moves[event.key];
+
+    if (next === undefined) {
+      return;
+    }
+
+    event.preventDefault();
+    select(next);
+  }
+
+  const job = jobs[active];
+
   return (
-    <div id={anchor} className="max-w-prose mx-auto py-4 text-slate-400">
+    <section id={anchor} className="section">
       <SectionHeader title="Experience"></SectionHeader>
-      <div className="flex">
-        <div className="w-1/3">
-          {jobs.map((job: Job, idx: number) => (
-            <div
-              className={`${active === idx ? activeClass : inactiveClass} p-2`}
+      <div className="exp-layout">
+        {/* aria-orientation is left at its tablist default (horizontal) on purpose: the list is vertical only
+            from 40rem up, CSS cannot change an attribute, and all four arrow keys work in either layout. */}
+        <div role="tablist" aria-label="Companies" className="exp-tabs">
+          {jobs.map((j: Job, idx: number) => (
+            <button
+              key={j.id}
+              ref={(el) => {
+                tabRefs.current[idx] = el;
+              }}
+              type="button"
+              role="tab"
+              id={`exp-tab-${idx}`}
+              aria-selected={active === idx}
+              aria-controls="exp-panel"
+              tabIndex={active === idx ? 0 : -1}
+              className="exp-tab"
               onClick={() => setActive(idx)}
-              key={idx}
+              onKeyDown={(e) => onKeyDown(e, idx)}
             >
-              {job.company}
-            </div>
+              {j.company}
+            </button>
           ))}
         </div>
-        <div className="w-2/3 pl-5 pt-2">
-          <div className="text-lg text-slate-300">{jobs[active].title}</div>
-          <div className="text-xs">
-            {format(new Date(jobs[active].dates.start), 'LLL yyyy')} - {formatDate(jobs[active].dates?.end)}
-          </div>
-          <div className=""></div>
-          <div className="pt-3 text-slate-300">{jobs[active]?.tldr}</div>
-          <div className="mt-5 p-5 border-t-2">
-            <ul className="list-outside list-disc space-y-1">
-              {jobs[active]?.highlights?.map((bullet: string, idx: number) => (
-                <li className="p-2 text-sm" key={`b-${idx}`}>
-                  {bullet}
-                </li>
+        <div role="tabpanel" id="exp-panel" aria-labelledby={`exp-tab-${active}`} className="exp-panel">
+          <h3 className="h5 exp-title">{job.title}</h3>
+          <p className="meta-text exp-dates">
+            {format(new Date(job.dates.start), 'LLL yyyy')} - {formatDate(job.dates?.end)}
+          </p>
+          {job.tldr && <p>{job.tldr}</p>}
+          {job.highlights && job.highlights.length > 0 && (
+            <ul className="p-sm exp-highlights">
+              {job.highlights.map((bullet: string, idx: number) => (
+                <li key={`b-${idx}`}>{bullet}</li>
               ))}
             </ul>
-          </div>
+          )}
         </div>
       </div>
-    </div>
+    </section>
   );
 }
