@@ -6,9 +6,7 @@ import { NavLinks } from '../interfaces';
 export default function MainNav({ data, name }: { data: NavLinks; name: string }) {
   const [display, setDisplay] = useState(false);
   const [displayCss, setDisplayCss] = useState('hidden');
-  const navItemsArray = Object.entries(data)
-    .map((item) => (item[1]?.disabled !== true ? item : undefined))
-    .filter((item) => item !== undefined);
+  const navItemsArray = Object.entries(data).filter(([, meta]) => meta?.disabled !== true);
 
   function mobileMenuIconClick() {
     setDisplay((prevDisplay) => !prevDisplay);
@@ -29,23 +27,17 @@ export default function MainNav({ data, name }: { data: NavLinks; name: string }
         <div className="flex items-center justify-between">
           <div>{name} - Portfolio</div>
           <div className="hidden md:flex items-center space-x-5 text-sm">
-            {navItemsArray.map((item, idx) => {
-              if (item) {
-                const [title, meta] = [...item];
-
-                return (
-                  <Link
-                    key={`nav-${idx}`}
-                    href={meta.href}
-                    onClick={() => scrollTo(meta.href.substring(1))}
-                    target={meta?.target}
-                    className="last:nav-button py-1 px-2 hover:bg-gray-700 transition transition-duration-300 rounded"
-                  >
-                    {title}
-                  </Link>
-                );
-              }
-            })}
+            {navItemsArray.map(([title, meta]) => (
+              <Link
+                key={title}
+                href={meta.href}
+                onClick={() => scrollTo(meta.href.substring(1))}
+                target={meta?.target}
+                className="last:nav-button py-1 px-2 hover:bg-gray-700 transition transition-duration-300 rounded"
+              >
+                {title}
+              </Link>
+            ))}
           </div>
 
           <div className="md:hidden flex items-center">
@@ -66,22 +58,17 @@ export default function MainNav({ data, name }: { data: NavLinks; name: string }
       </div>
 
       <div className={`${displayCss} min-h-screen transition transition-duration-300`}>
-        {navItemsArray.map((item, idx) => {
-          if (item) {
-            const [title, meta] = [...item];
-            return (
-              <Link
-                key={`nav-${idx}`}
-                onClick={() => scrollTo(meta.href.substring(1))}
-                href={meta.href}
-                target={meta?.target}
-                className="block py-3 px-6 text-lg hover:bg-gray-700 text-right"
-              >
-                {title}
-              </Link>
-            );
-          }
-        })}
+        {navItemsArray.map(([title, meta]) => (
+          <Link
+            key={title}
+            onClick={() => scrollTo(meta.href.substring(1))}
+            href={meta.href}
+            target={meta?.target}
+            className="block py-3 px-6 text-lg hover:bg-gray-700 text-right"
+          >
+            {title}
+          </Link>
+        ))}
       </div>
     </nav>
   );
