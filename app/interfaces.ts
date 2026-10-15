@@ -85,3 +85,16 @@ export interface Contact {
   github?: string;
   linkedin?: string;
 }
+
+export interface SiteMeta {
+  title: string;
+  description: string;
+  siteUrl: string;
+  ogImage: string;
+  ogImageAlt: string;
+}
+
+export interface FooterCopy {
+  title: string;
+  text: string;
+}
