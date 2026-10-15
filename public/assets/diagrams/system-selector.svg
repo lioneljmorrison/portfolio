@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 514" role="img" aria-label="system-selector architecture diagram">
   <defs>
-    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto">
       <path d="M0 0L10 5L0 10z" fill="#7c8a99"/>
     </marker>
   </defs>
   <rect width="1200" height="514" fill="#8a97a6" fill-opacity=".12"/>
   <g font-family="system-ui, sans-serif" text-anchor="middle" font-size="22" font-weight="600">
     <g fill="#7c8a99" fill-opacity=".28" stroke="#7c8a99" stroke-width="2"><rect x="40" y="163" width="220" height="84" rx="14"/><rect x="40" y="267" width="220" height="84" rx="14"/><rect x="490" y="215" width="220" height="84" rx="14"/><rect x="940" y="163" width="220" height="84" rx="14"/><rect x="940" y="267" width="220" height="84" rx="14"/></g>
-    <g fill="none" stroke="#7c8a99" stroke-width="2.5" marker-end="url(#a)"><path d="M260 205 C371 205 371 257 482 257"/><path d="M260 309 C371 309 371 257 482 257"/><path d="M710 257 C821 257 821 205 932 205"/><path d="M710 257 C821 257 821 309 932 309"/></g>
+    <g fill="none" stroke="#7c8a99" stroke-width="2.5" marker-end="url(#a)"><path d="M260 205 C373 205 373 257 486 257"/><path d="M260 309 C373 309 373 257 486 257"/><path d="M710 257 C823 257 823 205 936 205"/><path d="M710 257 C823 257 823 309 936 309"/></g>
     <g fill="#6b7a8a" stroke="none"><text x="150" y="201">Online system</text><text x="150" y="229" font-size="16" font-weight="400">selector</text><text x="150" y="317">MCP clients</text><text x="600" y="253">Go API</text><text x="600" y="281" font-size="16" font-weight="400">+ MCP server</text><text x="1050" y="201">FalkorDB</text><text x="1050" y="229" font-size="16" font-weight="400">configuration graph</text><text x="1050" y="317">MongoDB</text></g>
   </g>
 </svg>
