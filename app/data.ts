@@ -21,62 +21,67 @@ export const footerCopy: FooterCopy = {
 
 export const jobsData: Job[] = [
   {
+    id: 'MRCOOL',
+    company: 'MRCOOL',
+    title: 'Lead Software Engineer – Digital Experience',
+    dates: { start: '2024-01-15' },
+    highlights: [
+      'Founded and lead a 5-person Digital Experience team (3 engineers, 1 QA, 1 PM) and set an agentic-first engineering approach across company projects',
+      // eslint-disable-next-line quotes
+      "Established the team's CI/CD standards: TDD by default, mandatory linting and pre-commit test gates, Storybook for every UI change, Playwright E2E and visual-regression tests, axe accessibility checks, and deploys through GitHub Actions and Vercel",
+      'Alembic: replaced Cloudinary with an in-house asset platform (AI integrations, semantic search, MCP server) serving 1M+ requests/month across mrcool.com and mrcooldiy.com, at 93.8% annual cost savings and 1,524% ROI',
+      'Pulse: replaced an $80K/yr SEO agency with an in-house SEO/AIO platform on ~$1.2K/yr of data APIs (98.5% cost reduction) that turns findings into LLM-generated ClickUp tasks',
+      'System Configurator: replaced a 91K-row Excel configurator with a graph-based API and MCP server generating ~2.9M valid configurations with sub-ms responses',
+      // eslint-disable-next-line quotes
+      "Guided non-engineers (a Director of Customer Service, a product consultant) to ship their own internal tools with AI coding tools, and wrote the team's agent configuration and standards, all inside the same CI quality gates as human-written code",
+    ],
+  },
+  {
     id: 'UA',
     company: 'Under Armour',
-    title: 'Sr. Software Engineer',
+    title: 'Sr. Front-end Engineer',
     dates: { start: '2022-09-12', end: '2023-06-16' },
     highlights: [
-      'Lead global deployment rollouts and hotfixes working alongside developers and QA engineers to identify non-production-ready items',
-      'Instrumental in new search engine implementation: $30M sales lift, 50% faster search, and improved accuracy',
-      'Proficiently identified, logged, and resolved issues',
-      'Actively engaged in standups and proficiently utilized Jira for recording and tracking work',
-      'Collaborated with creative translating UI layouts into functional code implementations',
-      'Conducted peer reviews of code for both contractors and full-time employees',
-      'Utilized SFRA for crafting high-quality, robust code',
+      'Implemented an AI-based search engine: $30M sales lift, 50% faster search',
+      'Led global deployment rollouts and hotfixes with dev and QA; reviewed code for contractors and full-time staff',
     ],
   },
   {
     id: 'NI',
-    company: 'Nivel Parts and Manufacturing',
-    title: 'Web Application Developer',
-    dates: { start: '2021-08-12', end: '2022-08-12' },
+    company: 'Nivel',
+    title: 'Full Stack Engineer',
+    dates: { start: '2021-08-12', end: '2022-09-12' },
     highlights: [
-      'Implemented Scrum into development, marketing, and design teams',
-      'Implemented Git and CircleCI for code tracking, code review, and deployment',
-      'Introduced TypeScript and Git as standards for new development',
-      'Created serverless Lambda API for data consumption from KiboCommerce',
-      'Collaborated cross-functionally for UI/UX and SEO enhancements',
+      'Increased deployment frequency 200% by introducing Git, CircleCI and code review; made TypeScript the standard for new development',
       // eslint-disable-next-line quotes
-      "Architected serverless API to synchronization 3rd party APIs with companies' source of truth",
+      "Built serverless Lambda APIs syncing KiboCommerce and third-party data with the company's source of truth; introduced Scrum across dev, marketing and design",
     ],
   },
   {
     id: 'RL',
     company: 'Redleaf Software',
-    title: 'Web Application Developer',
-    dates: { start: '2018-11-01', end: '2021-08-12' },
+    title: 'Front-end Engineer',
+    dates: { start: '2018-11-15', end: '2021-08-12' },
     highlights: [
-      // eslint-disable-next-line quotes
-      "Led greenfield Angular development for Importing revenue management files into a data-focused SPA dashboard providing market intelligence to optimize hoteliers' revenue through data analysis, forecasts, and budgets",
-      'Significantly decreased report generation time by 60-75% and achieved exponential accuracy improvements freeing up employee time',
-      'Proactively collaborated with product owners to drive UI/UX design and implementation using Adobe XD',
-      'Conducted unit testing to achieve code coverage of the most critical functions',
-      'Orchestrated code deployment of Firebase Functions and sites for User Acceptance Testing',
+      'Built a greenfield Angular SPA for hotel revenue management (forecasts, budgets, market intelligence), cutting report-generation time 60–75% and doubling reporting accuracy',
+      'Ran Firebase Functions deployments and UAT environments; drove UI/UX with product owners',
     ],
   },
   {
     id: 'PBG',
     company: 'Porter Brook Group',
     title: 'Full Stack Developer',
-    dates: { start: '2011-06-01', end: '2018-11-01' },
+    dates: { start: '2011', end: '2018' },
     highlights: [
-      'Spearheaded greenfield social, eCommerce, and IoT solutions for local and national businesses',
-      'Implemented DevOps, Agile, and Kanban project management methodologies',
-      'Advocated for an API-first approach in G2B, B2B, and B2C development',
-      'Utilized Linux-based cloud hosting on AWS EC2',
-      'Successfully integrated payment APIs from Stripe and Authorize.net',
-      'Created IoT-based connectivity microservice using Express.js, MariaDB, and PHP',
+      'Greenfield e-commerce, social and IoT solutions; Stripe and Authorize.net integrations; API-first B2B/B2C on AWS EC2',
     ],
+  },
+  {
+    id: 'LT',
+    company: 'Lifeware TEK',
+    title: 'DevOps / Software Developer',
+    dates: { start: '2005', end: '2011' },
+    highlights: ['Hybrid Linux/Windows hosting; custom build and SQL deployment tooling'],
   },
 ];
 
