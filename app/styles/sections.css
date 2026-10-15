@@ -1,5 +1,5 @@
 /*
-  Sections: Hero, Experience and Projects, plus the shared .chip, built on tokens.css and base.css.
+  Sections: Hero, About, Experience and Projects, plus the shared .chip, built on tokens.css and base.css.
 
   Imported into the components layer (globals.css), like layout.css, so it beats base.css. Do not import it
   unlayered.
@@ -12,6 +12,40 @@
 .section {
   padding-top: var(--sp-32);
   padding-bottom: var(--sp-32);
+}
+
+/* About: two paragraphs capped to a readable measure; with a portrait set, a square image sits beside them from
+   48rem. */
+
+.about {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-24);
+}
+
+.about-text {
+  display: grid;
+  gap: var(--sp-16);
+  max-width: 42rem;
+}
+
+.about-text p {
+  margin: 0;
+}
+
+.about-portrait {
+  width: 10rem;
+  height: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-subtle);
+}
+
+@media (min-width: 48rem) {
+  .about-with-portrait {
+    grid-template-columns: auto minmax(0, 1fr);
+    align-items: start;
+    gap: var(--sp-32);
+  }
 }
 
 /* Hero: role, name, pitch and calls to action beside a card with the stack and quote. One column on phones;
