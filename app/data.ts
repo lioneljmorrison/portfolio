@@ -303,7 +303,46 @@ export const projectData: Projects = {
       },
     },
     gallery: [
-      { src: './assets/wisper-caramel.png', alt: 'The Wisper dashboard in the caramel theme', caption: 'Caramel theme' },
+      {
+        src: './assets/wisper/caramel.png',
+        alt: 'The Wisper dashboard in the caramel theme',
+        caption: 'Caramel theme',
+      },
+      {
+        src: './assets/wisper/styles.png',
+        alt: 'Styles screen listing per-app writing styles: Formal, Casual, very casual and Technical',
+        caption: 'Styles: per-app writing styles (Formal, Casual, very casual, Technical)',
+      },
+      {
+        src: './assets/wisper/word-tools.png',
+        alt: 'Word Tools screen with a custom dictionary that corrects how names and terms are spelled',
+        caption: 'Word Tools: a custom dictionary that fixes how names and terms are spelled',
+      },
+      {
+        src: './assets/wisper/settings-hotkeys.png',
+        alt: 'Settings screen showing theme choices and hotkeys for push-to-talk, hands-free and AI ask',
+        caption: 'Settings: themes and hotkeys for push-to-talk, hands-free and AI ask',
+      },
+      {
+        src: './assets/wisper/speech-models.png',
+        alt: 'Speech-to-text settings listing local whisper.cpp models from tiny.en up to large-v3-turbo',
+        caption: 'Speech-to-text: local whisper.cpp models, from tiny.en to large-v3-turbo',
+      },
+      {
+        src: './assets/wisper/correction-model.png',
+        alt: 'Local correction model settings showing Qwen3-0.6B handling spoken self-corrections offline',
+        caption: 'Local correction model: Qwen3-0.6B handles spoken self-corrections offline',
+      },
+      {
+        src: './assets/wisper/inference-backend.png',
+        alt: 'Inference backend options (CUDA, Vulkan or CPU) and the optional AI cleanup pass',
+        caption: 'Inference backend (CUDA, Vulkan or CPU) and the optional AI cleanup pass',
+      },
+      {
+        src: './assets/wisper/app-rules.png',
+        alt: 'App classification rules that decide which apps count as personal, work or email',
+        caption: 'App classification rules: which apps count as personal, work or email',
+      },
     ],
   },
   squism: {
