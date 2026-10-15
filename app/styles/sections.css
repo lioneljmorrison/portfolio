@@ -6,12 +6,10 @@
   Breakpoints are literal: sm 40rem, md 48rem.
 */
 
-/* Section shell: a readable measure (48rem, about 75 characters at body size), centred in the 65rem container */
+/* Section shell: the full 65rem container, so its left edge lines up with the hero's. Text blocks cap their own
+   measure (e.g. .timeline-highlights). */
 
 .section {
-  max-width: 48rem;
-  margin-left: auto;
-  margin-right: auto;
   padding-top: var(--sp-32);
   padding-bottom: var(--sp-32);
 }
@@ -141,111 +139,105 @@
   overflow-wrap: anywhere;
 }
 
-/* Experience: vertical tabs beside a panel; a horizontal scrolling row of tabs above it below 40rem */
+/* Experience: every job on a vertical timeline. A 2px line runs down the left of the list with a ring marker per
+   item; from 48rem each item is a two-column grid (dates, company and role | tldr and highlights). */
 
-.exp-layout {
-  display: flex;
-  flex-direction: column;
-  gap: var(--sp-16);
+.timeline {
+  position: relative;
+  margin-top: var(--sp-16);
+  padding-left: calc(var(--sp-24) + 0.5rem);
 }
 
-.exp-tabs {
-  display: flex;
-  flex-direction: row;
-  flex: none;
-  overflow-x: auto;
-  border-bottom: var(--border-width-1) solid var(--border-default);
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: calc(0.5rem - 1px);
+  width: var(--border-width-2);
+  background-color: var(--border-default);
 }
 
-.exp-tab {
-  flex: none;
-  padding: var(--sp-8) var(--sp-16);
-  border-bottom: var(--border-width-2) solid transparent;
-  margin-bottom: -1px;
-  color: var(--text-secondary);
-  font-size: 0.875rem;
-  font-weight: var(--font-weight-medium);
-  text-align: left;
-  white-space: nowrap;
-  transition: color 0.15s ease-in-out, border-color 0.15s ease-in-out;
+.timeline-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: var(--sp-12);
+  padding-bottom: var(--sp-40);
 }
 
-.exp-tab:hover {
-  color: var(--text-primary);
+.timeline-item:last-child {
+  padding-bottom: 0;
 }
 
-.exp-tab[aria-selected='true'] {
-  border-color: var(--border-brand);
-  color: var(--text-brand);
+/* The line sits 0.5rem in so the ring stays inside the container edge. Ring centred on the line, level with the dates (a 1.5 line-height meta-text row) */
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  top: 0.25rem;
+  left: calc(-1 * var(--sp-24) - 0.5rem);
+  width: 1rem;
+  height: 1rem;
+  border: var(--border-width-2) solid var(--border-brand);
+  border-radius: var(--radius-full);
+  background-color: var(--surface-bg-default);
 }
 
-.exp-panel {
-  flex: 1 1 auto;
-  min-width: 0;
-}
-
-.exp-title {
+.timeline-dates {
   margin-bottom: var(--sp-4);
 }
 
-.exp-dates {
-  margin-bottom: var(--sp-16);
+.timeline-company {
+  margin-bottom: var(--sp-4);
 }
 
-.exp-highlights {
-  margin-top: var(--sp-16);
-  padding-top: var(--sp-16);
-  border-top: var(--border-width-1) solid var(--border-default);
+.timeline-role {
+  color: var(--text-secondary);
+}
+
+.timeline-tldr {
+  max-width: 42rem;
+  margin-bottom: var(--sp-12);
+}
+
+.timeline-highlights {
+  max-width: 42rem;
   padding-left: var(--sp-20);
   list-style: disc;
+  font-size: 0.9375rem;
 }
 
-.exp-highlights li {
+.timeline-highlights li {
   margin-bottom: var(--sp-8);
   padding-left: var(--sp-4);
   color: var(--text-body-default);
 }
 
-.exp-highlights li:last-child {
+.timeline-highlights li:last-child {
   margin-bottom: 0;
 }
 
-.exp-highlights li::marker {
+.timeline-highlights li::marker {
   color: var(--text-brand);
 }
 
-@media (min-width: 40rem) {
-  .exp-layout {
-    flex-direction: row;
+@media (min-width: 48rem) {
+  .timeline {
+    padding-left: calc(var(--sp-40) + 0.5rem);
+  }
+
+  .timeline-item {
+    grid-template-columns: 15rem minmax(0, 1fr);
     gap: var(--sp-32);
   }
 
-  .exp-tabs {
-    flex-direction: column;
-    width: 12rem;
-    overflow-x: visible;
-    border-bottom: 0;
-  }
-
-  .exp-tab {
-    margin-bottom: 0;
-    margin-left: -1px;
-    border-bottom: 0;
-    border-left: var(--border-width-2) solid var(--border-default);
-    white-space: normal;
-  }
-
-  .exp-tab[aria-selected='true'] {
-    border-left-color: var(--border-brand);
+  .timeline-item::before {
+    left: calc(-1 * var(--sp-40) - 0.5rem);
   }
 }
 
 /* Projects: stacked below 40rem; from 40rem a 10-column grid where the image takes six columns and the text
    overlays it from the other side (columns 5 and 6 overlap). Odd-indexed projects get .project--reverse. */
-
-.section--wide {
-  max-width: none;
-}
 
 .project {
   display: grid;

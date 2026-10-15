@@ -7,7 +7,7 @@ export default function Projects({ anchor, data }: { anchor: string; data: Proje
   const projects = Object.entries(data).filter(([, project]) => project?.disabled !== true);
 
   return (
-    <section id={anchor} className="section section--wide">
+    <section id={anchor} className="section">
       <SectionHeader title="Projects"></SectionHeader>
       {projects.map(([key, project], idx: number) => {
         const image = project.images?.['default'];
