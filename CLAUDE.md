@@ -9,13 +9,18 @@ is never committed.
 - **Orientation.** The session starts with "where are we". Ask `whats_next`
   for the next story and `get_story` for its detail. Don't guess the next task.
 - **Record each move as it happens**, with `set_status`:
-  - start work: `in_progress`, with the task branch (cut from `main`);
-  - open the pull request into `main`: `in_review`, with its link;
-  - merged into `main`: `merged`, with the merge commit;
-  - the GitHub Pages deploy for that merge succeeded: `deployed`.
+  - start work: `in_progress`, with the task branch (cut from `dev`);
+  - open the pull request into `dev`: `in_review`, with its link;
+  - merged into `dev`: `merged`, with the merge commit.
 
-  `main` is the only long-lived branch, and every merge into it deploys
-  (AGENTS.md, "Deployment").
+  Task branches merge into `dev`; `dev` merges into `main`, the release
+  branch, and every merge into `main` deploys (AGENTS.md, "Deployment").
+- **Releasing.** Once `dev` is merged into `main`, record it with
+  `merge_branch` (branch `dev`, the merge commit); that moves every story
+  merged into `dev` on to `main`. When the GitHub Pages deploy for that merge
+  has succeeded, tag the merge commit `vYYYY.MM.DD` and record it with
+  `cut_release` (the version and tag, the commit, short notes); that marks
+  those stories released.
 - **While in progress,** keep the story's activity current with
   `update_story`: planning, building, testing, or waiting (and on what).
 - **Log as you go** with `log`: decisions with their reason, notable commits,
@@ -41,14 +46,14 @@ is never committed.
 "Complete the backlog" (or "work the backlog") means: deliver every ready
 story, one at a time, with a sub-agent doing each build. This instruction is
 the standing request to use sub-agents for it. Opening pull requests into
-`main` is authorised; merging them is not, because a merge into `main`
-deploys the live site.
+`dev` is authorised; merging them is not, and neither is releasing `dev`
+into `main`, which deploys the live site. Both are left to a person.
 
 The main session coordinates and keeps Backpack current; it does not write
 the code. For each story:
 
 1. `whats_next`. If no story is ready, stop and report.
-2. Cut the task branch from an up-to-date `origin/main`, named as in
+2. Cut the task branch from an up-to-date `origin/dev`, named as in
    AGENTS.md ("Deployment"); `set_status` `in_progress` with the branch.
 3. Hand the story to the `executor` sub-agent (`.claude/agents/`), one at a
    time, never in parallel. Give it the story's id, goal and plan, the branch,
@@ -58,10 +63,10 @@ the code. For each story:
    branch (don't push); report any deviation from the plan and why, and any
    gap or new work it found. Use the `planner` agent first only when the
    story's plan is thin.
-4. Review the diff against the goal (`git diff origin/main...`); for such
+4. Review the diff against the goal (`git diff origin/dev...`); for such
    changes, check the docs match. Send it back to the same sub-agent
    (`SendMessage`) for fixes.
-5. Push and open the pull request into `main` (`in_review`). Log decisions
+5. Push and open the pull request into `dev` (`in_review`). Log decisions
    and deviations. Leave the merge to a person.
 6. New work the sub-agent found: `search`, then `add_story` as proposed.
    Don't wait for approval; continue with the next ready story.
