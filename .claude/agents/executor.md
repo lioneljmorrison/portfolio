@@ -26,8 +26,7 @@ Follow the repository guardrails in AGENTS.md:
 - Never silence a lint rule just to make it pass. The one accepted exception is
   `// eslint-disable-next-line quotes` above a string that needs an apostrophe.
 - Off-limits unless the step says otherwise: the Google Analytics tag in
-  `app/page.tsx`, the Tidio widget in `app/components/chatbot.tsx`, and the
-  GitHub workflows in `.github/`.
+  `app/page.tsx` and the GitHub workflows in `.github/`.
 - Keep the change to the scoped step. If you discover the step is wrong or too
   large, stop and report back rather than expanding scope.
 - Commit or push only if explicitly asked. Do not batch unrelated changes.
