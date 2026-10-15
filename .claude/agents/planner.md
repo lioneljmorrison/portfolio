@@ -25,7 +25,7 @@ Follow the repository guardrails in AGENTS.md:
   visual change. There are no automated tests; if a step would benefit from
   one, say so rather than assuming a framework exists.
 - Plan within the stack as installed: Next.js 13.4 App Router, React 18,
-  Tailwind 3.3, static export (`output: 'export'`). No API routes, server
+  plain CSS (`app/styles/`), static export (`output: 'export'`). No API routes, server
   actions or middleware.
 - Content belongs in `app/data.ts` with its types in `app/interfaces.ts`;
   components stay presentational.

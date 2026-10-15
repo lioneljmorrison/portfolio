@@ -1,6 +1,6 @@
 Welcome to the 1st iteration of Portfolio. 
 
-Built with Next.js and Tailwind CSS.
+Built with Next.js and plain CSS.
 
 ## TL;DR
 Yes, you can fork this, as long as you don't _plegise_ and provide some attribution.

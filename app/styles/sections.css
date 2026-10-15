@@ -1,8 +1,8 @@
 /*
   Sections: About Me, Experience and Projects, plus the shared .chip, built on tokens.css and base.css.
 
-  Imported into Tailwind's components layer (globals.css), like layout.css: it beats base.css and Tailwind's
-  reset, and any Tailwind utility on the same element still wins while both coexist. Do not import it unlayered.
+  Imported into the components layer (globals.css), like layout.css, so it beats base.css. Do not import it
+  unlayered.
   Breakpoints are literal: sm 40rem, md 48rem.
 */
 

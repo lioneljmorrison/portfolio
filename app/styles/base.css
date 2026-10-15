@@ -1,8 +1,8 @@
 /*
   Base styles: reset, type scale, layout, card, button and form basics, all driven by tokens.css.
 
-  This file is imported into Tailwind's base layer (globals.css), so Tailwind utilities still win over
-  everything here while both coexist. Do not import it unlayered.
+  This file is imported into the base layer (globals.css), below layout.css and sections.css. Do not import
+  it unlayered.
   Breakpoints are literal because custom properties do not work in media queries:
   sm 40rem, md 48rem, lg 64rem, xl 80rem.
 */
@@ -15,6 +15,29 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  border: 0 solid;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+hr {
+  border: 0;
+  border-top: var(--border-width-1) solid var(--border-default);
+}
+
+[hidden]:not([hidden='until-found']) {
+  display: none !important;
 }
 
 html {
@@ -107,9 +130,14 @@ p:last-child {
 }
 
 /*
-  Link colour applies to bare <a> and .link only. Links that carry their own classes (current nav and
-  project links) keep inheriting colour, as Tailwind's reset gives them, until their component moves over.
+  Link colour applies to bare <a> and .link only. Links that carry their own classes (nav items, .btn)
+  set their own colour, and the rule below makes them inherit by default.
 */
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
 a:not([class]),
 .link {
   color: var(--text-link);

@@ -13,8 +13,7 @@
   Breakpoints are not tokens because custom properties do not work in media queries. base.css uses
   literal values: sm 40rem, md 48rem, lg 64rem, xl 80rem.
 
-  Some names (--color-gray-*, --color-white, --radius-*, --container-*) match Tailwind theme variables.
-  This file is unlayered, so it wins and Tailwind utilities pick up these values while both coexist.
+  This file is custom properties only, so it is imported unlayered (globals.css).
 */
 
 :root {

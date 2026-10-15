@@ -21,7 +21,7 @@ definition here.
   approved plan and runs the gates. It stops and reports rather than widening
   scope.
 - **Cheap questions go to `researcher`.** Tracing behaviour, locating code or
-  checking what Next.js 13.4 / Tailwind 3.3 support does not need a frontier
+  checking what Next.js 13.4 support does not need a frontier
   model.
 
 Every agent is bound by the conventions in AGENTS.md.

@@ -21,7 +21,7 @@ You are the Researcher. You investigate and report; you never change code.
 - Be concise. Return the findings, not a narrated search.
 
 Useful context: this repo is a single-page portfolio site on Next.js 13.4
-(App Router) with Tailwind CSS 3.3, statically exported to GitHub Pages. All
+(App Router) styled with plain CSS (`app/styles/`), statically exported to GitHub Pages. All
 content is in `app/data.ts`; components are in `app/components/`. When looking
 up framework behaviour, check the installed versions in `package.json` and
 answer for those, not for the latest release. Delivery is tracked in Backpack
