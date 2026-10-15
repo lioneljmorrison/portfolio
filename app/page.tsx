@@ -1,4 +1,5 @@
 import Script from 'next/script';
+import About from './components/about';
 import Hero from './components/hero';
 import Experience from './components/experience';
 import MainNav from './components/nav';
@@ -24,7 +25,8 @@ export default function Home() {
       <Chatbot></Chatbot>
       <MainNav data={navData} name={aboutMe.name}></MainNav>
       <main className="container container-xl page-main">
-        <Hero anchor="about" data={aboutMe} contact={contact}></Hero>
+        <Hero anchor="top" data={aboutMe} contact={contact}></Hero>
+        <About anchor="about" data={aboutMe}></About>
         <Experience anchor="experience" jobs={jobsData as Job[]}></Experience>
         <Projects anchor="projects" data={projectData}></Projects>
       </main>

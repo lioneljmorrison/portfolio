@@ -33,6 +33,10 @@ export interface AboutMe {
   role?: string;
   tldr: string;
   pitch?: string;
+  // Paragraphs of the About section.
+  bio: string[];
+  // Square image shown beside the About text; the About section is text-only when unset.
+  portrait?: { link: string; alt: string };
   quote?: {
     text: string;
     author: string;

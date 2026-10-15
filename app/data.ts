@@ -88,6 +88,11 @@ export const aboutMe: AboutMe = {
   tldr: 'Experienced Full Stack Developer focused on Continuous Integration, Continuous Development, developing APIs, and adding a sprinkle of Magic to web applications.',
   // eslint-disable-next-line quotes
   pitch: "I build internal platforms, self-serve developer tooling and AI-assisted workflows. I lead MRCOOL's Digital Experience team, where we've replaced two vendor contracts with in-house platforms at 93.8% and 98.5% savings.",
+  bio: [
+    // eslint-disable-next-line quotes
+    "I'm a lead software engineer with over 20 years across startups and Fortune 500 companies. I founded and lead MRCOOL's Digital Experience team (three engineers including me, plus QA and a PM), set its agentic-first engineering approach, and still write a lot of the code: Go services, Next.js front ends and the platforms underneath.",
+    'I prefer owning the stack over renting it: insourcing vendor tools when the numbers work, and putting AI agents to work inside the same CI quality gates as human-written code. I grew up in the UK, spent years in Florida, and have lived in northern Vermont for about 16 years.',
+  ],
   skillsTitle: 'Current Stack',
   skills: [
     'Go',
